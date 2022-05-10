@@ -263,9 +263,33 @@ header {
     font-family: Vazirmatn , serif;
     border-collapse: collapse;
     width: 100%;
+    color: #2c3e50;
     td , th {
       border: 1px solid #ddd;
-      padding: 8px;
+      padding: 16px 8px;
+    }
+    td {
+      .icons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        i {
+          font-size: 1.4rem;
+          margin: 0 .5rem;
+        }
+        i:hover {
+          cursor: pointer;
+        }
+        .bi-info-square-fill {
+          color: #0AA1DD;
+        }
+        .bi-pencil-square {
+          color: #2ecc71;
+        }
+        .bi-trash3-fill {
+          color: #e74c3c;
+        }
+      }
     }
     th {
       padding-top: 12px;
@@ -273,6 +297,10 @@ header {
       text-align: center;
       background-color: #0AA1DD;
       color: white;
+    }
+    tr {
+      transition: .3s;
+
     }
     tr:nth-child(even) {
       background-color: #f2f2f2;

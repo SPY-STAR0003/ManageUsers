@@ -2,6 +2,7 @@
 import React, {useState} from "react";
 import "./style/bundle.scss";
 import AddUser from "./AddUser";
+import MakeTableRows from "./MakeTableRows";
 
 import Header from "./Header";
 function Main() {
@@ -26,20 +27,32 @@ function Main() {
         users : [],
     })
 
+
+
     const changeUsersList = usersList => {
         setUserState(prevState => {
             return {
                 users: [
                     ...prevState.users,
                     {
+                        code : Date.now(),
                         key : Date.now(),
                         name : usersList.name,
                         IDCode : usersList.IDCode,
                         email : usersList.email,
                         date : usersList.date,
-                        education : usersList.education
+                        education : usersList.education,
                     }
                 ]
+            }
+        })
+    }
+
+    const deleteUser = userCode => {
+        setUserState(prevState => {
+
+            return {
+                users : prevState.users.filter(user => user.code !== userCode)
             }
         })
     }
@@ -61,6 +74,19 @@ function Main() {
                             <th> دسترسی ها </th>
                         </tr>
                     </thead>
+                    <tbody>
+                    {
+                        userState.users.map(user => <MakeTableRows code={user.code}
+                                                                   key={user.key}
+                                                                   name={user.name}
+                                                                   IDCode={user.IDCode}
+                                                                   date={user.date}
+                                                                   email={user.email}
+                                                                   education={user.education}
+                                                                   delete={deleteUser}
+                        />)
+                    }
+                    </tbody>
                 </table>
             </div>
             <AddUser hide={hideForm} classState={classState} changeUsersList={changeUsersList} />

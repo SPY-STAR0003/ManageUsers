@@ -178,6 +178,7 @@ table {
           display: flex;
           justify-content: space-around;
           align-items: center;
+          margin-right: 1.5rem;
           .accessRate {
             position: relative;
             padding-right: 1.5rem;
@@ -231,4 +232,55 @@ table {
     }
   }
 }
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 1.7rem auto 0;
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+  p {
+    font-size: .8rem;
+    margin: 1.2rem 0 .5rem;
+  }
+}
+
+.tableBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 1.3rem auto;
+  width: 80%;
+  direction: rtl;
+  table {
+    font-family: Vazirmatn , serif;
+    border-collapse: collapse;
+    width: 100%;
+    td , th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: center;
+      background-color: #0AA1DD;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    tr:hover {
+      background-color: #ddd;
+    }
+  }
+}
+
 

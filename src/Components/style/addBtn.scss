@@ -1,0 +1,27 @@
+.addBtn {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 2rem;
+  left: 2rem;
+  padding: .3rem 0.1rem;
+  border: 1px solid #0AA1DD;
+  width: 3rem;
+  background-color: #0AA1DD;
+  color: white;
+  font-size: 2rem;
+  border-radius: 100%;
+  z-index: 9999;
+  transition: .4s;
+  span {
+    position: relative;
+    bottom: 2px;
+  }
+}
+
+.addBtn:hover {
+  background-color: white;
+  color: #0AA1DD;
+  cursor: pointer;
+}

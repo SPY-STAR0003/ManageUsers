@@ -1,0 +1,234 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  font-family: Vazirmatn , serif;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+@keyframes appearFromLeftBottom {
+  0% {
+    transform: matrix(.3 , 0 , 0 , .3 , -500 , 200);
+  }
+  100% {
+    transform: matrix(1 , 0 , 0 , 1 , 0 , 0);
+  }
+}
+
+.background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Vazirmatn , serif;
+  .textInBackground {
+    text-align: center;
+    padding: 3rem 2rem;
+    border: 1px dashed #0AA1DD;
+    direction: rtl;
+    background-color: #E8F9FD;
+    h5 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 3rem;
+    }
+    p {
+      font-size: .8rem;
+    }
+  }
+}
+
+.addBtn {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 2rem;
+  left: 2rem;
+  padding: .3rem;
+  border: 1px solid #0AA1DD;
+  width: 3rem;
+  background-color: #0AA1DD;
+  color: white;
+  font-size: 3rem;
+  font-weight: 900;
+  border-radius: 100%;
+  z-index: 9999;
+  transition: .4s;
+}
+
+.addBtn:hover {
+  background-color: white;
+  color: #0AA1DD;
+  cursor: pointer;
+}
+
+
+.addUsersForm {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(3px);
+  z-index: 999999;
+  animation: appearFromLeftBottom 2s;
+  .form {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    width: 800px;
+    background: linear-gradient(to top right , rgba(255,255,255,1) , rgba(255,255,255,.6));
+    color: #2c3e50;
+    box-shadow: 0 0 4px #ecf0f1;
+    border-radius: 10px;
+    h3 {
+      margin: 1.5rem 0;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+    .closeForm {
+      position: absolute;
+      top: 0;
+      right: 1rem;
+      font-size: 3rem;
+      transform: rotate(45deg);
+    }
+    .closeForm:hover {
+      cursor: pointer;
+    }
+    .inputs {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      direction: rtl;
+      .rightSide , .leftSide {
+        display: flex;
+        flex-direction: column;
+        label {
+          margin: .6rem 0;
+        }
+        input[type=text] {
+          margin: .6rem 1rem .6rem 0;
+          outline: 0;
+          border: 1px solid #ecf0f1;
+          padding: .4rem .3rem;
+          width: 100%;
+          border-radius: 5px;
+        }
+        .radio-inputs {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          .accessRate {
+            position: relative;
+            padding-right: 1.5rem;
+            input {
+              opacity: 0;
+            }
+            .checkmark {
+              position: absolute;
+              right: 0;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              background-color: #ecf0f1;
+            }
+            .checkmark:after {
+              display: none;
+              content: "";
+              position: absolute;
+              top: 5.5px;
+              right: 5.5px;
+              width: 9px;
+              height: 9px;
+              border-radius: 50%;
+              background-color: white;
+            }
+          }
+          .accessRate:hover .checkmark {
+            background-color: lightgray;
+          }
+          .accessRate input:checked ~ .checkmark {
+            background-color: #0AA1DD;
+          }
+          .accessRate input:checked ~ .checkmark:after {
+            display: block;
+          }
+        }
+      }
+    }
+    button {
+      border: 1px solid dodgerblue;
+      padding: .5rem 1rem;
+      margin: 1rem;
+      font-family: Vazirmatn , serif;
+      background-color: transparent;
+      color: dodgerblue;
+      transition: .4s;
+    }
+    button:hover {
+      background-color: dodgerblue;
+      color: white;
+    }
+  }
+}
+

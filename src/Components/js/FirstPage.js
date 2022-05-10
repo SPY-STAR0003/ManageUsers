@@ -1,6 +1,5 @@
 
 import React from "react";
-import "../style/firstPage.scss";
 
 function FirstPage() {
 

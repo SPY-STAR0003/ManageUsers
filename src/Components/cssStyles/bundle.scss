@@ -56,6 +56,15 @@ table {
   display: flex !important;
 }
 
+input {
+  box-shadow: 0 0 2px #fff;
+  transition: .4s;
+}
+
+input:focus {
+  box-shadow: 0 0 2px #0AA1DD;
+}
+
 @keyframes appearFromLeftBottom {
   0% {
     transform: matrix(.3 , 0 , 0 , .3 , -500 , 200);
@@ -128,7 +137,7 @@ table {
   height: 100%;
   backdrop-filter: blur(3px);
   z-index: 999999;
-  animation: appearFromLeftBottom 2s;
+  animation: appearFromLeftBottom 1s;
   .form {
     display: flex;
     position: relative;
@@ -167,6 +176,7 @@ table {
           margin: .6rem 0;
         }
         input[type=text] {
+          font-family: Vazirmatn , serif;
           margin: .6rem 1rem .6rem 0;
           outline: 0;
           border: 1px solid #ecf0f1;
@@ -281,7 +291,7 @@ header {
         i:hover {
           cursor: pointer;
         }
-        .bi-info-square-fill {
+        .bi-check-circle-fill {
           color: #0AA1DD;
         }
         .bi-pencil-square {
@@ -308,6 +318,15 @@ header {
     }
     tr:hover {
       background-color: #ddd;
+    }
+    input {
+      font-family: Vazirmatn , serif;
+      text-align: center;
+      outline: 0;
+      border: 1px solid #ecf0f1;
+      padding: .5rem 0;
+      width: 100%;
+      border-radius: 5px;
     }
   }
 }

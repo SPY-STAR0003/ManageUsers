@@ -6,8 +6,6 @@ import MakeTableRows from "../Table/MakeTableRows";
 import TableHeader from "../Table/TableHeader";
 import moment from "moment-jalaali";
 
-
-
 import Header from "./Header";
 function Main() {
     moment.loadPersian({usePersianDigits: true})
@@ -28,9 +26,7 @@ function Main() {
         users : [],
     })
 
-
-
-    const changeUsersList = usersList => {
+    const changeUsersList = userList => {
         setUserState(prevState => {
             return {
                 users: [
@@ -38,10 +34,10 @@ function Main() {
                     {
                         code : Date.now(),
                         key : Date.now(),
-                        name : usersList.name,
-                        IDCode : usersList.IDCode,
-                        email : usersList.email,
-                        accessRate : usersList.accessRate,
+                        name : userList.name,
+                        IDCode : userList.IDCode,
+                        email : userList.email,
+                        accessRate : userList.accessRate,
                         date : moment().format('jYYYY/jM/jD'),
                     }
                 ]
@@ -50,11 +46,19 @@ function Main() {
     }
 
     const deleteUser = userCode => {
+        console.log("DeleteFunc");
+        console.log(userCode);
         setUserState(prevState => {
             return {
                 users : prevState.users.filter(user => user.code !== userCode)
             }
         })
+    }
+
+    const editUser = (user) => {
+        console.log(user)
+        // deleteUser(user.code);
+        // changeUsersList(user);
     }
 
     return (
@@ -73,6 +77,7 @@ function Main() {
                                                                    accessRate={user.accessRate}
                                                                    date={moment().format('jYYYY/jM/jD')}
                                                                    delete={deleteUser}
+                                                                   edit={editUser}
                         />)
                     }
                     </tbody>

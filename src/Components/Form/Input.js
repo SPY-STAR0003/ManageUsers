@@ -1,12 +1,12 @@
 
 import React from "react";
 
-function Input({ label , type , value , onchangeFunction , name}) {
+function Input({ label , type , value , onchangeFunction , name , pHolder}) {
 
     return (
         <>
             <label htmlFor={name}>{label}
-                <input name={name} type={type} value={value} onChange={onchangeFunction} data-name={name} />
+                <input name={name} type={type} value={value} onChange={onchangeFunction} data-name={name} placeholder={pHolder} />
             </label>
         </>
     )

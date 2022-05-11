@@ -8,10 +8,10 @@ function MakeTableRows(prop) {
             <td> {prop.name} </td>
             <td> {prop.IDCode} </td>
             <td> {prop.email} </td>
-            <td> عضو ساده </td>
+            <td> {prop.date} </td>
+            <td> {prop.accessRate} </td>
             <td>
                 <div className="icons">
-                    <i className="bi bi-info-square-fill"></i>
                     <i className="bi bi-pencil-square"></i>
                     <i className="bi bi-trash3-fill" onClick={() => prop.delete(prop.code)}></i>
                 </div>

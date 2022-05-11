@@ -1,5 +1,7 @@
 
 import React , {useState} from "react";
+import Input from "./Input";
+import RadioInput from "./RadioInput";
 
 
 function AddUser(props) {
@@ -8,8 +10,7 @@ function AddUser(props) {
         name : "",
         IDCode : "",
         email : "",
-        date : "",
-        education : "",
+        accessRate : "",
     })
 
     const getInputsValue = e => {
@@ -34,18 +35,18 @@ function AddUser(props) {
                     email : e.target.value
                 }
             })
-        } else if (e.target.dataset.name === "date") {
+        } else if (e.target.dataset.name === "accessRate-1") {
             setUserState(prevState => {
                 return {
                     ...prevState,
-                    date : e.target.value
+                    accessRate : e.target.dataset.rate
                 }
             })
-        } else if (e.target.dataset.name === "education") {
+        } else if (e.target.dataset.name === "accessRate-2") {
             setUserState(prevState => {
                 return {
                     ...prevState,
-                    education : e.target.value
+                    accessRate : e.target.dataset.rate
                 }
             })
         }
@@ -60,8 +61,7 @@ function AddUser(props) {
                 name : "",
                 IDCode : "",
                 email : "",
-                date : "",
-                education : "",
+                accessRate: "",
             }
         })
         props.hide()
@@ -74,31 +74,12 @@ function AddUser(props) {
                 <h3> فرم ثبت نام اعضای جدید </h3>
                 <div className="inputs">
                     <div className="rightSide">
-                        <label htmlFor="familyName">نام ونام خانوادگی :</label>
-                        <input type="text" id="familyName" value={userState.name} onChange={getInputsValue} data-name="name"/>
-                        <label htmlFor="IDCode">کد ملی :</label>
-                        <input type="text" id="IDCode" value={userState.IDCode} onChange={getInputsValue} data-name="IDcode"/>
-                        <label htmlFor="email">پست الکترونیکی :</label>
-                        <input type="text" id="email" value={userState.email} onChange={getInputsValue} data-name="email"/>
+                        <Input label={"نام و نام خانوادگی :"} type={"text"} value={userState.name}  name={"name"} onchangeFunction={getInputsValue}/>
+                        <Input label={"کد ملی :"} type={"text"} value={userState.IDCode}  name={"IDCode"} onchangeFunction={getInputsValue}/>
                     </div>
                     <div className="leftSide">
-                        <label htmlFor="date">تاریخ عضویت :</label>
-                        <input type="text" id="date" value={userState.date} onChange={getInputsValue} data-name="date"/>
-                        <label htmlFor="education">سطح تحصیلات :</label>
-                        <input type="text" id="education" value={userState.education} onChange={getInputsValue} data-name="education"/>
-                        <label> سمت عضو جدید :</label>
-                        <div className="radio-inputs">
-                            <label className="accessRate">
-                                ادمین
-                                <input type="radio" name="accessRate"/>
-                                <span className="checkmark"></span>
-                            </label>
-                            <label className="accessRate">
-                                عضو ساده
-                                <input type="radio" name="accessRate"/>
-                                <span className="checkmark"></span>
-                            </label>
-                        </div>
+                        <Input label={"ایمیل :"} type={"text"} value={userState.email}  name={"email"} onchangeFunction={getInputsValue}/>
+                        <RadioInput mainLabel={"میزان دسترسی کاربر :"} label1={"ادمین"} label2={"عضوساده"} name={"accessRate"} onchangeFunction={getInputsValue}/>
                     </div>
                 </div>
                 <button type="submit"> اضافه کردن عضو جدید </button>

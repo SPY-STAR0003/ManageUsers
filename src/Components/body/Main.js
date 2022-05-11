@@ -5,6 +5,7 @@ import AddUser from "../Form/AddUser";
 import MakeTableRows from "../Table/MakeTableRows";
 import TableHeader from "../Table/TableHeader";
 import moment from "moment-jalaali";
+import SampleModal from "../Modal/SampleModal";
 
 import Header from "./Header";
 function Main() {
@@ -69,16 +70,20 @@ function Main() {
                     <TableHeader />
                     <tbody>
                     {
-                        userState.users.map(user => <MakeTableRows code={user.code}
-                                                                   key={user.key}
-                                                                   name={user.name}
-                                                                   IDCode={user.IDCode}
-                                                                   email={user.email}
-                                                                   accessRate={user.accessRate}
-                                                                   date={moment().format('jYYYY/jM/jD')}
-                                                                   delete={deleteUser}
-                                                                   edit={editUser}
-                        />)
+                        userState.users.length !== 0
+                        ? (
+                                userState.users.map(user => <MakeTableRows code={user.code}
+                                                                           key={user.key}
+                                                                           name={user.name}
+                                                                           IDCode={user.IDCode}
+                                                                           email={user.email}
+                                                                           accessRate={user.accessRate}
+                                                                           date={moment().format('jYYYY/jM/jD')}
+                                                                           delete={deleteUser}
+                                                                           edit={editUser}
+                                />)
+                            )
+                        : <SampleModal />
                     }
                     </tbody>
                 </table>

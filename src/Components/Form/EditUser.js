@@ -2,45 +2,47 @@ import React , {useState} from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 
-function EditUser({user, edit}) {
+function EditUser(props) {
 
-    // console.log(user)
+    let {user, edit} = props;
+    let {code ,name , IDCode , email , date , accessRate} = user;
 
-    const [userState , setUserState] = useState({
-        name : user.name,
-        IDCode : user.IDCode,
-        email : user.email,
-        date : user.date,
-        accessRate : user.accessRate,
+    const [userEdit , setUserEdit] = useState({
+        code,
+        name,
+        IDCode,
+        email,
+        date,
+        accessRate,
     })
 
     const getInputsValue = e => {
         if (e.target.dataset.name === "name") {
-            setUserState(prevState => {
+            setUserEdit(prevState => {
                 return {
                     ...prevState,
                     name : e.target.value
                 }
             })
         } else if (e.target.dataset.name === "IDCode") {
-            setUserState(prevState => {
+            setUserEdit(prevState => {
                 return {
                     ...prevState,
                     IDCode : e.target.value
                 }
             })
         } else if (e.target.dataset.name === "email") {
-            setUserState(prevState => {
+            setUserEdit(prevState => {
                 return {
                     ...prevState,
                     email : e.target.value
                 }
             })
         } else if (e.target.dataset.name === "accessRate") {
-            setUserState(prevState => {
+            setUserEdit(prevState => {
                 return {
                     ...prevState,
-                    accessRate : e.target.dataset.rate
+                    accessRate : e.target.value
                 }
             })
         }
@@ -49,13 +51,13 @@ function EditUser({user, edit}) {
     return (
         <>
             <tr>
-                <td> <input type="text" value={userState.name} onChange={getInputsValue}/> </td>
-                <td> <input type="text" value={userState.IDCode} onChange={getInputsValue}/> </td>
-                <td> <input type="text" value={userState.email} onChange={getInputsValue}/> </td>
-                <td> <input type="text" value={userState.date} onChange={getInputsValue}/> </td>
-                <td> <input type="text" value={userState.accessRate} onChange={getInputsValue}/> </td>
+                <td> <input type="text" onChange={getInputsValue} data-name={"name"}/> </td>
+                <td> <input type="text" value={userEdit.IDCode} onChange={getInputsValue} data-name={"IDCode"}/> </td>
+                <td> <input type="text" value={userEdit.email} onChange={getInputsValue} data-name={"email"}/> </td>
+                <td> {userEdit.date} </td>
+                <td> <input type="text" value={userEdit.accessRate} onChange={getInputsValue} data-name={"accessRate"}/> </td>
                 <td>
-                    <div className="icons" onClick={() => edit(user)}>
+                    <div className="icons" onClick={() => edit(userEdit)}>
                         <i className="bi bi-check-circle-fill"></i>
                     </div>
                 </td>

@@ -11,7 +11,6 @@ function MakeTableRows(prop) {
     let editHandler = (user) => {
         prop.edit(user)
         setEditState(false);
-        console.log(editState)
     }
 
     return (

@@ -15,7 +15,7 @@ function RadioInput({ mainLabel , label1 , label2 , name , onchangeFunction}) {
                 </label>
                 <label className={name}>
                     {label2}
-                    <input type="radio" name={name} onChange={onchangeFunction} data-name={`${name}-2`} data-rate={label2}/>
+                    <input type="radio" name={name} onChange={onchangeFunction} data-name={`${name}-2`} data-rate={label2} checked/>
                     <span className="checkmark"></span>
                 </label>
             </div>

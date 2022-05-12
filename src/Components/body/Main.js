@@ -76,9 +76,14 @@ function Main() {
     }
 
     const editUser = (user) => {
-        console.log(user)
-        // deleteUser(user.code);
-        // changeUsersList(user);
+
+        let usersList = userState.users;
+        let filterdList = usersList.filter(item => item.code !== user.code);
+        filterdList.push(user);
+
+        setUserState({
+            users: [...filterdList]
+        })
     }
 
     return (

@@ -10,7 +10,7 @@ function AddUser(props) {
         name : "",
         IDCode : "",
         email : "",
-        accessRate : "",
+        accessRate : "عضو ساده",
     })
 
     const getInputsValue = e => {

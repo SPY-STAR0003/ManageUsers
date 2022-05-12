@@ -47,7 +47,6 @@ function Main() {
         setUserState(prevState => {
             return {
                 users: [
-                    ...prevState.users,
                     {
                         code : Date.now(),
                         key : Date.now(),
@@ -56,7 +55,8 @@ function Main() {
                         email : userList.email,
                         accessRate : userList.accessRate,
                         date : moment().format('jYYYY/jM/jD'),
-                    }
+                    },
+                    ...prevState.users,
                 ]
             }
         })

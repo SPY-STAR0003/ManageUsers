@@ -118,7 +118,7 @@ function Main() {
                                     userState.users.length !== 0
                                         ? (
                                             userState.users.map(user => <MakeTableRows code={user.code}
-                                                                                       key={user.key}
+                                                                                       key={user.code}
                                                                                        name={user.name}
                                                                                        IDCode={user.IDCode}
                                                                                        email={user.email}

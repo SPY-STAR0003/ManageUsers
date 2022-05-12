@@ -94,7 +94,8 @@ function Main() {
 
     return (
         <>
-            {/*{ This is to show ConfirmModal after you want to delete
+            {/*{
+                This is to show ConfirmModal after you want to delete
                 access is False By default but Modal can change it!
             }*/}
             {

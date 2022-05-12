@@ -19,46 +19,16 @@ function EditUser(props) {
     // if we change one of state's parameters, All them change!
     // so first, we use datasets to find changed parameter!
     // then we use prevState & update state!
-    const getInputsValue = e => {
-        if (e.target.dataset.name === "name") {
-            setUserEdit(prevState => {
-                return {
-                    ...prevState,
-                    name : e.target.value
-                }
-            })
-        } else if (e.target.dataset.name === "IDCode") {
-            setUserEdit(prevState => {
-                return {
-                    ...prevState,
-                    IDCode : e.target.value
-                }
-            })
-        } else if (e.target.dataset.name === "email") {
-            setUserEdit(prevState => {
-                return {
-                    ...prevState,
-                    email : e.target.value
-                }
-            })
-        } else if (e.target.dataset.name === "accessRate") {
-            setUserEdit(prevState => {
-                return {
-                    ...prevState,
-                    accessRate : e.target.value
-                }
-            })
-        }
-    }
+    const getInputsValue = (key , value) => setUserEdit({...userEdit , [key] : value})
 
     return (
         <>
             <tr>
-                <td> <input type="text" onChange={getInputsValue} data-name={"name"}/> </td>
-                <td> <input type="text" value={userEdit.IDCode} onChange={getInputsValue} data-name={"IDCode"}/> </td>
-                <td> <input type="text" value={userEdit.email} onChange={getInputsValue} data-name={"email"}/> </td>
+                <td> <input type="text" value={userEdit.name} onChange={(e) => getInputsValue("name" , e.target.value)}/> </td>
+                <td> <input type="text" value={userEdit.IDCode} onChange={(e) => getInputsValue("IDCode" , e.target.value)}/> </td>
+                <td> <input type="text" value={userEdit.email} onChange={(e) => getInputsValue("email" , e.target.value)}/> </td>
                 <td> {userEdit.date} </td>
-                <td> <input type="text" value={userEdit.accessRate} onChange={getInputsValue} data-name={"accessRate"}/> </td>
+                <td> <input type="text" value={userEdit.accessRate} onChange={(e) => getInputsValue("accessRate" , e.target.value)}/> </td>
                 <td>
                     <div className="icons" onClick={() => edit(userEdit)}>
                         <i className="bi bi-check-circle-fill"></i>

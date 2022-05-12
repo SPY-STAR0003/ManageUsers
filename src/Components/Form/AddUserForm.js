@@ -9,7 +9,7 @@ function AddUserForm(props) {
         name : "",
         IDCode : "",
         email : "",
-        accessRate : "عضو ساده",
+        accessRate : "",
     })
 
     // if we change one of state's parameters, All them change!
@@ -42,7 +42,7 @@ function AddUserForm(props) {
                     </div>
                     <div className="leftSide">
                         <Input label={"ایمیل :"} type={"text"} value={userState.email}  name={"email"} onchangeFunction={(e) => getInputsValue('email', e.target.value)} />
-                        <RadioInput mainLabel={"میزان دسترسی کاربر :"} label1={"ادمین"} label2={"عضوساده"} name={"accessRate"} onchangeFunction={(e) => getInputsValue('accessRate', e.target.value)}/>
+                        <RadioInput mainLabel={"میزان دسترسی کاربر :"} label1={"ادمین"} label2={"عضوساده"} name={"accessRate"} onchangeFunction={getInputsValue}/>
                     </div>
                 </div>
                 <button type="submit"> اضافه کردن عضو جدید </button>

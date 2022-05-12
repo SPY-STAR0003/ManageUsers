@@ -54,7 +54,7 @@ function EditUser(props) {
     return (
         <>
             <tr>
-                <td> <input type="text" onChange={getInputsValue} data-name={"name"}/> </td>
+                <td> <input type="text" value={userEdit.name}  onChange={getInputsValue} data-name={"name"}/> </td>
                 <td> <input type="text" value={userEdit.IDCode} onChange={getInputsValue} data-name={"IDCode"}/> </td>
                 <td> <input type="text" value={userEdit.email} onChange={getInputsValue} data-name={"email"}/> </td>
                 <td> {userEdit.date} </td>

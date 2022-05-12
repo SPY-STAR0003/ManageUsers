@@ -11,7 +11,9 @@ import ConfirmModal from "../Modal/ConfirmModal";
 
 function Main() {
     moment.loadPersian({usePersianDigits: true})
-
+    const [userState , setUserState] = useState({
+        users : [],
+    })
     const [classState , setClassState] = useState("d-none");
     const [accessModal , setAccessModal] = useState({
         class : "d-none",
@@ -34,12 +36,6 @@ function Main() {
             userCode : userCode,
         })
     }
-
-
-
-    const [userState , setUserState] = useState({
-        users : [],
-    })
 
     const changeUsersList = userList => {
         setUserState(prevState => {
@@ -78,11 +74,11 @@ function Main() {
     const editUser = (user) => {
 
         let usersList = userState.users;
-        let filterdList = usersList.filter(item => item.code !== user.code);
-        filterdList.push(user);
+        let filteredList = usersList.filter(item => item.code !== user.code);
+        filteredList.push(user);
 
         setUserState({
-            users: [...filterdList]
+            users: [...filteredList]
         })
     }
 
@@ -94,29 +90,36 @@ function Main() {
                 : null
             }
             <Header />
-            <div className="tableBox">
-                <table>
-                    <TableHeader />
-                    <tbody>
-                    {
-                        userState.users.length !== 0
-                        ? (
-                                userState.users.map(user => <MakeTableRows code={user.code}
-                                                                           key={user.key}
-                                                                           name={user.name}
-                                                                           IDCode={user.IDCode}
-                                                                           email={user.email}
-                                                                           accessRate={user.accessRate}
-                                                                           date={moment().format('jYYYY/jM/jD')}
-                                                                           delete={deleteUser}
-                                                                           edit={editUser}
-                                />)
-                            )
-                        : <SampleModal />
-                    }
-                    </tbody>
-                </table>
-            </div>
+            {
+                userState.users.length !== 0
+                ? (
+                        <div className="tableBox">
+                            <table>
+                                <TableHeader />
+                                <tbody>
+                                {
+                                    userState.users.length !== 0
+                                        ? (
+                                            userState.users.map(user => <MakeTableRows code={user.code}
+                                                                                       key={user.key}
+                                                                                       name={user.name}
+                                                                                       IDCode={user.IDCode}
+                                                                                       email={user.email}
+                                                                                       accessRate={user.accessRate}
+                                                                                       date={moment().format('jYYYY/jM/jD')}
+                                                                                       delete={deleteUser}
+                                                                                       edit={editUser}
+                                            />)
+                                        )
+                                        : <SampleModal />
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    )
+                : <SampleModal />
+            }
+
             <AddUser hide={toggleForm} classState={classState} changeUsersList={changeUsersList} />
             <div className="addBtn" onClick={toggleForm}>
                 <span> + </span>

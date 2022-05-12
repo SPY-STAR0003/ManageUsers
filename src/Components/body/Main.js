@@ -1,31 +1,37 @@
-
 import React, {useState} from "react";
 import "../cssStyles/bundle.scss";
-import AddUser from "../Form/AddUser";
+import AddUserForm from "../Form/AddUserForm";
 import MakeTableRows from "../Table/MakeTableRows";
 import TableHeader from "../Table/TableHeader";
 import moment from "moment-jalaali";
-import SampleModal from "../Modal/SampleModal";
+import SimpleModal from "../Modal/SimpleModal";
 import Header from "./Header";
 import ConfirmModal from "../Modal/ConfirmModal";
 
 function Main() {
+    // ============ packages =================================
+    // this package make numbersDate's view to persian view ...
     moment.loadPersian({usePersianDigits: true})
+
+    // ============ states =====================================
     const [userState , setUserState] = useState({
         users : [],
-    })
-    const [classState , setClassState] = useState("d-none");
+    });
+    const [formClass , setFormClass] = useState("d-none");
+    // this state will appear modal & save user's code
+    // because user's code will lose after modal appear!
     const [accessModal , setAccessModal] = useState({
         class : "d-none",
         access : false,
         userCode:"",
     });
 
+    // ============= change States Functions =====================
     const toggleForm = () => {
-        if (classState === "d-none") {
-            setClassState("d-flex");
+        if (formClass === "d-none") {
+            setFormClass("d-flex");
         } else {
-            setClassState("d-none");
+            setFormClass("d-none");
         }
     }
 
@@ -57,9 +63,12 @@ function Main() {
     }
 
     const deleteUser = (userCode , access) => {
+        // access is false by default ...
+        // but Modal (confirmModal) can make it true!
         if (access) {
             let code = accessModal.userCode;
-            toggleModal("d-none")
+            // to disappear Modal we require toggle Modal
+            toggleModal("d-none");
             setUserState(prevState => {
                 return {
                     users: prevState.users.filter(user => user.code !== code)
@@ -72,7 +81,8 @@ function Main() {
     }
 
     const editUser = (user) => {
-
+        // I added users from state to a new list !
+        // then I remove last user and then add edited user !
         let usersList = userState.users;
         let filteredList = usersList.filter(item => item.code !== user.code);
         filteredList.push(user);
@@ -84,6 +94,9 @@ function Main() {
 
     return (
         <>
+            {/*{ This is to show ConfirmModal after you want to delete
+                access is False By default but Modal can change it!
+            }*/}
             {
                 accessModal.access
                 ? <ConfirmModal modalClass={accessModal.class} del={true} toggleModal={toggleModal} deleteUser={deleteUser}  />
@@ -111,16 +124,17 @@ function Main() {
                                                                                        edit={editUser}
                                             />)
                                         )
-                                        : <SampleModal />
+                                        // simpleModal is for making UI better !
+                                        : <SimpleModal />
                                 }
                                 </tbody>
                             </table>
                         </div>
                     )
-                : <SampleModal />
+                : <SimpleModal />
             }
-
-            <AddUser hide={toggleForm} classState={classState} changeUsersList={changeUsersList} />
+            <AddUserForm hide={toggleForm} formClass={formClass} changeUsersList={changeUsersList} />
+            {/*{ A button in left bottom side to add User :) }*/}
             <div className="addBtn" onClick={toggleForm}>
                 <span> + </span>
             </div>

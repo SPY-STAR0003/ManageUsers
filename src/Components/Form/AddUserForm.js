@@ -4,7 +4,7 @@ import Input from "./Input";
 import RadioInput from "./RadioInput";
 
 
-function AddUser(props) {
+function AddUserForm(props) {
 
     const [userState , setUserState] = useState({
         name : "",
@@ -13,6 +13,9 @@ function AddUser(props) {
         accessRate : "عضو ساده",
     })
 
+    // if we change one of state's parameters, All them change!
+    // so first we use datasets to find changed parameter!
+    // then we use prevState & update state!
     const getInputsValue = e => {
         if (e.target.dataset.name === "name") {
             setUserState(prevState => {
@@ -56,19 +59,17 @@ function AddUser(props) {
     const formHandler = e => {
         e.preventDefault();
         props.changeUsersList(userState)
-        setUserState(prevState => {
-            return {
-                name : "",
-                IDCode : "",
-                email : "",
-                accessRate: "",
-            }
+        setUserState({
+            name : "",
+            IDCode : "",
+            email : "",
+            accessRate: "",
         })
         props.hide()
     }
 
     return (
-        <div className={`addUsersForm ${props.classState}`}>
+        <div className={`addUsersForm ${props.formClass}`}>
             <form className="form" onSubmit={formHandler}>
                 <span className={"closeForm"} onClick={props.hide}> + </span>
                 <h3> فرم ثبت نام اعضای جدید </h3>
@@ -88,4 +89,4 @@ function AddUser(props) {
     )
 }
 
-export default AddUser;
+export default AddUserForm;

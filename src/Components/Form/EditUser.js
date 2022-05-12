@@ -16,6 +16,9 @@ function EditUser(props) {
         accessRate,
     })
 
+    // if we change one of state's parameters, All them change!
+    // so first, we use datasets to find changed parameter!
+    // then we use prevState & update state!
     const getInputsValue = e => {
         if (e.target.dataset.name === "name") {
             setUserEdit(prevState => {

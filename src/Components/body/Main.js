@@ -6,22 +6,36 @@ import MakeTableRows from "../Table/MakeTableRows";
 import TableHeader from "../Table/TableHeader";
 import moment from "moment-jalaali";
 import SampleModal from "../Modal/SampleModal";
-
 import Header from "./Header";
+import ConfirmModal from "../Modal/ConfirmModal";
+
 function Main() {
     moment.loadPersian({usePersianDigits: true})
 
-    const [classState , setClassState] = useState({
+    const [classState , setClassState] = useState("d-none");
+    const [accessModal , setAccessModal] = useState({
         class : "d-none",
-    })
+        access : false,
+        userCode:"",
+    });
 
     const toggleForm = () => {
-        if (classState.class === "d-none") {
-            setClassState({class: "d-flex"})
+        if (classState === "d-none") {
+            setClassState("d-flex");
         } else {
-            setClassState({class: "d-none"})
+            setClassState("d-none");
         }
     }
+
+    const toggleModal = ( modalClass , bool , userCode ) => {
+        setAccessModal({
+            class: modalClass,
+            access: bool,
+            userCode : userCode,
+        })
+    }
+
+
 
     const [userState , setUserState] = useState({
         users : [],
@@ -46,14 +60,19 @@ function Main() {
         })
     }
 
-    const deleteUser = userCode => {
-        console.log("DeleteFunc");
-        console.log(userCode);
-        setUserState(prevState => {
-            return {
-                users : prevState.users.filter(user => user.code !== userCode)
-            }
-        })
+    const deleteUser = (userCode , access) => {
+        if (access) {
+            let code = accessModal.userCode;
+            toggleModal("d-none")
+            setUserState(prevState => {
+                return {
+                    users: prevState.users.filter(user => user.code !== code)
+                }
+            },
+            )
+        } else {
+            toggleModal("d-flex" , true , userCode);
+        }
     }
 
     const editUser = (user) => {
@@ -64,6 +83,11 @@ function Main() {
 
     return (
         <>
+            {
+                accessModal.access
+                ? <ConfirmModal modalClass={accessModal.class} del={true} toggleModal={toggleModal} deleteUser={deleteUser}  />
+                : null
+            }
             <Header />
             <div className="tableBox">
                 <table>

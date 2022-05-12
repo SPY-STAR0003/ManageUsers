@@ -68,7 +68,7 @@ function AddUser(props) {
     }
 
     return (
-        <div className={`addUsersForm ${props.classState.class}`}>
+        <div className={`addUsersForm ${props.classState}`}>
             <form className="form" onSubmit={formHandler}>
                 <span className={"closeForm"} onClick={props.hide}> + </span>
                 <h3> فرم ثبت نام اعضای جدید </h3>

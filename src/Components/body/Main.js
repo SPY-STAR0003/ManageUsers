@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import "../cssStyles/bundle.scss";
 import AddUserForm from "../Form/AddUserForm";
 import MakeTableRows from "../Table/MakeTableRows";
@@ -14,10 +14,14 @@ function Main() {
     moment.loadPersian({usePersianDigits: true})
 
     // ============ states =====================================
-    const [userState , setUserState] = useState({
-        users : [],
-    });
+    const [userState , setUserState] = useState({users : 'users' in localStorage ? JSON.parse(localStorage.users) : []});
+
+    useEffect(() => {
+        localStorage.users = JSON.stringify(userState.users);
+    }, [userState]);
+
     const [formClass , setFormClass] = useState("d-none");
+
     // this state will appear modal & save user's code
     // because user's code will lose after modal appear!
     const [accessModal , setAccessModal] = useState({

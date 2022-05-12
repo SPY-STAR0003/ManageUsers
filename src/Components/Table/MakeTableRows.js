@@ -1,5 +1,5 @@
 
-import React , {useState} from "react";
+import  {useState} from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import EditUser from "../Form/EditUser";
 import PN from "persian-number";

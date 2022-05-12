@@ -1,9 +1,5 @@
-
-import React from "react";
-
 function RadioInput({ mainLabel , label1 , label2 , name , onchangeFunction}) {
-
-
+    
     return (
         <>
             <label> {mainLabel} </label>

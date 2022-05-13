@@ -1,7 +1,4 @@
-import React from "react";
-
-function TableHeader() {
-
+export default function TableHeader() {
     return (
         <thead>
             <tr>
@@ -16,5 +13,3 @@ function TableHeader() {
         </thead>
     )
 }
-
-export default TableHeader;

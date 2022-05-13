@@ -1,8 +1,4 @@
-
-import React from "react";
-
-function Input({ label , type , value , onchangeFunction , name , pHolder}) {
-
+export default function Input({ label , type , value , onchangeFunction , name , pHolder}) {
     return (
         <>
             <label htmlFor={name}>{label}
@@ -11,5 +7,3 @@ function Input({ label , type , value , onchangeFunction , name , pHolder}) {
         </>
     )
 }
-
-export default Input;

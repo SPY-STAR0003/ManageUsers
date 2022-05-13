@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import {useState} from "react";
 
 export default function SimpleModal() {
     const [showModal , setShowModal] = useState("d-flex")

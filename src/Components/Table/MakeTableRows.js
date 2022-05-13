@@ -1,12 +1,12 @@
 
-import React , {useState} from "react";
+import {useState} from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import EditUser from "../Form/EditUser";
 import PN from "persian-number";
 import ShowUserModal from "../Modal/ShowUserModal";
 import userPicture from "../images/blank-profile-picture-973460__480.webp"
 
-function MakeTableRows(prop) {
+export default function MakeTableRows(prop) {
 
     const [showUser , setShowUser] = useState(false);
     const [editState , setEditState] = useState(false);
@@ -52,6 +52,3 @@ function MakeTableRows(prop) {
         </>
     )
 }
-
-
-export default MakeTableRows;

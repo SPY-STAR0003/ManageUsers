@@ -1,8 +1,8 @@
-import React , {useState} from "react";
+import {useState} from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import userProfile from "../images/blank-profile-picture-973460__480.webp"
 
-function EditUser(props) {
+export default function EditUser(props) {
 
     let {user, edit} = props;
     let {code ,name , IDCode , email , date , accessRate} = user;
@@ -12,7 +12,7 @@ function EditUser(props) {
     })
 
     // if we change one of state's parameters, All them change!
-    // so first, we use datasets to find changed parameter!
+    // so we receive key(name of parameter) & value(value's parameter)
     // then we use prevState & update state!
     const getInputsValue = (key , value) => setUserEdit({...userEdit , [key] : value})
 
@@ -34,5 +34,3 @@ function EditUser(props) {
         </>
     )
 }
-
-export default EditUser;

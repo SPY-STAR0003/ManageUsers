@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState , useEffect} from "react";
 import "../cssStyles/bundle.scss";
 import AddUserForm from "../Form/AddUserForm";
 import MakeTableRows from "../Table/MakeTableRows";
@@ -8,15 +8,14 @@ import SimpleModal from "../Modal/SimpleModal";
 import Header from "./Header";
 import ConfirmModal from "../Modal/ConfirmModal";
 
-function Main() {
+export default function Main() {
     // ============ packages =================================
     // this package make numbersDate's view to persian view ...
     moment.loadPersian({usePersianDigits: true})
 
     // ============ states =====================================
-    const [userState , setUserState] = useState({
-        users : [],
-    });
+    const [userState , setUserState] = useState({users : 'usersList' in localStorage ? JSON.parse(localStorage.usersList) : []});
+
     const [formClass , setFormClass] = useState("d-none");
     // this state will appear modal & save user's code
     // because user's code will lose after modal appear!
@@ -25,6 +24,11 @@ function Main() {
         access : false,
         userCode:"",
     });
+
+    // ============ useEffects =================================
+    useEffect(() => {
+        localStorage.usersList = JSON.stringify(userState.users);
+    }, [userState]);
 
     // ============= change States Functions =====================
     const toggleForm = () => {
@@ -47,7 +51,6 @@ function Main() {
         setUserState(prevState => {
             return {
                 users: [
-                    ...prevState.users,
                     {
                         code : Date.now(),
                         key : Date.now(),
@@ -56,7 +59,8 @@ function Main() {
                         email : userList.email,
                         accessRate : userList.accessRate,
                         date : moment().format('jYYYY/jM/jD'),
-                    }
+                    },
+                    ...prevState.users,
                 ]
             }
         })
@@ -115,7 +119,7 @@ function Main() {
                                     userState.users.length !== 0
                                         ? (
                                             userState.users.map(user => <MakeTableRows code={user.code}
-                                                                                       key={user.key}
+                                                                                       key={user.code}
                                                                                        name={user.name}
                                                                                        IDCode={user.IDCode}
                                                                                        email={user.email}
@@ -142,5 +146,3 @@ function Main() {
         </>
     )
 }
-
-export default Main;

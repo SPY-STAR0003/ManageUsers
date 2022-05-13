@@ -1,6 +1,4 @@
-import React from "react";
-
-function Header() {
+export default function Header() {
     // this is Page Header !!! Very Useful Comment :/ ==============
     return (
         <header>
@@ -9,5 +7,3 @@ function Header() {
         </header>
     )
 }
-
-export default Header;

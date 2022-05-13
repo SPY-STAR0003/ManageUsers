@@ -3,10 +3,19 @@ import React , {useState} from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import EditUser from "../Form/EditUser";
 import PN from "persian-number";
+import ShowUserModal from "../Modal/ShowUserModal";
+import userPicture from "../images/blank-profile-picture-973460__480.webp"
 
 function MakeTableRows(prop) {
 
+    const [showUser , setShowUser] = useState(false);
     const [editState , setEditState] = useState(false);
+
+    let toggleShowUser = () => {
+        showUser
+        ? setShowUser(false)
+        : setShowUser(true)
+    }
 
     let editHandler = (user) => {
         prop.edit(user)
@@ -16,14 +25,20 @@ function MakeTableRows(prop) {
     return (
         <>
             {
+                showUser
+                ?   <ShowUserModal user={prop} toggleShowModal={toggleShowUser}/>
+                :   null
+            }
+            {
                 !editState
                 ? (
                         <tr>
-                            <td> {prop.name} </td>
-                            <td> {PN.convertEnToPe(prop.IDCode)} </td>
-                            <td> {prop.email} </td>
-                            <td> {prop.date} </td>
-                            <td> {prop.accessRate} </td>
+                            <td onClick={() => toggleShowUser()}> <img src={userPicture} alt="user"/> </td>
+                            <td onClick={() => toggleShowUser()}> {prop.name} </td>
+                            <td onClick={() => toggleShowUser()}> {PN.convertEnToPe(prop.IDCode)} </td>
+                            <td onClick={() => toggleShowUser()}> {prop.email} </td>
+                            <td onClick={() => toggleShowUser()}> {prop.date} </td>
+                            <td onClick={() => toggleShowUser()}> {prop.accessRate} </td>
                             <td>
                                 <div className="icons">
                                     <i className="bi bi-pencil-square" onClick={() => setEditState(true)}></i>

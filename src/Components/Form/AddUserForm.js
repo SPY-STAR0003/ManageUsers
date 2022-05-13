@@ -25,7 +25,7 @@ function AddUserForm(props) {
             name : "",
             IDCode : "",
             email : "",
-            accessRate: "",
+            accessRate: userState.accessRate,
         })
         props.hide()
     }

@@ -5,6 +5,7 @@ function TableHeader() {
     return (
         <thead>
             <tr>
+                <th> پروفایل </th>
                 <th>نام کاربر </th>
                 <th> کد ملی </th>
                 <th> پست الکترونیکی </th>

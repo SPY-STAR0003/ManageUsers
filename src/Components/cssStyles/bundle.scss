@@ -109,6 +109,25 @@ input:focus {
   }
 }
 
+@keyframes animation3 {
+  0% {
+    opacity: .5;
+    transform: matrix(.5 , 0 , 0 , .1 , 0 , -400);
+  }
+  50% {
+    opacity: .5;
+    transform: matrix(.1 , 0 , 0 , .1 , 0 , 100);
+  }
+  100% {
+    opacity: 1;
+    transform: matrix(1 , 0 , 0 , 1 , 0 , 0);
+  }
+}
+
+.showUserModalAnimation {
+  animation: animation3 .5s !important;
+}
+
 .background {
   display: flex;
   justify-content: center;
@@ -122,6 +141,77 @@ input:focus {
   backdrop-filter: blur(3px);
   animation: animation2 1s;
   z-index: 9999999999;
+  .showUserModal {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 6px #ecf0f1;;
+    direction: rtl;
+    h1 {
+      padding-top: 2rem;
+      margin-bottom: -2rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #2c3e50;
+    }
+    .showUserInfo {
+      display: flex;
+      flex-direction: row;
+      .text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem;
+        width: 75%;
+        p {
+          margin-top: 2rem;
+          .subject {
+            text-align: right;
+            font-weight: 600;
+            color: #2c3e50;
+          }
+          .value {
+            margin-right: 0;
+            color: #7f8c8d;
+          }
+          .valueInfo {
+            margin-top: 1rem;
+          }
+        }
+      }
+      .userProfileImage{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45%;
+        margin: 2rem 0 0 4rem;
+        img {
+          width: 100%;
+          border-radius: 50%;
+        }
+      }
+    }
+    .closeShowUserModal {
+      .dodgerBorderBtn {
+        border: 1px solid dodgerblue;
+        padding: .5rem 1rem;
+        margin-bottom: 1rem;
+        font-family: Vazirmatn , serif;
+        background-color: transparent;
+        color: dodgerblue;
+        transition: .4s;
+        border-radius: 6px;
+      }
+      .dodgerBorderBtn:hover {
+        background-color: dodgerblue;
+        color: white;
+        cursor: pointer;
+      }
+    }
+  }
   .confirmModal {
     display: block !important;
     padding: 2rem 1rem;
@@ -344,50 +434,73 @@ header {
     border-collapse: collapse;
     width: 100%;
     color: #2c3e50;
-    td , th {
-      border: 1px solid #ddd;
-      padding: 16px 8px;
-    }
-    td {
-      .icons {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        i {
-          font-size: 1.4rem;
-          margin: 0 .5rem;
-        }
-        i:hover {
-          cursor: pointer;
-        }
-        .bi-check-circle-fill {
-          color: #0AA1DD;
-        }
-        .bi-pencil-square {
-          color: #2ecc71;
-        }
-        .bi-trash3-fill {
-          color: #e74c3c;
-        }
-      }
-    }
-    th {
-      padding-top: 12px;
-      padding-bottom: 12px;
-      text-align: center;
-      background-color: #0AA1DD;
-      color: white;
-    }
+
     tr {
       transition: .3s;
-
+      background-color: rgba(240, 240, 255, 0.35);
+      td , th {
+        vertical-align: middle;
+        text-align: center;
+        padding: 16px 8px;
+      }
+      th {
+        padding: 1rem 0;
+        text-align: center;
+        background-color: #0AA1DD;
+        color: white;
+      }
+      td {
+        img {
+          width: 40px;
+          border-radius: 50%;
+        }
+        .icons {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          i {
+            font-size: 1.4rem;
+            margin: 0 .5rem;
+          }
+          i:hover {
+            cursor: pointer;
+          }
+          .bi-check-circle-fill {
+            color: #0AA1DD;
+          }
+          .bi-pencil-square {
+            color: #2ecc71;
+          }
+          .bi-trash3-fill {
+            color: #e74c3c;
+          }
+        }
+      }
+      th:first-of-type {
+        border-radius: 0 .5rem 0 0;
+      }
+      th:last-of-type {
+        border-radius: .5rem 0 0 0;
+      }
     }
     tr:nth-child(even) {
-      background-color: #f2f2f2;
+      background-color: #EFFFFD;
     }
     tr:hover {
       background-color: #ecf0f1;
       transform: scaleX(1.01);
+      cursor: pointer;
+    }
+    tr:first-of-type:hover {
+      transform: none;
+    }
+    tr:last-of-type {
+      td:first-of-type {
+        border-radius: 0 0 .5rem 0;
+      }
+      td:last-of-type {
+        border-radius: 0 0 0 .5rem;
+      }
     }
     input {
       font-family: Vazirmatn , serif;

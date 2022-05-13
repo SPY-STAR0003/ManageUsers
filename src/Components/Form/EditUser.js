@@ -26,9 +26,7 @@ export default function EditUser(props) {
                 <td> <input type="text" value={userEdit.IDCode} onChange={(e) => getInputsValue("IDCode" , e.target.value)}/> </td>
                 <td> <input type="text" value={userEdit.email} onChange={(e) => getInputsValue("email" , e.target.value)}/> </td>
                 <td> {userEdit.date} </td>
-                <td>
-                    <EditRadioInput userEdit={userEdit} label1={"ادمین"} label2={"عضوساده"} name={"accessRate"} onchangeFunction={getInputsValue}/>
-                </td>
+                <EditRadioInput userEdit={userEdit} label1={"ادمین"} label2={"عضوساده"} name={"accessRate"} onchangeFunction={getInputsValue}/>
                 <td>
                     <div className="icons" onClick={() => edit(userEdit)}>
                         <i className="bi bi-check-circle-fill"></i>

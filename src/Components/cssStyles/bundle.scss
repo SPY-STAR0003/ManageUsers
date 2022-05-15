@@ -3,44 +3,125 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-  font-family: Vazirmatn , serif;
+  font-family: Vazirmatn, serif;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block;
 }
 body {
   line-height: 1;
 }
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
   content: none;
 }
 table {
@@ -58,41 +139,47 @@ table {
 
 input {
   box-shadow: 0 0 2px #fff;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 input:focus {
-  box-shadow: 0 0 2px #0AA1DD;
+  box-shadow: 0 0 2px #0aa1dd;
 }
 
 @keyframes appearFromLeftBottom {
   0% {
-    transform: matrix(.3 , 0 , 0 , .3 , -500 , 200);
+    transform: matrix(0.3, 0, 0, 0.3, -500, 200);
   }
   100% {
-    transform: matrix(1 , 0 , 0 , 1 , 0 , 0);
+    transform: matrix(1, 0, 0, 1, 0, 0);
   }
+}
+
+.error {
+  color: red;
+  margin: -1rem 1rem 0.6rem 0;
+  font-size: 0.8rem;
 }
 
 @keyframes animation1 {
   0% {
-    opacity: .4;
-    transform: matrix(.3 , 0 , 0 , .3 , -1600 , -1600);
+    opacity: 0.4;
+    transform: matrix(0.3, 0, 0, 0.3, -1600, -1600);
     background-color: #2c3e50;
     color: white;
   }
   50% {
     opacity: 1;
-    transform: matrix(1 , 0 , 0 , 1 , 0 , 0);
+    transform: matrix(1, 0, 0, 1, 0, 0);
     background-color: white;
   }
   80% {
-    opacity: .8;
-    transform: matrix(.7 , 0 , 0 , .7 , 0 , -200);
+    opacity: 0.8;
+    transform: matrix(0.7, 0, 0, 0.7, 0, -200);
   }
   100% {
     opacity: 1;
-    transform: matrix(1 , 0 , 0 , 1 , 0 , 0);
+    transform: matrix(1, 0, 0, 1, 0, 0);
     background-color: #ecf0f1;
     color: #2c3e50;
   }
@@ -100,32 +187,32 @@ input:focus {
 
 @keyframes animation2 {
   0% {
-    opacity: .5;
-    transform: matrix(.1 , 200 , 200 , .1 , 0 , 0);
+    opacity: 0.5;
+    transform: matrix(0.1, 200, 200, 0.1, 0, 0);
   }
   100% {
     opacity: 1;
-    transform: matrix(1 , 0 , 0 , 1 , 0 , 0);
+    transform: matrix(1, 0, 0, 1, 0, 0);
   }
 }
 
 @keyframes animation3 {
   0% {
-    opacity: .5;
-    transform: matrix(.5 , 0 , 0 , .1 , 0 , -400);
+    opacity: 0.5;
+    transform: matrix(0.5, 0, 0, 0.1, 0, -400);
   }
   50% {
-    opacity: .5;
-    transform: matrix(.1 , 0 , 0 , .1 , 0 , 100);
+    opacity: 0.5;
+    transform: matrix(0.1, 0, 0, 0.1, 0, 100);
   }
   100% {
     opacity: 1;
-    transform: matrix(1 , 0 , 0 , 1 , 0 , 0);
+    transform: matrix(1, 0, 0, 1, 0, 0);
   }
 }
 
 .showUserModalAnimation {
-  animation: animation3 .5s !important;
+  animation: animation3 0.5s !important;
 }
 
 .background {
@@ -137,7 +224,7 @@ input:focus {
   left: 0;
   width: 100%;
   height: 100%;
-  font-family: Vazirmatn , serif;
+  font-family: Vazirmatn, serif;
   backdrop-filter: blur(3px);
   animation: animation2 1s;
   z-index: 9999999999;
@@ -148,7 +235,7 @@ input:focus {
     width: 700px;
     background-color: white;
     border-radius: 20px;
-    box-shadow: 0 0 6px #ecf0f1;;
+    box-shadow: 0 0 6px #ecf0f1;
     direction: rtl;
     h1 {
       padding-top: 2rem;
@@ -182,7 +269,7 @@ input:focus {
           }
         }
       }
-      .userProfileImage{
+      .userProfileImage {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -197,12 +284,12 @@ input:focus {
     .closeShowUserModal {
       .dodgerBorderBtn {
         border: 1px solid dodgerblue;
-        padding: .5rem 1rem;
+        padding: 0.5rem 1rem;
         margin-bottom: 1rem;
-        font-family: Vazirmatn , serif;
+        font-family: Vazirmatn, serif;
         background-color: transparent;
         color: dodgerblue;
-        transition: .4s;
+        transition: 0.4s;
         border-radius: 6px;
       }
       .dodgerBorderBtn:hover {
@@ -217,12 +304,16 @@ input:focus {
     padding: 2rem 1rem;
     width: 400px;
     text-align: center;
-    background: linear-gradient(to top right , rgba(255,255,255,1) , rgba(255,255,255,.6));
+    background: linear-gradient(
+      to top right,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0.6)
+    );
     color: #2c3e50;
     border-radius: 6px;
     box-shadow: 0 0 5px #ecf0f1;
     .text {
-      font-size: .9rem;
+      font-size: 0.9rem;
     }
     .buttons {
       display: flex;
@@ -230,29 +321,29 @@ input:focus {
       justify-content: space-around;
       width: 100%;
       button {
-        padding: .5rem 1rem;
+        padding: 0.5rem 1rem;
         margin-top: 2rem;
-        font-family: Vazirmatn , serif;
+        font-family: Vazirmatn, serif;
         background-color: transparent;
-        transition: .4s;
+        transition: 0.4s;
         border-radius: 6px;
       }
       .dangerBtn {
-        border: 1px solid #FF4949;
-        color: #FF4949;
+        border: 1px solid #ff4949;
+        color: #ff4949;
       }
       .dangerBtn:hover {
         cursor: pointer;
-        background-color: #FF4949;
+        background-color: #ff4949;
         color: white;
       }
       .successBtn {
-        border: 1px solid #4E944F;
-        color: #4E944F;
+        border: 1px solid #4e944f;
+        color: #4e944f;
       }
       .successBtn:hover {
         cursor: pointer;
-        background-color: #4E944F;
+        background-color: #4e944f;
         color: white;
       }
     }
@@ -266,25 +357,24 @@ input:focus {
   align-items: center;
   bottom: 2rem;
   left: 2rem;
-  padding: .3rem;
-  border: 1px solid #0AA1DD;
+  padding: 0.3rem;
+  border: 1px solid #0aa1dd;
   width: 3rem;
-  background-color: #0AA1DD;
+  background-color: #0aa1dd;
   color: white;
   font-size: 3rem;
   font-weight: 900;
   border-radius: 100%;
   z-index: 9999;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .addBtn:hover {
   background-color: white;
-  color: #0AA1DD;
+  color: #0aa1dd;
   cursor: pointer;
   transform: rotate(90deg);
 }
-
 
 .addUsersForm {
   position: absolute;
@@ -303,7 +393,11 @@ input:focus {
     flex-direction: column;
     align-items: center;
     width: 800px;
-    background: linear-gradient(to top right , rgba(255,255,255,1) , rgba(255,255,255,.6));
+    background: linear-gradient(
+      to top right,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0.6)
+    );
     color: #2c3e50;
     box-shadow: 0 0 4px #ecf0f1;
     border-radius: 10px;
@@ -328,18 +422,19 @@ input:focus {
       align-items: center;
       width: 100%;
       direction: rtl;
-      .rightSide , .leftSide {
+      .rightSide,
+      .leftSide {
         display: flex;
         flex-direction: column;
         label {
-          margin: .6rem 0;
+          margin: 0.6rem 0;
         }
-        input[type=text] {
-          font-family: Vazirmatn , serif;
-          margin: .6rem 1rem .6rem 0;
+        input[type="text"] {
+          font-family: Vazirmatn, serif;
+          margin: 0.6rem 1rem 0.6rem 0;
           outline: 0;
           border: 1px solid #ecf0f1;
-          padding: .4rem .3rem;
+          padding: 0.4rem 0.3rem;
           width: 100%;
           border-radius: 5px;
         }
@@ -378,7 +473,7 @@ input:focus {
             background-color: lightgray;
           }
           .accessRate input:checked ~ .checkmark {
-            background-color: #0AA1DD;
+            background-color: #0aa1dd;
           }
           .accessRate input:checked ~ .checkmark:after {
             display: block;
@@ -388,12 +483,12 @@ input:focus {
     }
     button {
       border: 1px solid dodgerblue;
-      padding: .5rem 1rem;
+      padding: 0.5rem 1rem;
       margin: 1rem;
-      font-family: Vazirmatn , serif;
+      font-family: Vazirmatn, serif;
       background-color: transparent;
       color: dodgerblue;
-      transition: .4s;
+      transition: 0.4s;
       border-radius: 6px;
     }
     button:hover {
@@ -415,8 +510,8 @@ header {
     font-weight: 600;
   }
   p {
-    font-size: .8rem;
-    margin: 1.2rem 0 .5rem;
+    font-size: 0.8rem;
+    margin: 1.2rem 0 0.5rem;
   }
 }
 
@@ -430,15 +525,16 @@ header {
   width: 80%;
   direction: rtl;
   table {
-    font-family: Vazirmatn , serif;
+    font-family: Vazirmatn, serif;
     border-collapse: collapse;
     width: 100%;
     color: #2c3e50;
 
     tr {
-      transition: .3s;
+      transition: 0.3s;
       background-color: rgba(240, 240, 255, 0.35);
-      td , th {
+      td,
+      th {
         vertical-align: middle;
         text-align: center;
         padding: 16px 8px;
@@ -446,7 +542,7 @@ header {
       th {
         padding: 1rem 0;
         text-align: center;
-        background-color: #0AA1DD;
+        background-color: #0aa1dd;
         color: white;
       }
       td {
@@ -460,13 +556,13 @@ header {
           justify-content: center;
           i {
             font-size: 1.4rem;
-            margin: 0 .5rem;
+            margin: 0 0.5rem;
           }
           i:hover {
             cursor: pointer;
           }
           .bi-check-circle-fill {
-            color: #0AA1DD;
+            color: #0aa1dd;
           }
           .bi-pencil-square {
             color: #2ecc71;
@@ -477,14 +573,14 @@ header {
         }
       }
       th:first-of-type {
-        border-radius: 0 .5rem 0 0;
+        border-radius: 0 0.5rem 0 0;
       }
       th:last-of-type {
-        border-radius: .5rem 0 0 0;
+        border-radius: 0.5rem 0 0 0;
       }
     }
     tr:nth-child(even) {
-      background-color: #EFFFFD;
+      background-color: #effffd;
     }
     tr:hover {
       background-color: #ecf0f1;
@@ -496,18 +592,18 @@ header {
     }
     tr:last-of-type {
       td:first-of-type {
-        border-radius: 0 0 .5rem 0;
+        border-radius: 0 0 0.5rem 0;
       }
       td:last-of-type {
-        border-radius: 0 0 0 .5rem;
+        border-radius: 0 0 0 0.5rem;
       }
     }
     input {
-      font-family: Vazirmatn , serif;
+      font-family: Vazirmatn, serif;
       text-align: center;
       outline: 0;
       border: 1px solid #ecf0f1;
-      padding: .5rem 0;
+      padding: 0.5rem 0;
       width: 100%;
       border-radius: 5px;
     }

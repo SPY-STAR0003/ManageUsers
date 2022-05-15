@@ -5,14 +5,17 @@ This project abilities are :
     - Add User to a Table!
     - Modify Users you have already before!
     - Delete Users you have already Before!
+    - save users in localStorage!
     - Having simple & beautiful UI !
 
 But this Project has some disabilities too, like :
 
-    - This project has no Database!
-    - This project can't use LocalStorage to save Data!
+    - There is no validation for inputs!
+    - There is no help in project!
+    - There is no darkmode for project!
+    - There is only one view to see users!
+    - Only one man can use project!
 
-All These problems will solve soon! \
 Help me to make this project better! :)
 And for the last word ...\
 

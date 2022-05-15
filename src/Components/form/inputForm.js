@@ -1,4 +1,4 @@
-export default function Input({ label , type , value , onchangeFunction , name , pHolder}) {
+export default function InputForm({ label , type , value , onchangeFunction , name , pHolder}) {
     return (
         <>
             <label htmlFor={name}>{label}

@@ -1,9 +1,9 @@
 
 import {useState} from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import EditUser from "../Form/EditUser";
+import EditUser from "../form/editUser";
 import PN from "persian-number";
-import ShowUserModal from "../Modal/ShowUserModal";
+import ShowUserModal from "../modal/showUserModal";
 import userPicture from "../images/blank-profile-picture-973460__480.webp"
 
 export default function MakeTableRows(prop) {

@@ -1,14 +1,14 @@
 import React, {useState , useEffect} from "react";
 import "../cssStyles/bundle.scss";
-import AddUserForm from "../Form/AddUserForm";
-import MakeTableRows from "../Table/MakeTableRows";
-import TableHeader from "../Table/TableHeader";
+import AddUserForm from "../form/addUserForm";
+import MakeTableRows from "../table/makeTableRows";
+import TableHeader from "../table/tableHeader";
 import moment from "moment-jalaali";
-import SimpleModal from "../Modal/SimpleModal";
-import Header from "./Header";
-import ConfirmModal from "../Modal/ConfirmModal";
+import SimpleModal from "../modal/simpleModal";
+import HeaderProject from "./headerProject";
+import ConfirmModal from "../modal/confirmModal";
 
-export default function Main() {
+export default function App() {
     // ============ packages =================================
     // this package make numbersDate's view to persian view ...
     moment.loadPersian({usePersianDigits: true})
@@ -68,10 +68,10 @@ export default function Main() {
 
     const deleteUser = (userCode , access) => {
         // access is false by default ...
-        // but Modal (confirmModal) can make it true!
+        // but modal (confirmModal) can make it true!
         if (access) {
             let code = accessModal.userCode;
-            // to disappear Modal we require toggle Modal
+            // to disappear modal we require toggle modal
             toggleModal("d-none");
             setUserState(prevState => {
                 return {
@@ -100,14 +100,14 @@ export default function Main() {
         <>
             {/*{
                 This is to show ConfirmModal after you want to delete
-                access is False By default but Modal can change it!
+                access is False By default but modal can change it!
             }*/}
             {
                 accessModal.access
                 ? <ConfirmModal modalClass={accessModal.class} del={true} toggleModal={toggleModal} deleteUser={deleteUser}  />
                 : null
             }
-            <Header />
+            <HeaderProject />
             {
                 userState.users.length !== 0
                 ? (

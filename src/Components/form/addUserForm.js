@@ -1,6 +1,6 @@
 import {useState} from "react";
-import Input from "./Input";
-import RadioInput from "./RadioInput";
+import InputForm from "./inputForm";
+import RadioInputForm from "./radioInputForm";
 
 function AddUserForm(props) {
 
@@ -36,12 +36,12 @@ function AddUserForm(props) {
                 <h3> فرم ثبت نام اعضای جدید </h3>
                 <div className="inputs">
                     <div className="rightSide">
-                        <Input label={"نام و نام خانوادگی :"} type={"text"} value={userState.name}  name={"name"} onchangeFunction={(e) => getInputsValue('name', e.target.value)} />
-                        <Input label={"کد ملی :"} type={"text"} value={userState.IDCode}  name={"IDCode"} onchangeFunction={(e) => getInputsValue('IDCode', e.target.value)} />
+                        <InputForm label={"نام و نام خانوادگی :"} type={"text"} value={userState.name} name={"name"} onchangeFunction={(e) => getInputsValue('name', e.target.value)} />
+                        <InputForm label={"کد ملی :"} type={"text"} value={userState.IDCode} name={"IDCode"} onchangeFunction={(e) => getInputsValue('IDCode', e.target.value)} />
                     </div>
                     <div className="leftSide">
-                        <Input label={"ایمیل :"} type={"text"} value={userState.email}  name={"email"} onchangeFunction={(e) => getInputsValue('email', e.target.value)} />
-                        <RadioInput mainLabel={"میزان دسترسی کاربر :"} label1={"ادمین"} label2={"عضوساده"} name={"accessRate"} onchangeFunction={getInputsValue}/>
+                        <InputForm label={"ایمیل :"} type={"text"} value={userState.email} name={"email"} onchangeFunction={(e) => getInputsValue('email', e.target.value)} />
+                        <RadioInputForm mainLabel={"میزان دسترسی کاربر :"} label1={"ادمین"} label2={"عضوساده"} name={"accessRate"} onchangeFunction={getInputsValue}/>
                     </div>
                 </div>
                 <button type="submit"> اضافه کردن عضو جدید </button>

@@ -7,12 +7,9 @@ import moment from "moment-jalaali";
 import SimpleModal from "../modal/simpleModal";
 import HeaderProject from "./headerProject";
 import ConfirmModal from "../modal/confirmModal";
+import UsersContext from "../../Context/usersContext";
 
 export default function App() {
-    // ============ packages =================================
-    // this package make numbersDate's view to persian view ...
-    moment.loadPersian({usePersianDigits: true})
-
     // ============ states =====================================
     const [userState , setUserState] = useState({users : 'usersList' in localStorage ? JSON.parse(localStorage.usersList) : []});
 
@@ -97,52 +94,55 @@ export default function App() {
     }
 
     return (
-        <>
-            {/*{
+        <UsersContext.Provider value={{
+            medalClass : accessModal.class,
+            del : true,
+            toggleModal : toggleModal,
+            delete : deleteUser,
+            users : userState.users,
+            edit : editUser,
+            hide : toggleForm,
+            formClass : formClass,
+            changeUsersList : changeUsersList,
+        }}>
+            <>
+                {/*{
                 This is to show ConfirmModal after you want to delete
                 access is False By default but modal can change it!
             }*/}
-            {
-                accessModal.access
-                ? <ConfirmModal modalClass={accessModal.class} del={true} toggleModal={toggleModal} deleteUser={deleteUser}  />
-                : null
-            }
-            <HeaderProject />
-            {
-                userState.users.length !== 0
-                ? (
-                        <div className="tableBox">
-                            <table>
-                                <TableHeader />
-                                <tbody>
-                                {
-                                    userState.users.length !== 0
-                                        ? (
-                                            userState.users.map(user => <MakeTableRows code={user.code}
-                                                                                       key={user.code}
-                                                                                       name={user.name}
-                                                                                       IDCode={user.IDCode}
-                                                                                       email={user.email}
-                                                                                       accessRate={user.accessRate}
-                                                                                       date={moment().format('jYYYY/jM/jD')}
-                                                                                       delete={deleteUser}
-                                                                                       edit={editUser}
-                                            />)
-                                        )
-                                        // simpleModal is for making UI better !
-                                        : <SimpleModal />
-                                }
-                                </tbody>
-                            </table>
-                        </div>
-                    )
-                : <SimpleModal />
-            }
-            <AddUserForm hide={toggleForm} formClass={formClass} changeUsersList={changeUsersList} />
-            {/*{ A button in left bottom side to add User :) }*/}
-            <div className="addBtn" onClick={toggleForm}>
-                <span> + </span>
-            </div>
-        </>
+                {
+                    accessModal.access
+                        ? <ConfirmModal />
+                        : null
+                }
+                <HeaderProject />
+                {
+                    userState.users.length !== 0
+                        ? (
+                            <div className="tableBox">
+                                <table>
+                                    <TableHeader />
+                                    <tbody>
+                                    {
+                                        userState.users.length !== 0
+                                            ? (
+                                                userState.users.map((user) => <MakeTableRows key={Date.now()} user={user}/>)
+                                            )
+                                            // simpleModal is for making UI better !
+                                            : <SimpleModal />
+                                    }
+                                    </tbody>
+                                </table>
+                            </div>
+                        )
+                        : <SimpleModal />
+                }
+                <AddUserForm/>
+                {/*{ A button in left bottom side to add User :) }*/}
+                <div className="addBtn" onClick={toggleForm}>
+                    <span> + </span>
+                </div>
+            </>
+        </UsersContext.Provider>
     )
 }

@@ -1,8 +1,9 @@
-import {useState} from "react";
+import {useState , useContext} from "react";
 import InputForm from "./inputForm";
 import RadioInputForm from "./radioInputForm";
+import UsersContext from "../../Context/usersContext";
 
-function AddUserForm(props) {
+function AddUserForm() {
 
     const [userState , setUserState] = useState({
         name : "",
@@ -11,28 +12,29 @@ function AddUserForm(props) {
         accessRate : "",
     })
 
+    const usersContext = useContext(UsersContext);
+
     // if we change one of state's parameters, All them change!
     // so first we use datasets to find changed parameter!
     // then we use prevState & update state!
     const getInputsValue = (key, value) => setUserState({...userState, [key]: value})
 
-
     const formHandler = e => {
         e.preventDefault();
-        props.changeUsersList(userState)
+        usersContext.changeUsersList(userState)
         setUserState({
             name : "",
             IDCode : "",
             email : "",
             accessRate: userState.accessRate,
         })
-        props.hide()
+        usersContext.hide()
     }
 
     return (
-        <div className={`addUsersForm ${props.formClass}`}>
+        <div className={`addUsersForm ${usersContext.formClass}`}>
             <form className="form" onSubmit={formHandler}>
-                <span className={"closeForm"} onClick={props.hide}> + </span>
+                <span className={"closeForm"} onClick={usersContext.hide}> + </span>
                 <h3> فرم ثبت نام اعضای جدید </h3>
                 <div className="inputs">
                     <div className="rightSide">

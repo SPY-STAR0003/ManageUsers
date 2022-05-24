@@ -1,148 +1,72 @@
-import React, {useState , useEffect} from "react";
+import React, {useEffect , useReducer} from "react";
 import "../cssStyles/bundle.scss";
 import AddUserForm from "../form/addUserForm";
 import MakeTableRows from "../table/makeTableRows";
 import TableHeader from "../table/tableHeader";
-import moment from "moment-jalaali";
 import SimpleModal from "../modal/simpleModal";
 import HeaderProject from "./headerProject";
 import ConfirmModal from "../modal/confirmModal";
+import UsersContext from "../../Context/usersContext";
+import AppReducer from "../../Reducers/appReducer";
 
 export default function App() {
-    // ============ packages =================================
-    // this package make numbersDate's view to persian view ...
-    moment.loadPersian({usePersianDigits: true})
-
-    // ============ states =====================================
-    const [userState , setUserState] = useState({users : 'usersList' in localStorage ? JSON.parse(localStorage.usersList) : []});
-
-    const [formClass , setFormClass] = useState("d-none");
-    // this state will appear modal & save user's code
-    // because user's code will lose after modal appear!
-    const [accessModal , setAccessModal] = useState({
-        class : "d-none",
-        access : false,
+    // ============ Reducers ===================================
+    const [state , dispatch] = useReducer(AppReducer ,{
+        users : 'usersList' in localStorage ? JSON.parse(localStorage.usersList) : [],
+        formClass : "d-none",
+        accessModalClass: "d-none",
+        accessToModal : false,
         userCode:"",
-    });
-
+    })
     // ============ useEffects =================================
     useEffect(() => {
-        localStorage.usersList = JSON.stringify(userState.users);
-    }, [userState]);
-
+        localStorage.usersList = JSON.stringify(state.users);
+    }, [state]);
     // ============= change States Functions =====================
-    const toggleForm = () => {
-        if (formClass === "d-none") {
-            setFormClass("d-flex");
-        } else {
-            setFormClass("d-none");
-        }
-    }
-
-    const toggleModal = ( modalClass , bool , userCode ) => {
-        setAccessModal({
-            class: modalClass,
-            access: bool,
-            userCode : userCode,
-        })
-    }
-
-    const changeUsersList = userList => {
-        setUserState(prevState => {
-            return {
-                users: [
-                    {
-                        code : Date.now(),
-                        key : Date.now(),
-                        name : userList.name,
-                        IDCode : userList.IDCode,
-                        email : userList.email,
-                        accessRate : userList.accessRate,
-                        date : moment().format('jYYYY/jM/jD'),
-                    },
-                    ...prevState.users,
-                ]
-            }
-        })
-    }
-
-    const deleteUser = (userCode , access) => {
-        // access is false by default ...
-        // but modal (confirmModal) can make it true!
-        if (access) {
-            let code = accessModal.userCode;
-            // to disappear modal we require toggle modal
-            toggleModal("d-none");
-            setUserState(prevState => {
-                return {
-                    users: prevState.users.filter(user => user.code !== code)
-                }
-            },
-            )
-        } else {
-            toggleModal("d-flex" , true , userCode);
-        }
-    }
-
-    const editUser = (user) => {
-        // I added users from state to a new list !
-        // then I remove last user and then add edited user !
-        let usersList = userState.users;
-        let filteredList = usersList.filter(item => item.code !== user.code);
-        filteredList.push(user);
-
-        setUserState({
-            users: [...filteredList]
-        })
-    }
-
     return (
-        <>
-            {/*{
+        <UsersContext.Provider value={{
+            modalClass : state.accessModalClass,
+            formClass : state.formClass,
+            dispatch,
+        }}>
+            <>
+                {/*
                 This is to show ConfirmModal after you want to delete
                 access is False By default but modal can change it!
-            }*/}
-            {
-                accessModal.access
-                ? <ConfirmModal modalClass={accessModal.class} del={true} toggleModal={toggleModal} deleteUser={deleteUser}  />
-                : null
-            }
-            <HeaderProject />
-            {
-                userState.users.length !== 0
-                ? (
-                        <div className="tableBox">
-                            <table>
-                                <TableHeader />
-                                <tbody>
-                                {
-                                    userState.users.length !== 0
-                                        ? (
-                                            userState.users.map(user => <MakeTableRows code={user.code}
-                                                                                       key={user.code}
-                                                                                       name={user.name}
-                                                                                       IDCode={user.IDCode}
-                                                                                       email={user.email}
-                                                                                       accessRate={user.accessRate}
-                                                                                       date={moment().format('jYYYY/jM/jD')}
-                                                                                       delete={deleteUser}
-                                                                                       edit={editUser}
-                                            />)
-                                        )
-                                        // simpleModal is for making UI better !
-                                        : <SimpleModal />
-                                }
-                                </tbody>
-                            </table>
-                        </div>
-                    )
-                : <SimpleModal />
-            }
-            <AddUserForm hide={toggleForm} formClass={formClass} changeUsersList={changeUsersList} />
-            {/*{ A button in left bottom side to add User :) }*/}
-            <div className="addBtn" onClick={toggleForm}>
-                <span> + </span>
-            </div>
-        </>
+            */}
+                {
+                    state.accessToModal
+                        ? <ConfirmModal />
+                        : null
+                }
+                <HeaderProject />
+                {
+                    state.users.length !== 0
+                        ? (
+                            <div className="tableBox">
+                                <table>
+                                    <TableHeader />
+                                    <tbody>
+                                    {
+                                        state.users.length !== 0
+                                            ? (
+                                                state.users.map((user , index) => <MakeTableRows key={index} user={user}/>)
+                                            )
+                                            // simpleModal is for making UI better !
+                                            : <SimpleModal />
+                                    }
+                                    </tbody>
+                                </table>
+                            </div>
+                        )
+                        : <SimpleModal />
+                }
+                <AddUserForm/>
+                {/*{ A button in left bottom side to add User :) }*/}
+                <div className="addBtn" onClick={() => dispatch({type : "toggleForm"})}>
+                    <span> + </span>
+                </div>
+            </>
+        </UsersContext.Provider>
     )
 }

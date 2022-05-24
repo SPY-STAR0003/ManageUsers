@@ -1,4 +1,17 @@
-## ManageUsers 
+## ManageUsers
+
+### What's new in v2.0 ?
+
+This Update is not for UI! :(
+But this Update is very useful for programmers because :
+    
+    - I added Contexts to project!
+    - I added Reducers to minify app component ! 
+
+Now app development is much easier!
+
+### What this app can to do ?
+
 This Project will help to manage your users.\
 This project abilities are :
 

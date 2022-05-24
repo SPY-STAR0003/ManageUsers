@@ -5,10 +5,10 @@ import userProfile from "../images/blank-profile-picture-973460__480.webp"
 export default function EditUser(props) {
 
     let {user, edit} = props;
-    let {code ,name , IDCode , email , date , accessRate} = user;
+    let {code ,name , IDCode , email , date , accessRate , id} = user;
 
     const [userEdit , setUserEdit] = useState({
-        code,name,IDCode,email,date,accessRate,
+        code,name,IDCode,email,date,accessRate,id
     })
 
     // if we change one of state's parameters, All them change!

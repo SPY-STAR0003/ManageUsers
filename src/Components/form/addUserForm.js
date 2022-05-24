@@ -2,6 +2,8 @@ import {useState , useContext} from "react";
 import InputForm from "./inputForm";
 import RadioInputForm from "./radioInputForm";
 import UsersContext from "../../Context/usersContext";
+import axios from "axios";
+import moment from "moment-jalaali";
 
 function AddUserForm() {
 
@@ -19,9 +21,20 @@ function AddUserForm() {
     // then we use prevState & update state!
     const getInputsValue = (key, value) => setUserState({...userState, [key]: value})
 
-    const formHandler = e => {
+    const formHandler = async (e) => {
         e.preventDefault();
-        usersContext.dispatch({type : "changeUsersList" , payload : {userList : userState}})
+        let user = {
+            code : Date.now(),
+            name : userState.name,
+            IDCode : userState.IDCode,
+            email : userState.email,
+            accessRate : userState.accessRate,
+            date : moment().format('jYYYY/jM/jD'),
+            password : ""
+        }
+        let requestUser = await axios.post("https://628cca310432524c58e5e052.endapi.io/users" , user)
+
+        usersContext.dispatch({type : "changeUsersList" , payload : {userList : user}})
         setUserState({
             name : "",
             IDCode : "",

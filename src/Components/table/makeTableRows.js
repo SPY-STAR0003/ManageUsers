@@ -7,6 +7,7 @@ import ShowUserModal from "../modal/showUserModal";
 import userPicture from "../images/blank-profile-picture-973460__480.webp";
 import UsersContext from "../../Context/usersContext";
 import moment from "moment-jalaali";
+import axios from "axios";
 
 export default function MakeTableRows({user}) {
     // ============ packages =================================
@@ -23,8 +24,16 @@ export default function MakeTableRows({user}) {
         : setShowUser(true)
     }
 
-    let editHandler = (user) => {
-        usersContext.dispatch({type : "editUser" , payload : {user : user}})
+    let editHandler = async (editedUser) => {
+        let editUser = await axios.put(`https://628cca310432524c58e5e052.endapi.io/users/${editedUser.id}` , {
+            name : editedUser.name,
+            IDCode : editedUser.IDCode,
+            date : editedUser.date,
+            email : editedUser.email,
+            accessRate : editedUser.accessRate,
+            password : "",
+        }) 
+        usersContext.dispatch({type : "editUser" , payload : {user : editedUser}})
         setEditState(false);
     }
 
@@ -48,7 +57,7 @@ export default function MakeTableRows({user}) {
                             <td>
                                 <div className="icons">
                                     <i className="bi bi-pencil-square" onClick={() => setEditState(true)}></i>
-                                    <i className="bi bi-trash3-fill" onClick={() => usersContext.dispatch({type : "deleteUser" , payload : {code : user.code}})}></i>
+                                    <i className="bi bi-trash3-fill" onClick={() => usersContext.dispatch({type : "deleteUser" , payload : {id : user.id}})}></i>
                                 </div>
                             </td>
                         </tr>

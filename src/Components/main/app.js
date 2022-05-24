@@ -8,20 +8,29 @@ import HeaderProject from "./headerProject";
 import ConfirmModal from "../modal/confirmModal";
 import UsersContext from "../../Context/usersContext";
 import AppReducer from "../../Reducers/appReducer";
+import axios from "axios";
 
 export default function App() {
     // ============ Reducers ===================================
     const [state , dispatch] = useReducer(AppReducer ,{
-        users : 'usersList' in localStorage ? JSON.parse(localStorage.usersList) : [],
+        users : [],
         formClass : "d-none",
         accessModalClass: "d-none",
         accessToModal : false,
         userCode:"",
     })
+
     // ============ useEffects =================================
+    const getUsers = async () => {
+        const getUsersRequest = await axios.get("https://628cca310432524c58e5e052.endapi.io/users");
+        const users = getUsersRequest.data.data;
+        console.log(users)
+        dispatch({type : "getUsersFromDatabase" , payload : {usersInDataBase : users} })
+    }
+
     useEffect(() => {
-        localStorage.usersList = JSON.stringify(state.users);
-    }, [state]);
+        getUsers()
+    }, []);
     // ============= change States Functions =====================
     return (
         <UsersContext.Provider value={{

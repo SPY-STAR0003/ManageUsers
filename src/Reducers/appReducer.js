@@ -1,21 +1,19 @@
-import moment from "moment-jalaali";
+import axios from "axios";
 
 export default function AppReducer(state , action) {
     switch (action.type) {
+        case "getUsersFromDatabase":
+            let {usersInDataBase} = action.payload;
+            return {
+                ...state,
+                users : usersInDataBase,
+            }
         case "changeUsersList":
             let {userList} = action.payload;
             return {
                 ...state,
                 users: [
-                    {
-                        code : Date.now(),
-                        key : Date.now(),
-                        name : userList.name,
-                        IDCode : userList.IDCode,
-                        email : userList.email,
-                        accessRate : userList.accessRate,
-                        date : moment().format('jYYYY/jM/jD'),
-                    },
+                    userList,
                     ...state.users,
                 ],
             }
@@ -53,20 +51,24 @@ export default function AppReducer(state , action) {
             }
         case "deleteUser":
             if (state.accessToModal) {
+                let deleteUserFunction = async () => {
+                    let deleteUser = await axios.delete(`https://628cca310432524c58e5e052.endapi.io/users/${state.userCode}`);
+                }
+                deleteUserFunction()
                 // to disappear modal we require toggle modal
                 return {
                     ...state,
                     accessToModal : false,
                     accessModalClass : "d-none",
-                    users: state.users.filter(user => user.code !== state.userCode)
+                    users: state.users.filter(user => user.id !== state.userCode)
                 }
             } else {
-                let {code} = action.payload;
+                let {id} = action.payload;
                 return {
                     ...state,
                     accessModalClass: "d-flex",
                     accessToModal: true,
-                    userCode : code,    
+                    userCode : id,    
                 }
             }
         default:

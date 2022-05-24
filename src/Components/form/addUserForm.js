@@ -21,20 +21,20 @@ function AddUserForm() {
 
     const formHandler = e => {
         e.preventDefault();
-        usersContext.changeUsersList(userState)
+        usersContext.dispatch({type : "changeUsersList" , payload : {userList : userState}})
         setUserState({
             name : "",
             IDCode : "",
             email : "",
             accessRate: userState.accessRate,
         })
-        usersContext.hide()
+        usersContext.dispatch({type : "toggleForm"})
     }
 
     return (
         <div className={`addUsersForm ${usersContext.formClass}`}>
             <form className="form" onSubmit={formHandler}>
-                <span className={"closeForm"} onClick={usersContext.hide}> + </span>
+                <span className={"closeForm"} onClick={() => usersContext.dispatch({type : "toggleForm"})}> + </span>
                 <h3> فرم ثبت نام اعضای جدید </h3>
                 <div className="inputs">
                     <div className="rightSide">

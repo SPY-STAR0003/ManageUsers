@@ -24,7 +24,7 @@ export default function MakeTableRows({user}) {
     }
 
     let editHandler = (user) => {
-        usersContext.edit(user)
+        usersContext.dispatch({type : "editUser" , payload : {user : user}})
         setEditState(false);
     }
 
@@ -48,7 +48,7 @@ export default function MakeTableRows({user}) {
                             <td>
                                 <div className="icons">
                                     <i className="bi bi-pencil-square" onClick={() => setEditState(true)}></i>
-                                    <i className="bi bi-trash3-fill" onClick={() => usersContext.delete(user.code , false)}></i>
+                                    <i className="bi bi-trash3-fill" onClick={() => usersContext.dispatch({type : "deleteUser" , payload : {code : user.code}})}></i>
                                 </div>
                             </td>
                         </tr>

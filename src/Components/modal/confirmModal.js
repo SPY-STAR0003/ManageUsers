@@ -16,8 +16,8 @@ export default function ConfirmModal() {
                     </p>
                 </div>
                 <div className={"buttons"}>
-                    <button className={"dangerBtn"} onClick={() => usersContext.delete("", true)} > ! حذفش کن بره باو </button>
-                    <button className={"successBtn"} onClick={() => usersContext.toggleModal("d-none" , false)}> ! نه پشیمون شدم  </button>
+                    <button className={"dangerBtn"} onClick={() => usersContext.dispatch({type : "deleteUser"})} > ! حذفش کن بره باو </button>
+                    <button className={"successBtn"} onClick={() => usersContext.dispatch({type : "toggleModal" , payload : {bool : false}})}> ! نه پشیمون شدم  </button>
                 </div>
             </div>
         </div>

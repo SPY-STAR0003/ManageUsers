@@ -1,24 +1,26 @@
+// =============== hooks ========================================
 import {useState , useContext} from "react";
+// =============== components ===================================
 import InputForm from "./inputForm";
 import RadioInputForm from "./radioInputForm";
-import UsersContext from "../../Context/usersContext";
-import axios from "axios";
-import moment from "moment-jalaali";
+// =============== contexts =====================================
+import UsersContext from "../../context/usersContext";
+// =============== libraries ====================================
+import instance from "../../api/api";
 
-function AddUserForm() {
 
+export default function AddUserForm() {
+// =============== states =======================================
     const [userState , setUserState] = useState({
         name : "",
         IDCode : "",
         email : "",
         accessRate : "",
     })
-
+// =============== Contexts =====================================
     const usersContext = useContext(UsersContext);
-
-    // if we change one of state's parameters, All them change!
-    // so first we use datasets to find changed parameter!
-    // then we use prevState & update state!
+    
+// a receiver function that set form values to state ============
     const getInputsValue = (key, value) => setUserState({...userState, [key]: value})
 
     const formHandler = async (e) => {
@@ -29,10 +31,11 @@ function AddUserForm() {
             IDCode : userState.IDCode,
             email : userState.email,
             accessRate : userState.accessRate,
-            date : moment().format('jYYYY/jM/jD'),
+            date : new Date().toLocaleDateString("fa"),
             password : ""
         }
-        let requestUser = await axios.post("https://628cca310432524c58e5e052.endapi.io/users" , user)
+        // eslint-disable-next-line
+        let requestUser = await instance.post("/users" , user)
 
         usersContext.dispatch({type : "changeUsersList" , payload : {userList : user}})
         setUserState({
@@ -45,7 +48,7 @@ function AddUserForm() {
     }
 
     return (
-        <div className={`addUsersForm ${usersContext.formClass}`}>
+        <div className={`addUsersForm ${usersContext.state.formClass}`}>
             <form className="form" onSubmit={formHandler}>
                 <span className={"closeForm"} onClick={() => usersContext.dispatch({type : "toggleForm"})}> + </span>
                 <h3> فرم ثبت نام اعضای جدید </h3>
@@ -64,5 +67,3 @@ function AddUserForm() {
         </div>
     )
 }
-
-export default AddUserForm;

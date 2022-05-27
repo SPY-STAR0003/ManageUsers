@@ -1,4 +1,4 @@
-import axios from "axios";
+import instance from "../api/api";
 
 export default function AppReducer(state , action) {
     switch (action.type) {
@@ -33,8 +33,8 @@ export default function AppReducer(state , action) {
             let {modalClass , bool , userCode} = action.payload;
             return {
                 ...state,
-                accessModalClass: modalClass,
-                accessToModal: bool,
+                simpleModalClass: modalClass,
+                accessToSimpleModal: bool,
                 userCode : userCode,
             }
         case "editUser":
@@ -50,24 +50,25 @@ export default function AppReducer(state , action) {
                 users: [...filteredList]
             }
         case "deleteUser":
-            if (state.accessToModal) {
+            if (state.accessToSimpleModal) {
                 let deleteUserFunction = async () => {
-                    let deleteUser = await axios.delete(`https://628cca310432524c58e5e052.endapi.io/users/${state.userCode}`);
+                    // eslint-disable-next-line
+                    let deleteUser = await instance.delete(`/users/${state.userCode}`);
                 }
                 deleteUserFunction()
                 // to disappear modal we require toggle modal
                 return {
                     ...state,
-                    accessToModal : false,
-                    accessModalClass : "d-none",
+                    accessToSimpleModal : false,
+                    simpleModalClass : "d-none",
                     users: state.users.filter(user => user.id !== state.userCode)
                 }
             } else {
                 let {id} = action.payload;
                 return {
                     ...state,
-                    accessModalClass: "d-flex",
-                    accessToModal: true,
+                    simpleModalClass: "d-flex",
+                    accessToSimpleModal: true,
                     userCode : id,    
                 }
             }

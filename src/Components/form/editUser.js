@@ -1,5 +1,8 @@
+// ============== hooks =========================================
 import {useState} from "react";
+// ============== libraries =====================================
 import 'bootstrap-icons/font/bootstrap-icons.css';
+// ============== pictures ======================================
 import userProfile from "../images/blank-profile-picture-973460__480.webp"
 
 export default function EditUser(props) {
@@ -11,9 +14,7 @@ export default function EditUser(props) {
         code,name,IDCode,email,date,accessRate,id
     })
 
-    // if we change one of state's parameters, All them change!
-    // so we receive key(name of parameter) & value(value's parameter)
-    // then we use prevState & update state!
+// a receiver function that set editForm values to state ========
     const getInputsValue = (key , value) => setUserEdit({...userEdit , [key] : value})
 
     return (

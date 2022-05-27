@@ -1,6 +1,8 @@
+// =============== hooks =================================
 import {useState} from "react";
 
 export default function SimpleModal() {
+// =============== state =================================
     const [showModal , setShowModal] = useState("d-flex")
 
     return (

@@ -1,23 +1,26 @@
 
+// ============ hooks ========================================
 import {useState , useContext} from "react";
-import 'bootstrap-icons/font/bootstrap-icons.css';
+// ============ Components ===================================
 import EditUser from "../form/editUser";
-import PN from "persian-number";
 import ShowUserModal from "../modal/showUserModal";
+import ConfirmModal from "../modal/confirmModal";
+// ============ Contexts =====================================
+import UsersContext from "../../context/usersContext";
+// ============ libraries ====================================
+import instance from "../../api/api";
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import PN from "persian-number";
+// ============ pictures =====================================
 import userPicture from "../images/blank-profile-picture-973460__480.webp";
-import UsersContext from "../../Context/usersContext";
-import moment from "moment-jalaali";
-import axios from "axios";
 
 export default function MakeTableRows({user}) {
-    // ============ packages =================================
-    // this package make numbersDate's view to persian view ...
-    moment.loadPersian({usePersianDigits: true})
-
+    // ============ state ====================================
     const [showUser , setShowUser] = useState(false);
     const [editState , setEditState] = useState(false);
+    // ============ context ==================================
     const usersContext = useContext(UsersContext);
-
+    // ============ Helper function for child components =====
     let toggleShowUser = () => {
         showUser
         ? setShowUser(false)
@@ -25,7 +28,8 @@ export default function MakeTableRows({user}) {
     }
 
     let editHandler = async (editedUser) => {
-        let editUser = await axios.put(`https://628cca310432524c58e5e052.endapi.io/users/${editedUser.id}` , {
+        // eslint-disable-next-line
+        let editUser = await instance.put(`/users/${editedUser.id}` , {
             name : editedUser.name,
             IDCode : editedUser.IDCode,
             date : editedUser.date,
@@ -45,14 +49,16 @@ export default function MakeTableRows({user}) {
                 :   null
             }
             {
+                // with click on edit btn user can change data (editState change to true !) 
                 !editState
                 ? (
                         <tr>
+                            {/* toggleShowUser will show a modal with user information */}
                             <td onClick={() => toggleShowUser()}> <img src={userPicture} alt="user"/> </td>
                             <td onClick={() => toggleShowUser()}> {user.name} </td>
                             <td onClick={() => toggleShowUser()}> {PN.convertEnToPe(user.IDCode)} </td>
                             <td onClick={() => toggleShowUser()}> {user.email} </td>
-                            <td onClick={() => toggleShowUser()}> {moment().format('jYYYY/jM/jD')} </td>
+                            <td onClick={() => toggleShowUser()}> {new Date().toLocaleDateString("fa")} </td>
                             <td onClick={() => toggleShowUser()}> {user.accessRate} </td>
                             <td>
                                 <div className="icons">
@@ -64,6 +70,7 @@ export default function MakeTableRows({user}) {
                     )
                 : <EditUser user={user} edit={editHandler} />
             }
+            <ConfirmModal />
         </>
     )
 }

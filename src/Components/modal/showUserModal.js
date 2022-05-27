@@ -1,4 +1,6 @@
+// ============= libraries =========================================
 import PN from "persian-number";
+// ============= pictures ==========================================
 import exampleUserPicture from "../images/blank-profile-picture-973460__480.webp";
 
 export default function ShowUserModal(props) {

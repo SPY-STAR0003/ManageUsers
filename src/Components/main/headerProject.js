@@ -1,9 +1,21 @@
+import { Link } from "react-router-dom"
+
 export default function HeaderProject() {
     // this is Page HeaderProject !!! Very Useful Comment :/ ==============
     return (
         <header>
-            <h3>پروژه لیست کاربران </h3>
-            <p>. چنانچه برای کار با این پروژه نیاز به اطلاعات بیشتری دارید، روی آیکون پایین سمت راست صفحه کلیک کنید  </p>
+            <nav className={`rightOfHeader`}>
+                <div className={`navbarRight`}>
+                    <h1> پروژه مدیریت لیست کاربران </h1>
+                </div>
+                <div className={`navbarLeft`}>
+                    <div className={`listItems`}>
+                        <Link className={`listItem`} to="/"> خانه </Link>
+                        <Link className={`listItem`} to="/help"> مستندات </Link>
+                        <Link className={`listItem`} to="/aboutProject"> درباره برنامه </Link>
+                    </div>
+                </div>
+            </nav>
         </header>
     )
 }

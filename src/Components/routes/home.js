@@ -15,7 +15,8 @@ export default function Home() {
     let { users } = usersContext.state;
     
     return (
-        <>
+        <div className={"showUsers"}>
+            <h2> جدول اسامی و اطلاعات افراد ثبت نام شده </h2>
             {
                 users.length !== 0
                     ? 
@@ -41,6 +42,6 @@ export default function Home() {
             }
             <AddUserForm />
             <AddNewUserBtn />
-        </>
+        </div>
     )
 }

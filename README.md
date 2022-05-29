@@ -1,5 +1,16 @@
 ## ManageUsers
+### What's new in v3.0 ?
+Big Changes for project ! In Coding & UI :) :) 
+the changes are :
+    - Add a about us page to project for contact to us
+    - Add Documents to project
+    - Add a loading to project
+    - Change UI
+    - add routes to project
+    - simplify the code
+    - add an online api to project
 
+Now enjoy the project more than past!!
 ### What's new in v2.0 ?
 
 This Update is not for UI! :(

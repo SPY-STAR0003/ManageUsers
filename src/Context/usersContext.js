@@ -1,8 +1,7 @@
 import React from "react";
 
 const usersContext = React.createContext({
-    modalClass : "",
-    formClass : "",
+    state : [],
     dispatch : () => {},
 })
 

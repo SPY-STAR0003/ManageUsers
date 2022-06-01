@@ -6,6 +6,8 @@ import TableHeader from "../table/tableHeader";
 import SimpleModal from "../modal/simpleModal";
 import AddNewUserBtn from "../form/addNewUserBtn";
 import AddUserForm from "../form/addUserForm";
+// ================= libraries ===============================
+import Loading from "../libraries/loading";
 // ================= contexts ================================
 import UsersContext from "../../context/usersContext";
 
@@ -13,12 +15,15 @@ export default function Home() {
     // ============= context =================================
     const usersContext = useContext(UsersContext);
     let { users } = usersContext.state;
-    
+    let { loading } = usersContext;
+
     return (
-        <div className={"showUsers"}>
+        <div className="showUsers">
             <h2> جدول اسامی و اطلاعات افراد ثبت نام شده </h2>
             {
-                users.length !== 0
+                loading 
+                ? <Loading type="spinningBubbles" color="#FF7F3F" /> 
+                : users.length !== 0
                     ? 
                         (
                             <div className="tableBox">

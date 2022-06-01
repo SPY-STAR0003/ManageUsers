@@ -2,13 +2,13 @@
 import React, {useEffect , useReducer, useState} from "react";
 // =========== Componenets =====================================
 import HeaderProject from "./headerProject";
+import FeaturesBtn from "./featuresBtn";
 // =========== Context & Reducers ==============================
 import UsersContext from "../../context/usersContext";
 import AppReducer from "../../reducers/appReducer";
 // =========== Libraries =======================================
 import instance from "../../api/api";
 import { Routes , Route } from "react-router-dom";
-import Loading from "../modal/loading";
 // =========== Routes ==========================================
 import Home from "./../routes/home";
 import Help from "../routes/help";
@@ -43,16 +43,15 @@ export default function App() {
     }, []);
     
     return (
-        <UsersContext.Provider value={{state,dispatch}}>
+        <UsersContext.Provider value={{loading,state,dispatch}}>
                 <HeaderProject />
-                {
-                    loading ? <Loading type="spinningBubbles" color="#FF7F3F" /> : null
-                }
                 <Routes>
                     <Route path="/" element={<Home />}/>
                     <Route path="/help" element={<Help />}/>
                     <Route path="/aboutProject" element={<AboutProject />}/>
                 </Routes>
+                <FeaturesBtn />
+                {/* <DarkModeBtn setTheme={setTheme} /> */}
         </UsersContext.Provider>
     )
 }

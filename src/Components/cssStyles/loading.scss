@@ -1,0 +1,13 @@
+.loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 80%;
+    height: 80vh;
+    p {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+  }

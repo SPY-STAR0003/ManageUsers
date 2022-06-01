@@ -1,0 +1,16 @@
+.d-none {
+    display: none !important;
+  }
+  
+  .d-flex {
+    display: flex !important;
+  }
+  
+  input {
+    box-shadow: 0 0 2px #fff;
+    transition: .4s;
+  }
+  
+  input:focus {
+    box-shadow: 0 0 2px #0AA1DD;
+  }

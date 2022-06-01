@@ -7,6 +7,7 @@ import picHelp6 from "./../images/help6.png";
 import picHelp7 from "./../images/help7.png";
 
 export default function Help() {
+
     return (
         <div className="helpRoute">
             <h2> مستندات پروژه </h2>

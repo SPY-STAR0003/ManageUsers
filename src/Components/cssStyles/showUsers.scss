@@ -1,0 +1,97 @@
+.showUsers {
+    h2 {
+      font-weight: 600;
+      font-size: 1.6rem;
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .tableBox {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin: 1.3rem auto;
+      width: 80%;
+      direction: rtl;
+      table {
+        font-family: Vazirmatn , serif;
+        border-collapse: collapse;
+        width: 100%;
+        tr {
+          transition: .3s;
+          td , th {
+            vertical-align: middle;
+            text-align: center;
+            padding: 16px 8px;
+          }
+          th {
+            padding: 1rem 0;
+            text-align: center;
+            background-color: #FF7F3F;
+            color: white;
+          }
+          td {
+            img {
+              width: 40px;
+              border-radius: 50%;
+            }
+            .icons {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              i {
+                font-size: 1.4rem;
+                margin: 0 .5rem;
+              }
+              i:hover {
+                cursor: pointer;
+              }
+              .bi-check-circle-fill {
+                color: #0AA1DD;
+              }
+              .bi-pencil-square {
+                color: #2ecc71;
+              }
+              .bi-trash3-fill {
+                color: #e74c3c;
+              }
+            }
+          }
+          th:first-of-type {
+            border-radius: 0 .5rem 0 0;
+          }
+          th:last-of-type {
+            border-radius: .5rem 0 0 0;
+          }
+        }
+        tr:nth-child(even) {
+          background-color: #ecf0f1;
+        }
+        tr:hover {
+          transform: scaleX(1.01);
+          cursor: pointer;
+        }
+        tr:first-of-type:hover {
+          transform: none;
+        }
+        tr:last-of-type {
+          td:first-of-type {
+            border-radius: 0 0 .5rem 0;
+          }
+          td:last-of-type {
+            border-radius: 0 0 0 .5rem;
+          }
+        }
+        input {
+          font-family: Vazirmatn , serif;
+          text-align: center;
+          outline: 0;
+          border: 1px solid #ecf0f1;
+          padding: .5rem 0;
+          width: 100%;
+          border-radius: 5px;
+        }
+      }
+    }
+  }

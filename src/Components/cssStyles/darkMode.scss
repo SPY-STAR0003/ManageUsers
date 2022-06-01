@@ -1,0 +1,74 @@
+.darkMode {
+    background-color: #2c3e50;
+    color: #fff;
+    transition: all .3s;
+    header , .aboutProjectRoute , .helpRoute {
+      background-color: #2c3e50;
+      color: #fff;
+    }
+    nav {
+      box-shadow: 0 0 25px #58508f6e;
+    }
+    .showUsers {
+      .tableBox {
+        table {
+          tr {
+            background-color: #2A2550;
+          }
+          tr:nth-child(even) {
+            background-color: #34495e;
+          }
+          tr:hover {
+            background-color: #2c3e50;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .showUserModal {
+      background-color: #2a25506e;
+      h1 {
+        color: white;
+      }
+      .showUserInfo {
+        .text {
+          p {
+            .subject {
+              color: #d0d0d0;
+            }
+            .value {
+              color: white;
+            }
+          }
+        }
+      }
+    }
+    .addUsersForm {
+      .form {
+        h3 {
+          color: white;
+        }
+        background: #2a25506e;
+        label {
+          color: white;
+        }
+      }
+      .closeForm {
+        color: white;
+      }
+    }
+    .background {
+      .confirmModal {
+        background: #2a25506e;
+        color: white;
+        box-shadow: none;
+        border: 1px solid white;
+      }
+    }
+  }
+  
+  .lightMode {
+    background-color: #ffffff;
+    color: #2c3e50;
+    transition: all .3s;
+  }

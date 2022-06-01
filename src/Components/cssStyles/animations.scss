@@ -1,0 +1,84 @@
+
+@keyframes normalAppearFromRight {
+    0% {
+      opacity: 0;
+      transform: translateX(12px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+@keyframes appearFromLeftBottom {
+  0% {
+    transform: matrix(.3 , 0 , 0 , .3 , -500 , 200);
+  }
+  100% {
+    transform: matrix(1 , 0 , 0 , 1 , 0 , 0);
+  }
+}
+  
+@keyframes animation1 {
+  0% {
+    opacity: .4;
+    transform: matrix(.3 , 0 , 0 , .3 , -1600 , -1600);
+    background-color: #2c3e50;
+    color: white;
+  }
+  50% {
+    opacity: 1;
+    transform: matrix(1 , 0 , 0 , 1 , 0 , 0);
+    background-color: white;
+  }
+  80% {
+    opacity: .8;
+    transform: matrix(.7 , 0 , 0 , .7 , 0 , -200);
+  }
+  100% {
+    opacity: 1;
+    transform: matrix(1 , 0 , 0 , 1 , 0 , 0);
+    background-color: #ecf0f1;
+    color: #2c3e50;
+  }
+}
+
+@keyframes animation2 {
+  0% {
+    opacity: .5;
+    transform: matrix(.1 , 200 , 200 , .1 , 0 , 0);
+  }
+  100% {
+    opacity: 1;
+    transform: matrix(1 , 0 , 0 , 1 , 0 , 0);
+  }
+}
+  
+@keyframes animation3 {
+  0% {
+    opacity: .5;
+    transform: matrix(.5 , 0 , 0 , .1 , 0 , -400);
+  }
+  50% {
+    opacity: .5;
+    transform: matrix(.1 , 0 , 0 , .1 , 0 , 100);
+  }
+  100% {
+    opacity: 1;
+    transform: matrix(1 , 0 , 0 , 1 , 0 , 0);
+  }
+}
+  
+@keyframes opacityAnime {
+  0% {
+    opacity: 0;
+    transform: scaleX(.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+.showUserModalAnimation {
+  animation: animation3 .5s !important;
+}

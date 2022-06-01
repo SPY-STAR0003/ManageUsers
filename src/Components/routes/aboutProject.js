@@ -1,4 +1,4 @@
-export default function aboutProject() {
+export default function AboutProject() {
 
     return (
         <div className="aboutProjectRoute">

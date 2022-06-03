@@ -1,21 +1,18 @@
-// ================= hooks ===================================
-import { useContext } from "react";
 // ================= components ==============================
 import MakeTableRows from "../table/makeTableRows";
 import TableHeader from "../table/tableHeader";
 import SimpleModal from "../modal/simpleModal";
 import AddNewUserBtn from "../form/addNewUserBtn";
 import AddUserForm from "../form/addUserForm";
+// =========== Redux ===========================================
+import { useSelector } from "react-redux";
 // ================= libraries ===============================
 import Loading from "../libraries/loading";
-// ================= contexts ================================
-import UsersContext from "../../context/usersContext";
 
 export default function Home() {
-    // ============= context =================================
-    const usersContext = useContext(UsersContext);
-    let { users } = usersContext.state;
-    let { loading } = usersContext;
+    // ============= Redux Functions =========================
+    const usersList = useSelector(state => state.users.list);
+    const loading = useSelector(state => state.loading.showLoading);
 
     return (
         <div className="showUsers">
@@ -23,7 +20,7 @@ export default function Home() {
             {
                 loading 
                 ? <Loading type="spinningBubbles" color="#FF7F3F" /> 
-                : users.length !== 0
+                : usersList.length !== 0
                     ? 
                         (
                             <div className="tableBox">
@@ -31,9 +28,9 @@ export default function Home() {
                                     <TableHeader />
                                     <tbody>
                                     {
-                                        users.length !== 0
+                                        usersList.length !== 0
                                             ? (
-                                                users.map((user , index) => <MakeTableRows key={index} user={user}/>)
+                                                usersList.map((user , index) => <MakeTableRows key={index} user={user}/>)
                                             )
                                             // simpleModal is for making UI better !
                                             // it say to user that there's no users ! 

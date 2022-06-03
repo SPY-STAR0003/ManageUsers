@@ -4,7 +4,6 @@ export default function UseDarkMode() {
     const [theme , setTheme] = useState();
 
     useEffect(() => {
-        console.log(localStorage.getItem("usersManagerTheme"))
         if (localStorage.getItem("usersManagerTheme") !== undefined ) {
             let localTheme = localStorage.getItem("usersManagerTheme");
             localTheme === "dark" ? darkModeView() : lightModeView()

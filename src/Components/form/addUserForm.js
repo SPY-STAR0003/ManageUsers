@@ -1,10 +1,11 @@
 // =============== hooks ========================================
-import {useState , useContext} from "react";
+import {useState } from "react";
 // =============== components ===================================
 import InputForm from "./inputForm";
 import RadioInputForm from "./radioInputForm";
-// =============== contexts =====================================
-import UsersContext from "../../context/usersContext";
+// =========== Redux ===========================================
+import { useSelector , useDispatch } from "react-redux";
+import { changeUsersList , toggleForm } from "./../../store/slices/usersSlice";
 // =============== libraries ====================================
 import instance from "../../api/api";
 
@@ -18,7 +19,8 @@ export default function AddUserForm() {
         accessRate : "",
     })
 // =============== Contexts =====================================
-    const usersContext = useContext(UsersContext);
+    const dispatch = useDispatch();
+    const formClass = useSelector(state => state.users.formClass)
     
 // a receiver function that set form values to state ============
     const getInputsValue = (key, value) => setUserState({...userState, [key]: value})
@@ -37,20 +39,20 @@ export default function AddUserForm() {
         // eslint-disable-next-line
         let requestUser = await instance.post("/users" , user)
 
-        usersContext.dispatch({type : "changeUsersList" , payload : {userList : user}})
+        dispatch(changeUsersList(user))
         setUserState({
             name : "",
             IDCode : "",
             email : "",
             accessRate: userState.accessRate,
         })
-        usersContext.dispatch({type : "toggleForm"})
+        dispatch(toggleForm())
     }
 
     return (
-        <div className={`addUsersForm ${usersContext.state.formClass}`}>
+        <div className={`addUsersForm ${formClass}`}>
             <form className="form" onSubmit={formHandler}>
-                <span className={"closeForm"} onClick={() => usersContext.dispatch({type : "toggleForm"})}> + </span>
+                <span className={"closeForm"} onClick={() => dispatch(toggleForm())}> + </span>
                 <h3> فرم ثبت نام اعضای جدید </h3>
                 <div className="inputs">
                     <div className="rightSide">

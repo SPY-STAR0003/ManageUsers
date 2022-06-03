@@ -1,12 +1,13 @@
 
 // ============ hooks ========================================
-import {useState , useContext} from "react";
+import {useState } from "react";
 // ============ Components ===================================
 import EditUser from "../form/editUser";
 import ShowUserModal from "../modal/showUserModal";
 import ConfirmModal from "../modal/confirmModal";
-// ============ Contexts =====================================
-import UsersContext from "../../context/usersContext";
+// =========== Redux ===========================================
+import { useDispatch } from "react-redux";
+import { editUser , deleteUser } from "./../../store/slices/usersSlice";
 // ============ libraries ====================================
 import instance from "../../api/api";
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -18,8 +19,8 @@ export default function MakeTableRows({user}) {
     // ============ state ====================================
     const [showUser , setShowUser] = useState(false);
     const [editState , setEditState] = useState(false);
-    // ============ context ==================================
-    const usersContext = useContext(UsersContext);
+    // ============ Redux Functions ==========================
+    const dispatch = useDispatch()
     // ============ Helper function for child components =====
     let toggleShowUser = () => {
         showUser
@@ -29,7 +30,7 @@ export default function MakeTableRows({user}) {
 
     let editHandler = async (editedUser) => {
         // eslint-disable-next-line
-        let editUser = await instance.put(`/users/${editedUser.id}` , {
+        let sendEditedUser = await instance.put(`/users/${editedUser.id}` , {
             name : editedUser.name,
             IDCode : editedUser.IDCode,
             date : editedUser.date,
@@ -37,7 +38,7 @@ export default function MakeTableRows({user}) {
             accessRate : editedUser.accessRate,
             password : "",
         }) 
-        usersContext.dispatch({type : "editUser" , payload : {user : editedUser}})
+        dispatch(editUser(editedUser))
         setEditState(false);
     }
 
@@ -63,7 +64,7 @@ export default function MakeTableRows({user}) {
                             <td>
                                 <div className="icons">
                                     <i className="bi bi-pencil-square" onClick={() => setEditState(true)}></i>
-                                    <i className="bi bi-trash3-fill" onClick={() => usersContext.dispatch({type : "deleteUser" , payload : {id : user.id}})}></i>
+                                    <i className="bi bi-trash3-fill" onClick={() => dispatch(deleteUser(user.id))}></i>
                                 </div>
                             </td>
                         </tr>

@@ -10,6 +10,14 @@
                     border-radius: 0 .5rem 0 0 ;
                 }
             }
+            tr:last-of-type {
+                td:first-of-type {
+                  border-radius: 0 0 0 .5rem;
+                }
+                td:last-of-type {
+                  border-radius: 0 0 .5rem 0;
+                }
+              }
         }
     }
     .addUsersForm {
@@ -23,6 +31,13 @@
                    }
                }
            } 
+        }
+    }
+    .showUserModal {
+        .showUserInfo {
+            .userProfileImage {
+                margin: 2rem 4rem 0 0 !important;
+            }
         }
     }
     header {

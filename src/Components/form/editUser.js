@@ -25,7 +25,7 @@ export default function EditUser(props) {
                 <td> <input type="text" value={userEdit.IDCode} onChange={(e) => getInputsValue("IDCode" , e.target.value)}/> </td>
                 <td> <input type="text" value={userEdit.email} onChange={(e) => getInputsValue("email" , e.target.value)}/> </td>
                 <td> {userEdit.date} </td>
-                <td> <input type="text" value={userEdit.accessRate} onChange={(e) => getInputsValue("accessRate" , e.target.value)}/> </td>
+                <td> {userEdit.accessRate} </td>
                 <td>
                     <div className="icons" onClick={() => edit(userEdit)}>
                         <i className="bi bi-check-circle-fill"></i>

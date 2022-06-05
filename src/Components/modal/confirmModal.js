@@ -8,6 +8,7 @@ export default function ConfirmModal() {
 
 // ================ Redux Functions =============================
     let {modalClass , accessToSimpleModal , userCode} = useSelector(state => state.users);
+    const values = useSelector(state => state.language.values);
     let dispatch = useDispatch();
 
     let deleteUserFromApi = async () => {
@@ -25,11 +26,11 @@ export default function ConfirmModal() {
                     <div className={`background ${modalClass}`}>
                         <div className={`confirmModal`}>
                             <div className={"text"}>
-                                <p>آیا از حذف اطلاعات این شخص اطمینان دارید ؟</p>
+                                <p>{values.confirmModalParagraph}</p>
                             </div>
                             <div className={"buttons"}>
-                                <button className={"dangerBtn"} onClick={() => deleteUserFromApi()} > ! حذفش کن بره باو </button>
-                                <button className={"successBtn"} onClick={() => dispatch(toggleModal(false))}> ! نه پشیمون شدم  </button>
+                                <button className={"dangerBtn"} onClick={() => deleteUserFromApi()} > {values.confirmModalBtn1} </button>
+                                <button className={"successBtn"} onClick={() => dispatch(toggleModal(false))}> {values.confirmModalBtn2}  </button>
                             </div>
                         </div>
                     </div>

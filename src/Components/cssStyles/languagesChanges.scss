@@ -1,0 +1,46 @@
+.leftToRightLanguages {
+    direction: ltr !important;
+    .showUsers {
+        table {
+            tr {
+                th:first-of-type {
+                    border-radius:.5rem 0 0 0;
+                }
+                th:last-of-type {
+                    border-radius: 0 .5rem 0 0 ;
+                }
+            }
+        }
+    }
+    .addUsersForm {
+        .form {
+           .inputs {
+               .radio-inputs {
+                   .accessRate {
+                       .checkmark {
+                           right: unset;
+                       }
+                   }
+               }
+           } 
+        }
+    }
+    header {
+        nav {
+            flex-direction: row-reverse !important;
+            .navbarRight {
+                margin: 0 0 0 5.5rem !important;
+            }
+            .navbarLeft {
+                .listItems {
+                    flex-direction: row-reverse !important;
+                }
+            }
+        }
+    }
+}
+
+.rightToLeftLanguages {
+    direction: rtl !important;
+}
+

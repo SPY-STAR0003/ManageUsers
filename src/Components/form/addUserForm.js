@@ -18,9 +18,11 @@ export default function AddUserForm() {
         email : "",
         accessRate : "",
     })
-// =============== Contexts =====================================
+// =============== Redux Functions ==============================
     const dispatch = useDispatch();
     const formClass = useSelector(state => state.users.formClass)
+    const values = useSelector(state => state.language.values)
+
     
 // a receiver function that set form values to state ============
     const getInputsValue = (key, value) => setUserState({...userState, [key]: value})
@@ -53,18 +55,18 @@ export default function AddUserForm() {
         <div className={`addUsersForm ${formClass}`}>
             <form className="form" onSubmit={formHandler}>
                 <span className={"closeForm"} onClick={() => dispatch(toggleForm())}> + </span>
-                <h3> فرم ثبت نام اعضای جدید </h3>
+                <h3> {values.addNewUserMainHeader} </h3>
                 <div className="inputs">
                     <div className="rightSide">
-                        <InputForm label={"نام و نام خانوادگی :"} type={"text"} value={userState.name} name={"name"} onchangeFunction={(e) => getInputsValue('name', e.target.value)} />
-                        <InputForm label={"کد ملی :"} type={"text"} value={userState.IDCode} name={"IDCode"} onchangeFunction={(e) => getInputsValue('IDCode', e.target.value)} />
+                        <InputForm label={values.addNewUserInput1} type={"text"} value={userState.name} name={"name"} onchangeFunction={(e) => getInputsValue('name', e.target.value)} />
+                        <InputForm label={values.addNewUserInput2} type={"text"} value={userState.IDCode} name={"IDCode"} onchangeFunction={(e) => getInputsValue('IDCode', e.target.value)} />
                     </div>
                     <div className="leftSide">
-                        <InputForm label={"ایمیل :"} type={"text"} value={userState.email} name={"email"} onchangeFunction={(e) => getInputsValue('email', e.target.value)} />
-                        <RadioInputForm mainLabel={"میزان دسترسی کاربر :"} label1={"ادمین"} label2={"عضوساده"} name={"accessRate"} onchangeFunction={getInputsValue}/>
+                        <InputForm label={values.addNewUserInput3} type={"text"} value={userState.email} name={"email"} onchangeFunction={(e) => getInputsValue('email', e.target.value)} />
+                        <RadioInputForm mainLabel={values.addNewUserInput4} label1={values.addNewUserInput5} label2={values.addNewUserInput6} name={"accessRate"} onchangeFunction={getInputsValue}/>
                     </div>
                 </div>
-                <button type="submit"> اضافه کردن عضو جدید </button>
+                <button type="submit"> {values.addNewUserBtn} </button>
             </form>
         </div>
     )

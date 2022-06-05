@@ -39,7 +39,7 @@
         justify-content: space-around;
         align-items: center;
         width: 100%;
-        direction: rtl;
+        direction: inherit;
         .rightSide , .leftSide {
           display: flex;
           flex-direction: column;

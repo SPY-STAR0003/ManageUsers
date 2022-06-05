@@ -6,7 +6,7 @@ import EditUser from "../form/editUser";
 import ShowUserModal from "../modal/showUserModal";
 import ConfirmModal from "../modal/confirmModal";
 // =========== Redux ===========================================
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector } from "react-redux";
 import { editUser , deleteUser } from "./../../store/slices/usersSlice";
 // ============ libraries ====================================
 import instance from "../../api/api";
@@ -20,7 +20,19 @@ export default function MakeTableRows({user}) {
     const [showUser , setShowUser] = useState(false);
     const [editState , setEditState] = useState(false);
     // ============ Redux Functions ==========================
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const rtl = useSelector(state => state.language.rtl);
+    const accessRate = () => {
+        if (user.accessRate === "ادمین" && rtl) {
+            return "ادمین"
+        } else if(user.accessRate === "ادمین" && !rtl) {
+            return "Admin"
+        } else if(user.accessRate === "عضوساده" && rtl) {
+            return "عضو ساده"
+        } else if(user.accessRate === "عضوساده" && !rtl) {
+            return "Simple member"
+        }
+    }
     // ============ Helper function for child components =====
     let toggleShowUser = () => {
         showUser
@@ -35,7 +47,6 @@ export default function MakeTableRows({user}) {
             IDCode : editedUser.IDCode,
             date : editedUser.date,
             email : editedUser.email,
-            accessRate : editedUser.accessRate,
             password : "",
         }) 
         dispatch(editUser(editedUser))
@@ -60,7 +71,7 @@ export default function MakeTableRows({user}) {
                             <td onClick={() => toggleShowUser()}> {PN.convertEnToPe(user.IDCode)} </td>
                             <td onClick={() => toggleShowUser()}> {user.email} </td>
                             <td onClick={() => toggleShowUser()}> {new Date().toLocaleDateString("fa")} </td>
-                            <td onClick={() => toggleShowUser()}> {user.accessRate} </td>
+                            <td onClick={() => toggleShowUser()}> {accessRate()} </td>
                             <td>
                                 <div className="icons">
                                     <i className="bi bi-pencil-square" onClick={() => setEditState(true)}></i>

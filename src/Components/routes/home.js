@@ -13,10 +13,11 @@ export default function Home() {
     // ============= Redux Functions =========================
     const usersList = useSelector(state => state.users.list);
     const loading = useSelector(state => state.loading.showLoading);
+    const values = useSelector(state => state.language.values)
 
     return (
         <div className="showUsers">
-            <h2> جدول اسامی و اطلاعات افراد ثبت نام شده </h2>
+            <h2> {values.tableLabel} </h2>
             {
                 loading 
                 ? <Loading type="spinningBubbles" color="#FF7F3F" /> 

@@ -19,7 +19,7 @@
       background-color: white;
       border-radius: 20px;
       box-shadow: 0 0 6px #ecf0f1;;
-      direction: rtl;
+      direction: inherit;
       h1 {
         padding-top: 2rem;
         margin-bottom: -2rem;
@@ -135,7 +135,7 @@
     margin: 0 auto;
     width: 80%;
     height: 60vh;
-    direction: rtl;
+    direction: inherit;
     .sampleModalBody {
       position: relative;
       margin: 0 auto;

@@ -1,5 +1,7 @@
 import UseDarkMode from "../libraries/useDarkMode";
 import { useState } from "react";
+import { useDispatch , useSelector } from "react-redux";
+import { langEN , langFA } from "./../../store/slices/languageSlice";
 
 export default function FeaturesBtn() {
 
@@ -12,6 +14,9 @@ export default function FeaturesBtn() {
         : showAction("d-flex")
     }
 
+    const dispatch = useDispatch();
+    const values = useSelector(state => state.language.values)
+
     return (
         <div className={"featuresBtn addBtn"} 
             onClick = {() => toggleAction()}
@@ -19,38 +24,46 @@ export default function FeaturesBtn() {
             <i className="bi bi-wrench-adjustable"></i>
             <div className={`actions ${action}`} onMouseLeave={() => toggleAction()}>
                 <div className="actionItem">
-                    حالت شب
+                    {values.featuresBtnDarkModeTitle}
                     <div className="actionItemMenu actionDarkMode">
                         <div 
                             className="actionItemMenuItem"
                             onClick={() => setTheme(true)}
                             >
                             <i className="bi bi-arrow-left-circle-fill"></i>
-                            فعال 
+                            {values.featuresBtnDarkModeli1} 
                         </div>
                         <div 
                             className="actionItemMenuItem"
                             onClick={() => setTheme(false)}
                             >
                             <i className="bi bi-arrow-left-circle-fill"></i>
-                            غیرفعال 
+                            {values.featuresBtnDarkModeli2} 
                         </div>
                     </div>
                 </div>
                 <div className="actionItem">
-                    زبان برنامه
+                    {values.featuresBtnLanguage}
                     <div className="actionItemMenu actionsLanguageBtn">
-                        <div className="actionItemMenuItem"><i className="bi bi-arrow-left-circle-fill"></i> ENGLISH </div>
-                        <div className="actionItemMenuItem"><i className="bi bi-arrow-left-circle-fill"></i> فارسی </div>
-                        <div className="actionItemMenuItem"><i className="bi bi-arrow-left-circle-fill"></i> Deutsch </div>
-                        <div className="actionItemMenuItem"><i className="bi bi-arrow-left-circle-fill"></i> العربیه </div>
+                        <div 
+                            className="actionItemMenuItem"
+                            onClick={() => dispatch(langEN())}
+                        >
+                            <i className="bi bi-arrow-left-circle-fill"></i> ENGLISH 
+                        </div>
+                        <div 
+                            className="actionItemMenuItem"
+                            onClick={() => dispatch(langFA())}
+                        >
+                            <i className="bi bi-arrow-left-circle-fill"></i> فارسی 
+                        </div>
                     </div>
                 </div>
                 <div className="actionItem">
-                    حالت نمایش مخاطبین
+                    {values.featuresBtnShowView} 
                     <div className="actionItemMenu actionsViewBtn">
-                        <div className="actionItemMenuItem"><i className="bi bi-arrow-left-circle-fill"></i> حالت شبکه ای </div>
-                        <div className="actionItemMenuItem"><i className="bi bi-arrow-left-circle-fill"></i> حالت عادی </div>
+                        <div className="actionItemMenuItem"><i className="bi bi-arrow-left-circle-fill"></i> {values.featuresBtnShowViewli1} </div>
+                        <div className="actionItemMenuItem"><i className="bi bi-arrow-left-circle-fill"></i> {values.featuresBtnShowViewli2} </div>
                     </div>
                 </div>
             </div>

@@ -1,14 +1,20 @@
+// ========== Redux ===========================
+import { useSelector } from "react-redux";
+
 export default function TableHeader() {
+// ========== Redux Functions =================
+    const {values} = useSelector(state => state.language)
+
     return (
         <thead>
             <tr>
-                <th> پروفایل </th>
-                <th>نام کاربر </th>
-                <th> کد ملی </th>
-                <th> پست الکترونیکی </th>
-                <th> تاریخ عضویت </th>
-                <th> دسترسی </th>
-                <th> ویرایش </th>
+                <th> {values.tableTh1} </th>
+                <th> {values.tableTh2} </th>
+                <th> {values.tableTh3} </th>
+                <th> {values.tableTh4} </th>
+                <th> {values.tableTh5} </th>
+                <th> {values.tableTh6} </th>
+                <th> {values.tableTh7} </th>
             </tr>
         </thead>
     )

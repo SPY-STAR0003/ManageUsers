@@ -77,7 +77,7 @@ export const englishLanguage = {
     featuresBtnLanguage : "Language",
     featuresBtnShowView : "User view mode",
     featuresBtnShowViewli1 : "Table mode",
-    featuresBtnShowViewli2 : "Lattice mode",
+    featuresBtnShowViewli2 : "Grid mode",
     addNewUserMainHeader : "New member registration form",
     addNewUserInput1 : "Name :",
     addNewUserInput2 : "National Code :",

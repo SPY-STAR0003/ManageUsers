@@ -1,0 +1,36 @@
+.gridMode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 9rem;
+    width: 80%;
+    .gridModeItem {
+        display: flex;
+        margin: 0.5rem;
+        width: 100%;
+        max-width: 500px;
+        background-color: #ecf0f1;
+        border-radius: 6px;
+        .gridModeItemText {
+            width: 70%;
+            padding: 0.8rem;
+            p {
+                margin: 1rem;
+                font-size: .9rem;
+                .title {
+                    font-weight: 800;
+                    margin-left: .3rem;
+                }
+            }
+        }
+        .gridModeItemImage {
+            width: 40%;
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 6px 0 0 6px;
+            }
+        }
+    }
+}

@@ -2,18 +2,18 @@
 // ============ hooks ========================================
 import {useState } from "react";
 // ============ Components ===================================
-import EditUser from "../form/editUser";
-import ShowUserModal from "../modal/showUserModal";
-import ConfirmModal from "../modal/confirmModal";
+import EditUser from "../../form/editUser";
+import ShowUserModal from "../../modal/showUserModal";
+import ConfirmModal from "../../modal/confirmModal";
 // =========== Redux ===========================================
 import { useDispatch , useSelector } from "react-redux";
-import { editUser , deleteUser } from "./../../store/slices/usersSlice";
+import { editUser , deleteUser } from "../../../store/slices/usersSlice";
 // ============ libraries ====================================
-import instance from "../../api/api";
+import instance from "../../../api/api";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import PN from "persian-number";
 // ============ pictures =====================================
-import userPicture from "../images/blank-profile-picture-973460__480.webp";
+import userPicture from "../../images/blank-profile-picture-973460__480.webp";
 
 export default function MakeTableRows({user}) {
     // ============ state ====================================

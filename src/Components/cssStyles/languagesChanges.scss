@@ -54,6 +54,21 @@
             }
         }
     }
+    .gridMode {
+        .gridModeItem {
+            .gridModeItemImage {
+                img {
+                    left: unset;
+                    right: 1rem;
+                }
+            }
+        }
+    }
+    .editModal {
+        .leftAway {
+            margin-left: 9.4rem;
+        }
+    }
 }
 
 .rightToLeftLanguages {

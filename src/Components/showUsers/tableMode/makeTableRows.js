@@ -1,10 +1,9 @@
-
 // ============ hooks ========================================
 import {useState } from "react";
 // ============ Components ===================================
-import EditUser from "../../form/editUser";
+import EditModal from "../../modal/editModal";
 import ShowUserModal from "../../modal/showUserModal";
-// =========== Redux ===========================================
+// =========== Redux =========================================
 import { useDispatch , useSelector } from "react-redux";
 import { editUser , deleteUser } from "../../../store/slices/usersSlice";
 // ============ libraries ====================================
@@ -20,18 +19,7 @@ export default function MakeTableRows({user}) {
     const [editState , setEditState] = useState(false);
     // ============ Redux Functions ==========================
     const dispatch = useDispatch();
-    const rtl = useSelector(state => state.language.rtl);
-    const accessRate = () => {
-        if (user.accessRate === "ادمین" && rtl) {
-            return "ادمین"
-        } else if(user.accessRate === "ادمین" && !rtl) {
-            return "Admin"
-        } else if(user.accessRate === "عضوساده" && rtl) {
-            return "عضو ساده"
-        } else if(user.accessRate === "عضوساده" && !rtl) {
-            return "Simple member"
-        }
-    }
+
     // ============ Helper function for child components =====
     let toggleShowUser = () => {
         showUser
@@ -44,8 +32,10 @@ export default function MakeTableRows({user}) {
         let sendEditedUser = await instance.put(`/users/${editedUser.id}` , {
             name : editedUser.name,
             IDCode : editedUser.IDCode,
+            gender : editedUser.gender,
             date : editedUser.date,
             email : editedUser.email,
+            accessRate : editedUser.accessRate,
             password : "",
         }) 
         dispatch(editUser(editedUser))
@@ -68,9 +58,10 @@ export default function MakeTableRows({user}) {
                             <td onClick={() => toggleShowUser()}> <img src={userPicture} alt="user"/> </td>
                             <td onClick={() => toggleShowUser()}> {user.name} </td>
                             <td onClick={() => toggleShowUser()}> {PN.convertEnToPe(user.IDCode)} </td>
+                            <td onClick={() => toggleShowUser()}> {user.gender} </td>
                             <td onClick={() => toggleShowUser()}> {user.email} </td>
                             <td onClick={() => toggleShowUser()}> {new Date().toLocaleDateString("fa")} </td>
-                            <td onClick={() => toggleShowUser()}> {accessRate()} </td>
+                            <td onClick={() => toggleShowUser()}> {user.accessRate} </td>
                             <td>
                                 <div className="icons">
                                     <i className="bi bi-pencil-square" onClick={() => setEditState(true)}></i>
@@ -79,7 +70,7 @@ export default function MakeTableRows({user}) {
                             </td>
                         </tr>
                     )
-                : <EditUser user={user} edit={editHandler} />
+                : <EditModal user={user} edit={editHandler} setEditState={setEditState} />
             }
         </>
     )

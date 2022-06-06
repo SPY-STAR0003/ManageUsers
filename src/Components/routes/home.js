@@ -15,11 +15,12 @@ import Loading from "../libraries/loading";
 
 export default function Home() {
     // ============= states ==================================
-    const [gridMode , setGridMode] = useState(true)
+    const [gridMode , setGridMode] = useState(false)
     // ============= Redux Functions =========================
     const usersList = useSelector(state => state.users.list);
     const loading = useSelector(state => state.loading.showLoading);
-    const values = useSelector(state => state.language.values)
+    const values = useSelector(state => state.language.values);
+    console.log(usersList)
 
     return (
         <div className="showUsers">

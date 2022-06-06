@@ -15,7 +15,7 @@ export default function ShowUserModal(props) {
     return (
         <div className={"background showUserModalAnimation"}>
             <div className={"showUserModal"}>
-                <h1> {values.showUserModalHeader + user.name} </h1>
+                <h1> {values.showUserModalHeader + " - " + user.name} </h1>
                 <div className="showUserInfo">
                     <div className="text">
                         <p>
@@ -25,6 +25,10 @@ export default function ShowUserModal(props) {
                         <p>
                             <span className={"subject"}> {values.showUserModalParagraph2} </span>
                             <span className={"value"}> {nationalityCode} </span>
+                        </p>
+                        <p>
+                            <span className={"subject"}> {values.addNewUserSelect1} </span>
+                            <span className={"value"}> {user.gender} </span>
                         </p>
                         <p>
                             <span className={"subject"}> {values.showUserModalParagraph3} </span>

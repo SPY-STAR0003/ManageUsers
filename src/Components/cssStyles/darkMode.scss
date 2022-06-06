@@ -43,18 +43,15 @@
         }
       }
     }
-    .addUsersForm {
-      .form {
-        h3 {
+    .editModal {
+      .editModalForm {
+        background: #2a25506e;
+        h2 {
           color: white;
         }
-        background: #2a25506e;
         label {
           color: white;
         }
-      }
-      .closeForm {
-        color: white;
       }
     }
     .background {

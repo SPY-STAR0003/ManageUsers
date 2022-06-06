@@ -15,6 +15,7 @@ export default function TableHeader() {
                 <th> {values.tableTh5} </th>
                 <th> {values.tableTh6} </th>
                 <th> {values.tableTh7} </th>
+                <th> {values.tableTh8} </th>
             </tr>
         </thead>
     )

@@ -34,7 +34,7 @@ export default function AddUserForm() {
             name : userState.name,
             IDCode : userState.IDCode,
             email : userState.email,
-            accessRate : userState.accessRate,
+            accessRate : userState.accessRate || "مشخص نشده است",
             date : new Date().toLocaleDateString("fa"),
             password : ""
         }
@@ -46,7 +46,7 @@ export default function AddUserForm() {
             name : "",
             IDCode : "",
             email : "",
-            accessRate: userState.accessRate,
+            accessRate: user.accessRate,
         })
         dispatch(toggleForm())
     }
@@ -63,7 +63,7 @@ export default function AddUserForm() {
                     </div>
                     <div className="leftSide">
                         <InputForm label={values.addNewUserInput3} type={"text"} value={userState.email} name={"email"} onchangeFunction={(e) => getInputsValue('email', e.target.value)} />
-                        <RadioInputForm mainLabel={values.addNewUserInput4} label1={values.addNewUserInput5} label2={values.addNewUserInput6} name={"accessRate"} onchangeFunction={getInputsValue}/>
+                        <RadioInputForm mainLabel={values.addNewUserInput4} label1={values.addNewUserInput5} label2={values.addNewUserInput6} label3={values.addNewUserInput7} label4={values.addNewUserInput8}  name={"accessRate"} onchangeFunction={getInputsValue}/>
                     </div>
                 </div>
                 <button type="submit"> {values.addNewUserBtn} </button>

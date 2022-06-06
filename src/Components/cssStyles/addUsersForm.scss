@@ -1,5 +1,5 @@
 .addUsersForm {
-    position: absolute;
+    position: fixed;
     justify-content: center;
     align-items: center;
     top: 0;
@@ -55,46 +55,14 @@
             width: 100%;
             border-radius: 5px;
           }
-          .radio-inputs {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin-right: 1.5rem;
-            .accessRate {
-              position: relative;
-              padding-right: 1.5rem;
-              input {
-                opacity: 0;
-              }
-              .checkmark {
-                position: absolute;
-                right: 0;
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                background-color: #ecf0f1;
-              }
-              .checkmark:after {
-                display: none;
-                content: "";
-                position: absolute;
-                top: 5.5px;
-                right: 5.5px;
-                width: 9px;
-                height: 9px;
-                border-radius: 50%;
-                background-color: white;
-              }
-            }
-            .accessRate:hover .checkmark {
-              background-color: lightgray;
-            }
-            .accessRate input:checked ~ .checkmark {
-              background-color: #FF7F3F;
-            }
-            .accessRate input:checked ~ .checkmark:after {
-              display: block;
-            }
+          select {
+            font-family: Vazirmatn , serif;
+            margin: .6rem 1rem .6rem 0;
+            outline: 0;
+            border: 1px solid #ecf0f1;
+            padding: .4rem .3rem;
+            width: 100%;
+            border-radius: 5px;
           }
         }
       }
@@ -109,8 +77,8 @@
         border-radius: 6px;
       }
       button:hover {
-        background-color: transparent;
-        color: #FF7F3F;
+        background-color: #fc5400;
+        cursor: pointer;
       }
     }
   }

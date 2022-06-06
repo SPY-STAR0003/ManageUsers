@@ -4,7 +4,6 @@ import {useState } from "react";
 // ============ Components ===================================
 import EditUser from "../../form/editUser";
 import ShowUserModal from "../../modal/showUserModal";
-import ConfirmModal from "../../modal/confirmModal";
 // =========== Redux ===========================================
 import { useDispatch , useSelector } from "react-redux";
 import { editUser , deleteUser } from "../../../store/slices/usersSlice";
@@ -82,7 +81,6 @@ export default function MakeTableRows({user}) {
                     )
                 : <EditUser user={user} edit={editHandler} />
             }
-            <ConfirmModal />
         </>
     )
 }

@@ -7,6 +7,7 @@ import SimpleModal from "../modal/simpleModal";
 import AddNewUserBtn from "../form/addNewUserBtn";
 import AddUserForm from "../form/addUserForm";
 import ShowUsersInGridMode from '../showUsers/gridMode';
+import ConfirmModal from '../modal/confirmModal';
 // =========== Redux =========================================
 import { useSelector } from "react-redux";
 // ================= libraries ===============================
@@ -57,6 +58,7 @@ export default function Home() {
             }
             <AddUserForm />
             <AddNewUserBtn />
+            <ConfirmModal />
         </div>
     )
 }

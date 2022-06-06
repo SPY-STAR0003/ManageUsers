@@ -84,7 +84,9 @@ export const englishLanguage = {
     addNewUserInput3 : "Email :",
     addNewUserInput4 : "User access rate:",
     addNewUserInput5 : "Admin",
-    addNewUserInput6 : "Simple User",
+    addNewUserInput6 : "assistant",
+    addNewUserInput7 : "advisor",
+    addNewUserInput8 : "Simple User",
     addNewUserBtn : "Add new user",
     loadingParagraph : "Receiving information from the server ..."
 }

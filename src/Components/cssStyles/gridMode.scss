@@ -6,15 +6,19 @@
     margin: 0 9rem;
     width: 80%;
     .gridModeItem {
+        position: relative;
         display: flex;
+        align-items: center;
         margin: 0.5rem;
         width: 100%;
-        max-width: 500px;
+        max-width: 550px;
+        max-height: 500px;
         background-color: #ecf0f1;
-        border-radius: 6px;
+        border-radius: 2rem;
         .gridModeItemText {
             width: 70%;
             padding: 0.8rem;
+            border-radius: 6px;
             p {
                 margin: 1rem;
                 font-size: .9rem;
@@ -27,10 +31,68 @@
         .gridModeItemImage {
             width: 40%;
             img {
+                position: relative;
+                left: 1rem;
+                width: 100%;
+                border-radius: 50%;
+            }
+        }
+        .editBtns {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            opacity: 0;
+            transition: .4s;
+            .shadow {
+                position: absolute;
+                top: 0;
+                left: 0;
                 width: 100%;
                 height: 100%;
-                border-radius: 6px 0 0 6px;
+                background-color: #34495e;
+                opacity: .7;
+                border-radius: 2rem;
             }
+            .btns {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                z-index: 999;
+                .btn {
+                    outline: none;
+                    padding: 0.4rem 0.7rem;
+                    margin: 0 0.7rem;
+                    font-size: .9rem;
+                    font-family: Vazirmatn, serif;
+                    border-radius: 6px;
+                    transition: all .4s;
+                }
+                .btn-primary {
+                    border: 1px solid dodgerblue;
+                    color: dodgerblue;
+                }
+                .btn-primary:hover {
+                    background-color: dodgerblue;
+                    color: white;
+                }
+                .btn-warning {
+                    border: 1px solid #F32424;
+                    color: #F32424;
+                }
+                .btn-warning:hover {
+                    background-color: #F32424;
+                    color: white;
+                }
+            }
+        }
+        .editBtns:hover {
+            opacity: 1;
         }
     }
 }

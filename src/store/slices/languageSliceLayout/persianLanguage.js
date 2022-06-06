@@ -83,8 +83,10 @@ export const persianLanguage = {
     addNewUserInput2 : "کد ملی :",
     addNewUserInput3 : "ایمیل :",
     addNewUserInput4 : "میزان دسترسی کاربر :",
-    addNewUserInput5 : "ادمین",
-    addNewUserInput6 : "عضوساده",
+    addNewUserInput5 : "مدیر",
+    addNewUserInput6 : "معاون",
+    addNewUserInput7 : "مشاور",
+    addNewUserInput8 : "عضو ساده",
     addNewUserBtn : "اضافه کردن عضو جدید",
     loadingParagraph : "در حال دریافت اطلاعات از سرور"
 }

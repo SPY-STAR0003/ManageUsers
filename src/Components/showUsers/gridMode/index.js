@@ -64,8 +64,8 @@ export default function ShowUsersInGridMode({user}) {
                 </div>
                 <div className="editBtns">
                     <div className="btns">
-                        <button className="btn btn-primary" onClick={() => setShowEditModal(true)}> {values.gridModeDeleteBtn} </button>
-                        <button className="btn btn-warning" onClick={() => dispatch(deleteUser(user.id))}> {values.gridModeEditBtn} </button>
+                        <button className="btn btn-primary" onClick={() => setShowEditModal(true)}> {values.gridModeEditBtn} </button>
+                        <button className="btn btn-warning" onClick={() => dispatch(deleteUser(user.id))}> {values.gridModeDeleteBtn} </button>
                     </div>
                     <div className="shadow"></div>
                 </div>

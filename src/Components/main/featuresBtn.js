@@ -59,13 +59,6 @@ export default function FeaturesBtn() {
                         </div>
                     </div>
                 </div>
-                <div className="actionItem">
-                    {values.featuresBtnShowView} 
-                    <div className="actionItemMenu actionsViewBtn">
-                        <div className="actionItemMenuItem"><i className="bi bi-arrow-left-circle-fill"></i> {values.featuresBtnShowViewli1} </div>
-                        <div className="actionItemMenuItem"><i className="bi bi-arrow-left-circle-fill"></i> {values.featuresBtnShowViewli2} </div>
-                    </div>
-                </div>
             </div>
         </div>
     )

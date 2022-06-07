@@ -1,0 +1,87 @@
+.leftToRightLanguages {
+    direction: ltr !important;
+    transition: all .4s;
+    .showUsers {
+        table {
+            tr {
+                th:first-of-type {
+                    border-radius:.5rem 0 0 0;
+                }
+                th:last-of-type {
+                    border-radius: 0 .5rem 0 0 ;
+                }
+            }
+            tr:last-of-type {
+                td:first-of-type {
+                  border-radius: 0 0 0 .5rem;
+                }
+                td:last-of-type {
+                  border-radius: 0 0 .5rem 0;
+                }
+              }
+        }
+    }
+    .addUsersForm {
+        .form {
+           .inputs {
+               .radio-inputs {
+                   .accessRate {
+                       .checkmark {
+                           right: unset;
+                       }
+                   }
+               }
+           } 
+        }
+    }
+    .showUserModal {
+        .showUserInfo {
+            .text {
+                p {
+                    .value {
+                        float: left;
+                    }
+                    .subject {
+                        float: left;    
+                    }
+                }
+            }
+            .userProfileImage {
+                margin: 2rem 4rem 0 0 !important;
+            }
+        }
+    }
+    header {
+        nav {
+            flex-direction: row-reverse !important;
+            .navbarRight {
+                margin: 0 0 0 5.5rem !important;
+            }
+            .navbarLeft {
+                .listItems {
+                    flex-direction: row-reverse !important;
+                }
+            }
+        }
+    }
+    .gridMode {
+        .gridModeItem {
+            .gridModeItemImage {
+                img {
+                    left: unset;
+                    right: 1rem;
+                }
+            }
+        }
+    }
+    .addEditModal {
+        .leftAway {
+            margin-left: 9.4rem;
+        }
+    }
+}
+
+.rightToLeftLanguages {
+    direction: rtl !important;
+}
+

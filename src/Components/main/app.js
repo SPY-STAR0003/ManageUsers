@@ -1,58 +1,50 @@
 // =========== React & Hooks ===================================
-import React, {useEffect , useReducer, useState} from "react";
+import React, { useEffect } from "react";
 // =========== Componenets =====================================
 import HeaderProject from "./headerProject";
-// =========== Context & Reducers ==============================
-import UsersContext from "../../context/usersContext";
-import AppReducer from "../../reducers/appReducer";
+import FeaturesBtn from "./featuresBtn";
 // =========== Libraries =======================================
 import instance from "../../api/api";
 import { Routes , Route } from "react-router-dom";
-import Loading from "../modal/loading";
+// =========== Redux ===========================================
+import { useDispatch } from "react-redux";
+import { getUsersFromDatabase } from "./../../store/slices/usersSlice";
+import { changeShowLoading } from "./../../store/slices/loadingSlice"
 // =========== Routes ==========================================
 import Home from "./../routes/home";
 import Help from "../routes/help";
 import AboutProject from "./../routes/aboutProject";
 // =========== css files =======================================
 import "../cssStyles/bundle.scss";
+import NotFound from "../routes/notFound";
 
 export default function App() {
-    // ============ states =====================================
-    const [loading , showLoading] = useState(false)
-
-    // ============ Reducers ===================================
-    const [state , dispatch] = useReducer(AppReducer ,{
-        users : [],
-        formClass : "d-none",
-        simpleModalClass: "d-none",
-        accessToSimpleModal : false,
-        userCode:"",
-    })
+    // ============ Redux Functions ============================
+    const dispatch = useDispatch()
 
     // ============ useEffects =================================
     const getUsers = async () => {
-        showLoading(true);
+        dispatch(changeShowLoading())
         const getUsersRequest = await instance.get("/users");
-        const users = getUsersRequest.data.data;
-        dispatch({type : "getUsersFromDatabase" , payload : {usersInDataBase : users} });
-        showLoading(false);
+        const usersList = getUsersRequest.data.data;
+        dispatch(getUsersFromDatabase(usersList));
+        dispatch(changeShowLoading())
     }
 
     useEffect(() => {
         getUsers()
-    }, []);
+    });
     
     return (
-        <UsersContext.Provider value={{state,dispatch}}>
-                <HeaderProject />
-                {
-                    loading ? <Loading type="spinningBubbles" color="#FF7F3F" /> : null
-                }
+        <>
+            <HeaderProject />
                 <Routes>
-                    <Route path="/" element={<Home />}/>
+                    <Route path="/" element={<Home />} />
                     <Route path="/help" element={<Help />}/>
                     <Route path="/aboutProject" element={<AboutProject />}/>
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
-        </UsersContext.Provider>
+            <FeaturesBtn />
+        </>
     )
 }

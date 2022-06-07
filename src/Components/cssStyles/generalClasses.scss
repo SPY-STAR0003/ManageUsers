@@ -1,0 +1,32 @@
+.d-none {
+  display: none !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+input , textarea , select{
+  font-family: Vazirmatn , serif;
+  text-align: center;
+  outline: 0;
+  border: 1px solid #ecf0f1;
+  padding: .5rem 0;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 0 2px #fff;
+  transition: .4s;
+}
+
+// select {
+//   margin: .6rem 1rem .6rem 0;
+// }
+
+input:focus , textarea:focus {
+  box-shadow: 0 0 2px #FF7600;
+}
+
+textarea::placeholder {
+  color: #d3d3d3;
+}
+

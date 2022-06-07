@@ -1,47 +1,64 @@
-// ================= hooks ===================================
-import { useContext } from "react";
+// ================ hooks ====================================
+import { useState } from 'react';
 // ================= components ==============================
-import MakeTableRows from "../table/makeTableRows";
-import TableHeader from "../table/tableHeader";
+import MakeTableRows from "../showUsers/tableMode/makeTableRows";
+import TableHeader from "../showUsers/tableMode/tableHeader";
 import SimpleModal from "../modal/simpleModal";
-import AddNewUserBtn from "../form/addNewUserBtn";
+import AddNewUserBtn from "../main/addNewUserBtn";
 import AddUserForm from "../form/addUserForm";
-// ================= contexts ================================
-import UsersContext from "../../context/usersContext";
+import ShowUsersInGridMode from '../showUsers/gridMode';
+import ConfirmModal from '../modal/confirmModal';
+// =========== Redux =========================================
+import { useSelector } from "react-redux";
+// ================= libraries ===============================
+import Loading from "../libraries/loading";
 
 export default function Home() {
-    // ============= context =================================
-    const usersContext = useContext(UsersContext);
-    let { users } = usersContext.state;
-    
+    // ============= states ==================================
+    const [gridMode , setGridMode] = useState(false)
+    // ============= Redux Functions =========================
+    const usersList = useSelector(state => state.users.list);
+    const loading = useSelector(state => state.loading.showLoading);
+    const values = useSelector(state => state.language.values);
+
     return (
-        <div className={"showUsers"}>
-            <h2> جدول اسامی و اطلاعات افراد ثبت نام شده </h2>
+        <div className="showUsers">
+            <div className="showUsersHeader">
+                <h2> {values.tableLabel} </h2>
+                <div className="chooseShowMode">
+                    <i className="bi bi-grid" onClick={() => setGridMode(true)}></i>
+                    <i className="bi bi-table" onClick={() => setGridMode(false)}></i>
+                </div>
+            </div>
             {
-                users.length !== 0
-                    ? 
-                        (
-                            <div className="tableBox">
-                                <table>
-                                    <TableHeader />
-                                    <tbody>
-                                    {
-                                        users.length !== 0
-                                            ? (
-                                                users.map((user , index) => <MakeTableRows key={index} user={user}/>)
-                                            )
-                                            // simpleModal is for making UI better !
-                                            // it say to user that there's no users ! 
-                                            : <SimpleModal />
-                                    }
-                                    </tbody>
-                                </table>
-                            </div>
-                        )
+                loading 
+                ? <Loading type="spinningBubbles" color="#FF7F3F" /> 
+                : usersList.length !== 0
+                    ? gridMode
+                        ? 
+                            (
+                                <div className='gridMode'>
+                                    {usersList.map((user , index) => <ShowUsersInGridMode key={index} user={user} />) }
+                                </div>
+                            )
+                        :                         
+                            (
+                                <div className="tableBox">
+                                    <table>
+                                        <TableHeader />
+                                        <tbody>
+                                            {usersList.map((user , index) => <MakeTableRows key={index} user={user}/>)}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            )
+                    // simpleModal is for making UI better !
+                    // it say to user that there's no users ! 
                     : <SimpleModal />
             }
             <AddUserForm />
             <AddNewUserBtn />
+            <ConfirmModal />
         </div>
     )
 }

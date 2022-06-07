@@ -1,0 +1,114 @@
+.addBtn {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 2rem;
+    left: 2rem;
+    padding: .3rem;
+    border: 1px solid #FF7F3F;
+    width: 3rem;
+    background-color: #FF7F3F;
+    color: white;
+    font-size: 3rem;
+    font-weight: 900;
+    border-radius: 100%;
+    z-index: 9999;
+    transition: .4s;
+}
+
+.addBtn:hover {
+    background-color: white;
+    color: #FF7F3F;
+    cursor: pointer;
+    transform: rotate(90deg);
+}
+
+.featuresBtn {
+    height: 3rem !important;
+    left: unset;
+    right: 2rem !important;
+    bottom: 2rem !important;
+    i {
+        font-size: 2rem;
+    }
+    .actions {
+        position: absolute;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        bottom: 1rem;
+        right: 4.2rem;
+        border: 1px solid #FF7F3F;
+        width: 10rem;
+        background-color: rgba(255, 255, 255, 0.808);
+        color: #FF7F3F;
+        border-radius: 6px;
+        font-size: .9rem;
+        animation: opacityAnime .4s;
+        .actionItem {
+        position: relative;
+        text-align: center;
+        padding: 1rem 0;
+        width: 100%;
+        transition: .4s;
+        .actionDarkMode {
+            bottom: -1.5rem;
+        }
+        .actionsLanguageBtn {
+            bottom: -1.5rem;   
+        }
+        .actionsViewBtn {
+            bottom: -1.5rem;
+            i {
+            right: 12px !important;
+            }
+        }
+        .actionItemMenu {
+            display: none;
+            position: absolute;
+            right: 10.1rem;
+            width: 10rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #FF7F3F;
+            border-radius: 6px;
+            font-size: .9rem;
+            animation: normalAppearFromRight .8s;
+            .actionItemMenuItem {
+                position: relative;
+                text-align: center;
+                padding: 1rem 0;
+                width: 100%;
+                color: #FF7F3F;
+                transition: .4s;
+                i {
+                    display: none;
+                    position: absolute;
+                    right: 20px;
+                    top: 14px;
+                    font-size: 1.2rem;
+                    animation: normalAppearFromRight .4s;
+                }
+            }
+            .actionItemMenuItem:hover {
+            color: #f65200;
+            }
+            .actionItemMenuItem:hover i {
+            display: block;
+            }
+            }
+        }
+        .actionItem:hover .actionItemMenu {
+        display: block;
+        }
+        .actionItem:hover {
+        background-color: #FF7F3F;
+        color: #ffffff;
+        }
+    }
+}
+
+.featuresBtn:hover {
+transform: scale(1.2);
+}

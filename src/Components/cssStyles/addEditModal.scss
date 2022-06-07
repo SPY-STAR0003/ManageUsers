@@ -1,0 +1,124 @@
+.addEditModal {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px);
+    z-index: 999999;
+    animation: scaleAnime .5s;
+    .addEditModalForm {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        width: 50%;
+        color: #2c3e50;
+        background-color: rgba(255,255,255,.7);
+        box-shadow: 0 0 1rem #2c3e5056;
+        border-radius: 6px;
+        .imageDiv {
+            position: absolute;
+            top: -3rem;
+            left: -3rem;
+            border: 4px solid #ecf0f1;
+            outline: 2px solid #2c3e5028;
+            max-width: 13rem;
+            max-height: 13rem;
+            border-radius: 50%;
+            .imageDivBox {
+                position: relative;
+                img {
+                    height: 100%;
+                    width: 100%;
+                    border-radius: 50%;
+                }
+                .shadowImage {
+                    position: absolute;
+                    display: none;
+                    justify-content: center;
+                    align-items: center;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: transparent;
+                    border-radius: 50%;
+                    opacity: 1;
+                    overflow-y: hidden;
+                    i {
+                        position: absolute;
+                        bottom: unset;
+                        left: unset;
+                        font-size: 4rem;
+                        color: #ff6a25;
+                        transition: .2s;
+                        animation: scaleAnime .4s;
+                    }
+                    .shadowImageText {
+                        position: absolute;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 30%;
+                        width: 100%;
+                        bottom: 0;
+                        font-size: .7rem;
+                        color: white;
+                        background-color: #ff6a2544;
+                        animation: opacityAnime .4s;
+                    }
+                }
+            }
+            .imageDivBox:hover .shadowImage {
+                display: flex;
+            }
+        }
+        .groupInputs {
+            display: flex;
+            justify-content: space-between;
+        }
+        h2 {
+            margin: 1rem 0 1.5rem 4rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        label {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            text-indent: 1rem;
+            font-weight: 600;
+            input , textarea , select {
+                margin: .8rem 0 1.5rem;
+                width: 100%;
+                font-size: 1rem;
+            }
+        }
+        .bi {
+            position: absolute;
+            bottom: -1.5rem;
+            left: -1.2rem;
+            font-size: 4rem;
+            color: #ff6a25;
+            transition: .2s; 
+        }
+        .bi:hover {
+            color: #FF5403;
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+        .bi-x-circle-fill {
+            font-size: 2.5rem;
+            bottom: unset !important;
+            left: unset !important;
+            top: .8rem !important;
+            right: .8rem !important;
+        }
+    }
+}

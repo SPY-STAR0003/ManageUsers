@@ -1,18 +1,21 @@
-// =============== hooks =================================
+// =========== React hooks ===============================
 import {useState} from "react";
+// =========== Redux =====================================
+import {useSelector} from "react-redux";
 
 export default function SimpleModal() {
-// =============== state =================================
-    const [showModal , setShowModal] = useState("d-flex")
-
+// =========== states ====================================
+    const [showModal , setShowModal] = useState("d-flex");
+// =========== Redux Functions ===========================
+    const values = useSelector(state => state.language.values);
     return (
         <div className={`sampleModal ${showModal}`}>
             <div className={"sampleModalBody"}>
                 <span className={"closeBtn"} onClick={() => setShowModal("d-none")}> + </span>
                 <p>
-                    به نظر میرسه هنوز اطلاعاتی رو ثبت نکردی !
+                    {values.simpleModalParagraph1}
                     <br />
-                    اشکالی نداره! فقط کافیه روی دکمه + در پایین صفحه کلیک کنی!
+                    {values.simpleModalParagraph2}
                 </p>
             </div>
         </div>

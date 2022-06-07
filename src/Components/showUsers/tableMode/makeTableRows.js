@@ -4,7 +4,7 @@ import {useState } from "react";
 import EditModal from "../../modal/editModal";
 import ShowUserModal from "../../modal/showUserModal";
 // =========== Redux =========================================
-import { useDispatch , useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { editUser , deleteUser } from "../../../store/slices/usersSlice";
 // ============ libraries ====================================
 import instance from "../../../api/api";
@@ -36,7 +36,7 @@ export default function MakeTableRows({user}) {
             date : editedUser.date,
             email : editedUser.email,
             accessRate : editedUser.accessRate,
-            password : "",
+            description : editedUser.description,
         }) 
         dispatch(editUser(editedUser))
         setEditState(false);

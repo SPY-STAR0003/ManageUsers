@@ -37,6 +37,9 @@ header {
             background-color: inherit;
             color: inherit;
           }
+          .listItem.active {
+            color: #FF5F00;
+          }
           .listItem:hover::before {
             content: "";
             position: absolute;

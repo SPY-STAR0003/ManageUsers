@@ -1,7 +1,22 @@
 ## ManageUsers
+
+### What's new in v4.0 ?
+Version 4.0 is a version with attractive changes, most of which are in the UI and UX.
+
+The changes are :
+
+    - Added Dark Mode to the project
+    - Added English language to the project
+    - Added grid view mode for users to the project
+    - Added gender attributes and descriptions to people who register
+    - Added more access to the access section
+    - Replace redux with context
+    - Change modals related to adding and editing contacts
+    - fix bugs
 ### What's new in v3.0 ?
 Big Changes for project ! In Coding & UI :) :) 
-the changes are :
+The changes are :
+
     - Add a about us page to project for contact to us
     - Add Documents to project
     - Add a loading to project

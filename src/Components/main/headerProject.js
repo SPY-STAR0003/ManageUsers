@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+// ============= libraries ========================================
+import { NavLink } from "react-router-dom";
+// ============= Redux ============================================
 import { useSelector } from "react-redux";
 
 export default function HeaderProject() {
-    // this is Page HeaderProject !!! Very Useful Comment :/ ==============
-
+    // this is Page HeaderProject !!! Very Useful Comment :/ ======
     const values = useSelector(state => state.language.values);
 
     return (
@@ -14,9 +15,9 @@ export default function HeaderProject() {
                 </div>
                 <div className="navbarLeft">
                     <div className="listItems">
-                        <Link className="listItem" to="/"> {values.navItem1} </Link>
-                        <Link className="listItem" to="/help"> {values.navItem2} </Link>
-                        <Link className="listItem" to="/aboutProject"> {values.navItem3} </Link>
+                        <NavLink className="listItem" to="/"> {values.navItem1} </NavLink>
+                        <NavLink className="listItem" to="/help"> {values.navItem2} </NavLink>
+                        <NavLink className="listItem" to="/aboutProject"> {values.navItem3} </NavLink>
                     </div>
                 </div>
             </nav>

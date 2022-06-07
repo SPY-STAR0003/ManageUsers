@@ -1,4 +1,4 @@
-.editModal {
+.addEditModal {
     position: fixed;
     display: flex;
     justify-content: center;
@@ -10,7 +10,7 @@
     backdrop-filter: blur(3px);
     z-index: 999999;
     animation: scaleAnime .5s;
-    .editModalForm {
+    .addEditModalForm {
         position: relative;
         display: flex;
         flex-direction: column;

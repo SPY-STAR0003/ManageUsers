@@ -12,6 +12,7 @@ export default function ConfirmModal() {
     let dispatch = useDispatch();
 
     let deleteUserFromApi = async () => {
+        // eslint-disable-next-line
         let deleteUserRequest = await instance.delete(`/users/${userCode}`);
         dispatch(deleteUser())
     }

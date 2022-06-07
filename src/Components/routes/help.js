@@ -1,3 +1,6 @@
+// ========== Redux =====================================
+import { useSelector } from "react-redux";
+// ========== Media =====================================
 import picHelp1 from "./../images/help1.png";
 import picHelp2 from "./../images/help2.png";
 import picHelp3 from "./../images/help3.png";
@@ -6,10 +9,8 @@ import picHelp5 from "./../images/help5.png";
 import picHelp6 from "./../images/help6.png";
 import picHelp7 from "./../images/help7.png";
 
-import { useSelector } from "react-redux";
-
 export default function Help() {
-
+// ========== Redux Functions ===========================
     const values = useSelector(state => state.language.values)
 
     return (

@@ -1,20 +1,25 @@
+// =============== React Hooks ==================================
 import { useState } from "react";
+// =============== Redux ========================================
 import { useSelector } from "react-redux";
+// =============== Components ===================================
 import InputForm from "../form/inputForm";
-import TextareaInput from "./textareaInput";
-import picture from "./../images/blank-profile-picture-973460__480.webp";
+import TextareaInput from "./../form/textareaInput";
 import SelectInput from "../form/selectInput";
+// =============== Media ========================================
+import picture from "./../images/blank-profile-picture-973460__480.webp";
 
 export default function EditModal({user , edit , setEditState}) {
-
-    let {code ,name , IDCode , gender , email , date , accessRate , id} = user;
-
+    // =================== Exctract Props ========================
+    let {code ,name , IDCode , gender , email , date , accessRate , description , id} = user;
+    // =================== States ================================
     const [editedUser , setEditedUser] = useState({
-        code ,name , IDCode , gender , email , date , accessRate , id
+        code ,name , IDCode , gender , email , date , accessRate , description , id
     });
-
-    const editHandler = (key , value) => setEditedUser({ ... editedUser , [key] : value})
-
+    // === This function will change user's information ==========
+    // === This function will happen everytime inputs change =====
+    const editHandler = (key , value) => setEditedUser({ ...editedUser , [key] : value})
+    // ==================== Redux Functions ======================
     const values = useSelector(state => state.language.values)
 
     return (
@@ -22,7 +27,7 @@ export default function EditModal({user , edit , setEditState}) {
             <div className="editModalForm">
                 <div className="imageDiv">
                     <div className="imageDivBox">
-                        <img src={picture} alt="Profile Picture" />
+                        <img src={picture} alt="Profile" />
                         <div className="shadowImage">
                             <i className="bi bi-camera2"></i>
                             <div className="shadowImageText"> {values.addNewUserUploadPicture} </div>
@@ -69,8 +74,11 @@ export default function EditModal({user , edit , setEditState}) {
                     />
                 </div>
                 <TextareaInput 
+                    name = {"description"} 
                     label={values.addNewUserTextarea}
+                    value={editedUser.description}
                     status={values.addNewUserTextareaStatus}
+                    changer={editHandler}
                 />
                 <i className="bi bi-check-circle-fill" onClick={() => edit(editedUser)}></i>
                 <i className="bi bi-x-circle-fill" onClick={() => setEditState(false)}></i>

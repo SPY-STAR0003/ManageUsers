@@ -1,13 +1,19 @@
-import picture from "./../../images/blank-profile-picture-973460__480.webp";
+// ============ React Hooks =================================
 import { useState } from "react"; 
+// ============ Components ==================================
+import EditModal from "../../modal/editModal";
+// ============ Redux =======================================
 import { useDispatch , useSelector } from "react-redux";
 import {deleteUser , editUser} from "../../../store/slices/usersSlice"
-import EditModal from "../../modal/editModal";
+// ============ API =========================================
 import instance from "../../../api/api";
+// ============ Media =======================================
+import picture from "./../../images/blank-profile-picture-973460__480.webp";
 
 export default function ShowUsersInGridMode({user}) {
-
+// ============ states ======================================
     const [showEditModal , setShowEditModal] = useState(false)
+// ============ Redux Functions =============================
     const dispatch = useDispatch()
     const values = useSelector(state => state.language.values)
 
@@ -20,7 +26,7 @@ export default function ShowUsersInGridMode({user}) {
             date : editedUser.date,
             email : editedUser.email,
             accessRate : editedUser.accessRate,
-            password : "",
+            description : editedUser.description,
         }) 
         dispatch(editUser(editedUser))
         setShowEditModal(false);
@@ -60,7 +66,7 @@ export default function ShowUsersInGridMode({user}) {
                     </p>
                 </div>
                 <div className="gridModeItemImage">
-                    <img src={picture} />
+                    <img src={picture} alt="import profile" />
                 </div>
                 <div className="editBtns">
                     <div className="btns">

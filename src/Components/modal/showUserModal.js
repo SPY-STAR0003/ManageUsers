@@ -1,14 +1,12 @@
 // ============= libraries =========================================
 import PN from "persian-number";
-
+// ============= Redux =============================================
 import { useSelector } from "react-redux"; 
 // ============= pictures ==========================================
 import exampleUserPicture from "../images/blank-profile-picture-973460__480.webp";
 
-export default function ShowUserModal(props) {
-
-    let {user , toggleShowModal} = props;
-
+export default function ShowUserModal({user , toggleShowModal}) {
+    // ========= Redux Functions ===================================
     const values = useSelector(state => state.language.values);
     const nationalityCode = useSelector(state => state.language.rtl) ? PN.convertEnToPe(user.IDCode) : user.IDCode
 
@@ -40,7 +38,7 @@ export default function ShowUserModal(props) {
                         </p>
                         <p>
                             <span className={"subject"}> {values.showUserModalParagraph5} </span>
-                            <span className={"value valueInfo"}> {values.showUserModalParagraph6} </span>
+                            <span className={"value valueInfo"}> {user.description} </span>
                         </p>
                     </div>
                     <div className={"userProfileImage"}>

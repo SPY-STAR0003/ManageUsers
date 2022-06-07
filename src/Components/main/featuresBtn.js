@@ -1,19 +1,23 @@
-import UseDarkMode from "../libraries/useDarkMode";
+// =========== React Hooks ======================================
 import { useState } from "react";
+// =========== Redux ============================================
 import { useDispatch , useSelector } from "react-redux";
+// =========== libraries & maked States =========================
+import UseDarkMode from "../libraries/useDarkMode";
 import { langEN , langFA } from "./../../store/slices/languageSlice";
 
 export default function FeaturesBtn() {
-
+    // eslint-disable-next-line
     const [theme , setTheme] = UseDarkMode(true)
     const [action , showAction] = useState("d-none");
     
+    // this function will appear or disappear features Menu !
     const toggleAction = () => {
         action === "d-flex" 
         ? showAction("d-none")
         : showAction("d-flex")
     }
-
+    // ============= Redux Functions ============================
     const dispatch = useDispatch();
     const values = useSelector(state => state.language.values)
 
@@ -48,14 +52,16 @@ export default function FeaturesBtn() {
                         <div 
                             className="actionItemMenuItem"
                             onClick={() => dispatch(langEN())}
-                        >
-                            <i className="bi bi-arrow-left-circle-fill"></i> ENGLISH 
+                            >
+                            <i className="bi bi-arrow-left-circle-fill"></i>
+                            ENGLISH 
                         </div>
                         <div 
                             className="actionItemMenuItem"
                             onClick={() => dispatch(langFA())}
-                        >
-                            <i className="bi bi-arrow-left-circle-fill"></i> فارسی 
+                            >
+                            <i className="bi bi-arrow-left-circle-fill"></i>
+                            فارسی 
                         </div>
                     </div>
                 </div>

@@ -16,6 +16,7 @@ import Help from "../routes/help";
 import AboutProject from "./../routes/aboutProject";
 // =========== css files =======================================
 import "../cssStyles/bundle.scss";
+import NotFound from "../routes/notFound";
 
 export default function App() {
     // ============ Redux Functions ============================
@@ -32,7 +33,7 @@ export default function App() {
 
     useEffect(() => {
         getUsers()
-    }, []);
+    });
     
     return (
         <>
@@ -41,6 +42,7 @@ export default function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/help" element={<Help />}/>
                     <Route path="/aboutProject" element={<AboutProject />}/>
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
             <FeaturesBtn />
         </>

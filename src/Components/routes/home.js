@@ -4,7 +4,7 @@ import { useState } from 'react';
 import MakeTableRows from "../showUsers/tableMode/makeTableRows";
 import TableHeader from "../showUsers/tableMode/tableHeader";
 import SimpleModal from "../modal/simpleModal";
-import AddNewUserBtn from "../form/addNewUserBtn";
+import AddNewUserBtn from "../main/addNewUserBtn";
 import AddUserForm from "../form/addUserForm";
 import ShowUsersInGridMode from '../showUsers/gridMode';
 import ConfirmModal from '../modal/confirmModal';
@@ -20,7 +20,6 @@ export default function Home() {
     const usersList = useSelector(state => state.users.list);
     const loading = useSelector(state => state.loading.showLoading);
     const values = useSelector(state => state.language.values);
-    console.log(usersList)
 
     return (
         <div className="showUsers">

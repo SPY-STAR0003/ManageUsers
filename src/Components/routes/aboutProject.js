@@ -1,7 +1,8 @@
+// =========== Redux ===================================
 import { useSelector } from "react-redux";
 
 export default function AboutProject() {
-
+// =========== Redux Functions =========================
     const values = useSelector(state => state.language.values);
 
     return (
@@ -19,6 +20,22 @@ export default function AboutProject() {
             </div>
             <div className="aboutProjectRouteItem">
                 <h2> {values.aboutRouteAbilitiesHeader} </h2>
+                <div className="item">
+                    <h3> {values.aboutRouteAbilitiesV4_Header} </h3>
+                    <p>
+                        {values.aboutRouteAbilitiesV4_Paraghraph}
+                    </p>
+                    <ul>
+                        <li> {values.aboutRouteAbilitiesV4_li1} </li>
+                        <li> {values.aboutRouteAbilitiesV4_li2} </li>
+                        <li> {values.aboutRouteAbilitiesV4_li3} </li>
+                        <li> {values.aboutRouteAbilitiesV4_li4} </li>
+                        <li> {values.aboutRouteAbilitiesV4_li5} </li>
+                        <li> {values.aboutRouteAbilitiesV4_li6} </li>
+                        <li> {values.aboutRouteAbilitiesV4_li7} </li>
+                        <li> {values.aboutRouteAbilitiesV4_li8} </li>
+                    </ul>
+                </div>
                 <div className="item">
                     <h3> {values.aboutRouteAbilitiesV3_Header} </h3>
                     <p>

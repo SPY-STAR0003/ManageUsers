@@ -26,25 +26,25 @@
       }
     }
     .showUserModal {
-      background-color: #2a25506e;
+      background-color: #2a25506e !important;
       h1 {
-        color: white;
+        color: white !important;
       }
       .showUserInfo {
         .text {
           p {
             .subject {
-              color: #d0d0d0;
+              color: #d0d0d0 !important;
             }
             .value {
-              color: white;
+              color: white !important;
             }
           }
         }
       }
     }
-    .editModal {
-      .editModalForm {
+    .addEditModal {
+      .addEditModalForm {
         background: #2a25506e;
         h2 {
           color: white;

@@ -1,8 +1,8 @@
-// Redux =============================================
-import { toggleForm } from "./../../store/slices/usersSlice";
+// =================== Redux ========================================
+import { toggleForm } from "../../store/slices/usersSlice";
 import { useDispatch } from "react-redux";
 
-// ==== A button in left bottom side to add User =====
+//  A button in left bottom side to add User ========================
 export default function AddNewUserBtn() {
 
     const dispatch = useDispatch();

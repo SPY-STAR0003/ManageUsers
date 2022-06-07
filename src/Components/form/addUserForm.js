@@ -3,15 +3,13 @@ import {useState } from "react";
 // =============== components ===================================
 import InputForm from "./inputForm";
 import SelectInput from "./selectInput";
-import TextareaInput from "./../modal/textareaInput";
-// =========== Redux ===========================================
+import TextareaInput from "./textareaInput";
+import instance from "../../api/api";
+// =============== Redux ========================================
 import { useSelector , useDispatch } from "react-redux";
 import { changeUsersList , toggleForm } from "./../../store/slices/usersSlice";
-// =============== libraries ====================================
-import instance from "../../api/api";
+// =============== Media ========================================
 import picture from "./../images/blank-profile-picture-973460__480.webp";
-
-
 
 export default function AddUserForm() {
 // =============== states =======================================
@@ -21,6 +19,7 @@ export default function AddUserForm() {
         gender : "",
         email : "",
         accessRate : "",
+        description : "",
     })
 // =============== Redux Functions ==============================
     const dispatch = useDispatch();
@@ -40,13 +39,13 @@ export default function AddUserForm() {
             gender : userState.gender,
             email : userState.email,
             accessRate : userState.accessRate,
+            description : userState.description,
             date : new Date().toLocaleDateString("fa"),
-            password : ""
         }
 
         // eslint-disable-next-line
         let requestUser = await instance.post("/users" , user)
-
+        // render project again to add new User !
         dispatch(changeUsersList(user))
         setUserState({
             name : "",
@@ -54,16 +53,18 @@ export default function AddUserForm() {
             gender : "",
             email : "",
             accessRate: "",
+            description : ""
         })
+        // close addNewUserForm ...!
         dispatch(toggleForm())
     }
 
     return (
-        <div className={`editModal ${formClass}`}>
-            <div className="editModalForm">
+        <div className={`addEditModal ${formClass}`}>
+            <div className="addEditModalForm">
                 <div className="imageDiv">
                     <div className="imageDivBox">
-                        <img src={picture} alt="Profile Picture" />
+                        <img src={picture} alt="Profile" />
                         <div className="shadowImage">
                             <i className="bi bi-camera2"></i>
                             <div className="shadowImageText"> {values.addNewUserUploadPicture} </div>
@@ -109,9 +110,12 @@ export default function AddUserForm() {
                         changer={getInputsValue}   
                     />
                 </div>
-                <TextareaInput 
+                <TextareaInput
+                    name = {"description"} 
                     label={values.addNewUserTextarea}
+                    value={userState.description}
                     status={values.addNewUserTextareaStatus}
+                    changer={getInputsValue}
                 />
                 <i className="bi bi-check-circle-fill" onClick={e => formHandler(e)}></i>
                 <i className="bi bi-x-circle-fill" onClick={() => dispatch(toggleForm())}></i>

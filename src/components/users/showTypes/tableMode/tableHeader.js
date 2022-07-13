@@ -1,8 +1,9 @@
-// ========== Redux ===========================
+// Redux
 import { useSelector } from "react-redux";
 
 export default function TableHeader() {
-// ========== Redux Functions =================
+
+    // Redux Functions
     const {values} = useSelector(state => state.language)
 
     return (

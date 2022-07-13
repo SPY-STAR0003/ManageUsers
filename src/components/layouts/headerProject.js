@@ -1,10 +1,10 @@
-// ============= libraries ========================================
+// libraries
 import { NavLink } from "react-router-dom";
-// ============= Redux ============================================
+
+// Redux
 import { useSelector } from "react-redux";
 
 export default function HeaderProject() {
-    // this is Page HeaderProject !!! Very Useful Comment :/ ======
     const values = useSelector(state => state.language.values);
 
     return (

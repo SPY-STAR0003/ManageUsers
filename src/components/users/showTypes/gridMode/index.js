@@ -1,19 +1,24 @@
-// ============ React Hooks =================================
+// React
 import { useState } from "react"; 
-// ============ Components ==================================
-import EditModal from "../../modal/editModal";
-// ============ Redux =======================================
+
+// Components
+import EditModal from "../../../global/modals/editModal";
+
+// Redux
 import { useDispatch , useSelector } from "react-redux";
-import {deleteUser , editUser} from "../../../store/slices/usersSlice"
-// ============ API =========================================
-import instance from "../../../api/api";
-// ============ Media =======================================
-import picture from "./../../images/blank-profile-picture-973460__480.webp";
+import {deleteUser , editUser} from "../../../../store/slices/usersSlice"
+
+// API
+import instance from "../../../../api/api";
+
+// Media
+import picture from "../../../../asset/images/blank-profile-picture-973460__480.webp";
 
 export default function ShowUsersInGridMode({user}) {
-// ============ states ======================================
+    // states
     const [showEditModal , setShowEditModal] = useState(false)
-// ============ Redux Functions =============================
+
+    // Redux Functions
     const dispatch = useDispatch()
     const values = useSelector(state => state.language.values)
 

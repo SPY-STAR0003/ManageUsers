@@ -1,18 +1,22 @@
-// =============== hooks ========================================
+// hooks
 import {useState } from "react";
-// =============== components ===================================
-import InputForm from "./inputForm";
-import SelectInput from "./selectInput";
-import TextareaInput from "./textareaInput";
-import instance from "../../api/api";
-// =============== Redux ========================================
+
+// components
+import InputForm from "../elements/inputForm";
+import SelectInput from "../elements/selectInput";
+import TextareaInput from "../elements/textareaInput";
+import instance from "../../../api/api";
+
+// Redux
 import { useSelector , useDispatch } from "react-redux";
-import { changeUsersList , toggleForm } from "./../../store/slices/usersSlice";
-// =============== Media ========================================
-import picture from "./../images/blank-profile-picture-973460__480.webp";
+import { changeUsersList , toggleForm } from "../../../store/slices/usersSlice";
+
+// Media
+import picture from "../../../asset/images/blank-profile-picture-973460__480.webp";
 
 export default function AddUserForm() {
-// =============== states =======================================
+
+    // states
     const [userState , setUserState] = useState({
         name : "",
         IDCode : "",
@@ -21,13 +25,13 @@ export default function AddUserForm() {
         accessRate : "",
         description : "",
     })
-// =============== Redux Functions ==============================
+
+    // Redux Functions
     const dispatch = useDispatch();
     const formClass = useSelector(state => state.users.formClass)
     const values = useSelector(state => state.language.values)
 
-    
-// a receiver function that set form values to state ============
+    // a receiver function that set form values to state
     const getInputsValue = (key, value) => setUserState({...userState, [key]: value})
 
     const formHandler = async (e) => {

@@ -1,5 +1,10 @@
+// react
 import React from 'react';
+
+// libraries
 import ReactLoading from 'react-loading';
+
+// redux
 import { useSelector } from 'react-redux';
 
 export default function Loading({ type, color }) {

@@ -1,10 +1,10 @@
-// =========== React Hooks ======================================
+// React
 import { useState } from "react";
-// =========== Redux ============================================
+// Redux
 import { useDispatch , useSelector } from "react-redux";
-// =========== libraries & maked States =========================
-import UseDarkMode from "../libraries/useDarkMode";
-import { langEN , langFA } from "./../../store/slices/languageSlice";
+// libraries & maked States
+import UseDarkMode from "../../../hooks/useDarkMode";
+import { langEN , langFA } from "../../../store/slices/languageSlice";
 
 export default function FeaturesBtn() {
     // eslint-disable-next-line
@@ -17,7 +17,7 @@ export default function FeaturesBtn() {
         ? showAction("d-none")
         : showAction("d-flex")
     }
-    // ============= Redux Functions ============================
+    // Redux Functions
     const dispatch = useDispatch();
     const values = useSelector(state => state.language.values)
 

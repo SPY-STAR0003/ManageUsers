@@ -1,8 +1,8 @@
-// =========== Redux ===================================
+// Redux
 import { useSelector } from "react-redux";
 
 export default function AboutProject() {
-// =========== Redux Functions =========================
+// Redux Functions
     const values = useSelector(state => state.language.values);
 
     return (

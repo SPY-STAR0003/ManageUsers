@@ -1,23 +1,28 @@
-// ============ hooks ========================================
+// hooks
 import {useState } from "react";
-// ============ Components ===================================
-import EditModal from "../../modal/editModal";
-import ShowUserModal from "../../modal/showUserModal";
-// =========== Redux =========================================
+
+// Components
+import EditModal from "../../../global/modals/editModal";
+import ShowUserModal from "../../../modals/showUserModal";
+
+// Redux
 import { useDispatch } from "react-redux";
-import { editUser , deleteUser } from "../../../store/slices/usersSlice";
-// ============ libraries ====================================
-import instance from "../../../api/api";
+import { editUser , deleteUser } from "../../../../store/slices/usersSlice";
+
+// libraries
+import instance from "../../../../api/api";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import PN from "persian-number";
-// ============ pictures =====================================
-import userPicture from "../../images/blank-profile-picture-973460__480.webp";
+
+// pictures
+import userPicture from "../../../../asset/images/blank-profile-picture-973460__480.webp";
 
 export default function MakeTableRows({user}) {
-    // ============ state ====================================
+    // state
     const [showUser , setShowUser] = useState(false);
     const [editState , setEditState] = useState(false);
-    // ============ Redux Functions ==========================
+    
+    // Redux Functions
     const dispatch = useDispatch();
 
     // ============ Helper function for child components =====

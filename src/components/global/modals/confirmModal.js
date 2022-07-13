@@ -1,12 +1,13 @@
-// =========== Redux ===========================================
+// Redux
 import { useSelector , useDispatch } from "react-redux";
 import { deleteUser , toggleModal } from "./../../store/slices/usersSlice";
-// =========== API =============================================
+
+// API
 import instance from "../../api/api";
 
 export default function ConfirmModal() {
 
-// ================ Redux Functions =============================
+    // Redux Functions
     let {modalClass , accessToSimpleModal , userCode} = useSelector(state => state.users);
     const values = useSelector(state => state.language.values);
     let dispatch = useDispatch();

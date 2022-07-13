@@ -1,6 +1,5 @@
-// =============== Media ===========================
-import notFoundImage from "./../images/impact-404-error-in-seo.jpg";
-
+// static files
+import notFoundImage from "../asset/images/impact-404-error-in-seo.jpg";
 
 export default function NotFound() {
     return (

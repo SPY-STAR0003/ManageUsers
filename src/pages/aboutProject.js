@@ -1,6 +1,14 @@
 // Redux
 import { useSelector } from "react-redux";
 
+// components
+import VersionFourChanges from "../components/about/versionsChanges/four";
+import VersionThreeChanges from "../components/about/versionsChanges/three";
+import VersionTwoChanges from "../components/about/versionsChanges/two";
+import VersionOneChanges from "../components/about/versionsChanges/one";
+import ContactUs from "../components/about/contactUs";
+import Creators from "../components/about/creators";
+
 export default function AboutProject() {
 // Redux Functions
     const values = useSelector(state => state.language.values);
@@ -8,85 +16,15 @@ export default function AboutProject() {
     return (
         <div className="aboutProjectRoute">
             <h1> {values.aboutRouteMainHeader} </h1>
-            <div className="aboutProjectRouteItem">
-                <h2> {values.aboutRouteMakersHeader}  </h2>
-                <p>
-                    {values.aboutRouteMakersParagraph1}
-                    <br />
-                    {values.aboutRouteMakersParagraph2}
-                    <br />
-                    {values.aboutRouteMakersParagraph3}
-                </p>
-            </div>
+            <Creators values={values} />
             <div className="aboutProjectRouteItem">
                 <h2> {values.aboutRouteAbilitiesHeader} </h2>
-                <div className="item">
-                    <h3> {values.aboutRouteAbilitiesV4_Header} </h3>
-                    <p>
-                        {values.aboutRouteAbilitiesV4_Paraghraph}
-                    </p>
-                    <ul>
-                        <li> {values.aboutRouteAbilitiesV4_li1} </li>
-                        <li> {values.aboutRouteAbilitiesV4_li2} </li>
-                        <li> {values.aboutRouteAbilitiesV4_li3} </li>
-                        <li> {values.aboutRouteAbilitiesV4_li4} </li>
-                        <li> {values.aboutRouteAbilitiesV4_li5} </li>
-                        <li> {values.aboutRouteAbilitiesV4_li6} </li>
-                        <li> {values.aboutRouteAbilitiesV4_li7} </li>
-                        <li> {values.aboutRouteAbilitiesV4_li8} </li>
-                    </ul>
-                </div>
-                <div className="item">
-                    <h3> {values.aboutRouteAbilitiesV3_Header} </h3>
-                    <p>
-                        {values.aboutRouteAbilitiesV3_Paraghraph}
-                    </p>
-                    <ul>
-                        <li> {values.aboutRouteAbilitiesV3_li1} </li>
-                        <li> {values.aboutRouteAbilitiesV3_li2} </li>
-                        <li> {values.aboutRouteAbilitiesV3_li3} </li>
-                        <li> {values.aboutRouteAbilitiesV3_li4} </li>
-                        <li> {values.aboutRouteAbilitiesV3_li5} </li>
-                    </ul>
-                </div>
-                <div className="item">
-                    <h3> {values.aboutRouteAbilitiesV2_Header} </h3>
-                    <p>
-                        {values.aboutRouteAbilitiesV2_Paraghraph1}
-                    <br />
-                        {values.aboutRouteAbilitiesV2_Paraghraph2}
-                    </p>
-                    <ul>
-                        <li> {values.aboutRouteAbilitiesV2_li1} </li>
-                        <li> {values.aboutRouteAbilitiesV2_li2} </li>
-                        <li> {values.aboutRouteAbilitiesV2_li3} </li>
-                        <li> {values.aboutRouteAbilitiesV2_li4} </li>
-                    </ul>
-                </div>
-                <div className="item">
-                    <h3> {values.aboutRouteAbilitiesV1_Header} </h3>
-                    <p>
-                       {values.aboutRouteAbilitiesV1_Paraghraph} 
-                    </p>
-                    <ul>
-                        <li> {values.aboutRouteAbilitiesV1_li1} </li>
-                        <li> {values.aboutRouteAbilitiesV1_li2} </li>
-                        <li> {values.aboutRouteAbilitiesV1_li3} </li>
-                        <li> {values.aboutRouteAbilitiesV1_li4} </li>
-                    </ul>
-                </div>
-                <div className="aboutProjectRouteItem">
-                <h2> {values.aboutRouteContactUsHeader} </h2>
-                <p>
-                    {values.aboutRouteContactParagraph}
-                </p>
-                <ul>
-                    <li> {values.aboutRouteContactUsli1} <a href="https://telegram.me/mz0003"> https://telegram.me/mz0003 </a></li>
-                    <li> {values.aboutRouteContactUsli2} <a href="https://github.com/SPY-STAR0003"> https://github.com/SPY-STAR0003 </a></li>
-                    <li> {values.aboutRouteContactUsli3} <a href="mailto:spystar0003@gmail.com"> spystar0003@gmail.com </a></li>
-                </ul>
+                <VersionFourChanges values={values} />
+                <VersionThreeChanges values={values} />
+                <VersionTwoChanges values={values} />
+                <VersionOneChanges values={values} />
             </div>
-            </div>            
+            <ContactUs values={values} />
         </div>
     )
 }

@@ -9,7 +9,7 @@ import { useDispatch , useSelector } from "react-redux";
 import {deleteUser , editUser} from "../../../../store/slices/usersSlice"
 
 // API
-import instance from "../../../../api/api";
+import instance from "../../../../api";
 
 // Media
 import picture from "../../../../asset/images/blank-profile-picture-973460__480.webp";

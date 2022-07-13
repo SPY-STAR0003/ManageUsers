@@ -5,7 +5,7 @@ import {useState } from "react";
 import InputForm from "../elements/inputForm";
 import SelectInput from "../elements/selectInput";
 import TextareaInput from "../elements/textareaInput";
-import instance from "../../../api/api";
+import instance from "../../../api";
 
 // Redux
 import { useSelector , useDispatch } from "react-redux";

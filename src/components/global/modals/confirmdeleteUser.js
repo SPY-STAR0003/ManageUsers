@@ -1,11 +1,11 @@
 // Redux
 import { useSelector , useDispatch } from "react-redux";
-import { deleteUser , toggleModal } from "./../../store/slices/usersSlice";
+import { deleteUser , toggleModal } from "../../../store/slices/usersSlice";
 
 // API
-import instance from "../../api/api";
+import instance from "../../../api";
 
-export default function ConfirmModal() {
+export default function ConfirmDeleteUser() {
 
     // Redux Functions
     let {modalClass , accessToSimpleModal , userCode} = useSelector(state => state.users);
@@ -13,13 +13,10 @@ export default function ConfirmModal() {
     let dispatch = useDispatch();
 
     let deleteUserFromApi = async () => {
-        // eslint-disable-next-line
-        let deleteUserRequest = await instance.delete(`/users/${userCode}`);
+        await instance.delete(`/users/${userCode}`);
         dispatch(deleteUser())
     }
 
-    // This is to show ConfirmModal after you want to delete
-    // access is False By default but modal can change it!
     return (
         <>
             {

@@ -6,7 +6,7 @@ import HeaderProject from "../components/layouts/headerProject";
 import FeaturesBtn from "../components/global/floatBtns/featuresBtn";
 
 // Libraries
-import instance from "./../api/api";
+import instance from "./../api";
 import { Routes , Route } from "react-router-dom";
 
 // Redux

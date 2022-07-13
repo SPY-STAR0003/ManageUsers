@@ -4,7 +4,7 @@ import { useState } from 'react';
 // components
 import AddNewUserBtn from "../components/global/floatBtns/addNewUserBtn";
 import AddUserForm from "../components/global/forms/adduser";
-import ConfirmModal from "../components/modals/confirmModal";
+import ConfirmDeleteUser from "../components/global/modals/confirmdeleteUser";
 import UsersPageHeader from "./../components/users/header";
 
 // libraries 
@@ -19,7 +19,7 @@ export default function Home() {
             <ChangeShowUsersType gridMode={gridMode} />
             <AddUserForm />
             <AddNewUserBtn />
-            <ConfirmModal />
+            <ConfirmDeleteUser />
         </div>
     )
 }

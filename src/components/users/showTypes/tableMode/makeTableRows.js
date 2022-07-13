@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { editUser , deleteUser } from "../../../../store/slices/usersSlice";
 
 // libraries
-import instance from "../../../../api/api";
+import instance from "../../../../api";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import PN from "persian-number";
 

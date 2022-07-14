@@ -1,3 +1,6 @@
+// react
+import PropTypes from "prop-types";
+
 // libraries
 import PN from "persian-number";
 
@@ -7,7 +10,7 @@ import { useSelector } from "react-redux";
 // pictures
 import exampleUserPicture from "./../../../asset/images/blank-profile-picture-973460__480.webp";
 
-export default function ShowUserModal({user , toggleShowModal}) {
+const ShowUserModal = ({user , toggleShowModal}) => {
     // Redux Functions
     const values = useSelector(state => state.language.values);
     const nationalityCode = useSelector(state => state.language.rtl) ? PN.convertEnToPe(user.IDCode) : user.IDCode
@@ -54,3 +57,10 @@ export default function ShowUserModal({user , toggleShowModal}) {
         </div>
     )
 }
+
+ShowUserModal.propTypes = {
+    user : PropTypes.object,
+    toggleShowModal : PropTypes.func
+}
+
+export default ShowUserModal;

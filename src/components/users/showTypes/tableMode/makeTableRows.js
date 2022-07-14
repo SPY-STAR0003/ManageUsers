@@ -1,9 +1,6 @@
-// hooks
+// react
 import {useState } from "react";
-
-// Components
-import EditModal from "../../../global/modals/editModal";
-import ShowUserModal from "../../../global/modals/showUserModal";
+import PropTypes from "prop-types";
 
 // Redux
 import { useDispatch } from "react-redux";
@@ -14,10 +11,14 @@ import instance from "../../../../api";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import PN from "persian-number";
 
-// pictures
+// Components
+import EditModal from "../../../global/modals/editModal";
+import ShowUserModal from "../../../global/modals/showUserModal";
+
+// static files
 import userPicture from "../../../../asset/images/blank-profile-picture-973460__480.webp";
 
-export default function MakeTableRows({user}) {
+const MakeTableRows = ({user}) => {
     // state
     const [showUser , setShowUser] = useState(false);
     const [editState , setEditState] = useState(false);
@@ -70,3 +71,9 @@ export default function MakeTableRows({user}) {
         </>
     )
 }
+
+MakeTableRows.propTypes = {
+    user: PropTypes.object,
+}
+
+export default MakeTableRows

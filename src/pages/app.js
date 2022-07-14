@@ -1,5 +1,5 @@
 // React & Hooks
-import React, { useEffect } from "react";
+import React, { useEffect , lazy, Suspense } from "react";
 
 // Componenets
 import HeaderProject from "../components/layouts/headerProject";
@@ -14,14 +14,14 @@ import { useDispatch } from "react-redux";
 import { getUsersFromDatabase } from "../store/slices/usersSlice";
 import { changeShowLoading } from "../store/slices/loadingSlice";
 
-// pages
-import Home from "./home";
-import Help from "./help";
-import AboutProject from "./aboutProject";
-
 // static files
 import "../asset/styles/bundle.scss";
 import NotFound from "./404";
+
+// pages ( lazy load )
+const Home = lazy(() => import(/* webpackChunkName: 'Home-Route' */ "./home"))
+const Help = lazy(() => import(/* webpackChunkName: "Help-Route" */ "./help"))
+const AboutProject = lazy(() => import(/* webpackChunkName: "About-Route" */ "./aboutProject"))
 
 export default function App() {
     // Redux Functions
@@ -43,12 +43,14 @@ export default function App() {
     return (
         <>
             <HeaderProject />
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/help" element={<Help />}/>
-                    <Route path="/aboutProject" element={<AboutProject />}/>
-                    <Route path="*" element={<NotFound />} />
-                </Routes>
+                <Suspense>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/help" element={<Help />}/>
+                        <Route path="/aboutProject" element={<AboutProject />}/>
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
+                </Suspense>
             <FeaturesBtn />
         </>
     )

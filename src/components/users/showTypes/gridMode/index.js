@@ -1,5 +1,6 @@
 // React
 import { useState } from "react"; 
+import PropTypes from "prop-types";
 
 // Components
 import EditModal from "../../../global/modals/editModal";
@@ -14,7 +15,7 @@ import instance from "../../../../api";
 // Media
 import picture from "../../../../asset/images/blank-profile-picture-973460__480.webp";
 
-export default function ShowUsersInGridMode({user}) {
+const ShowUsersInGridMode = ({user}) => {
     // states
     const [showEditModal , setShowEditModal] = useState(false)
 
@@ -30,9 +31,7 @@ export default function ShowUsersInGridMode({user}) {
     return (
         <>
             {
-                showEditModal
-                ? <EditModal user={user} edit={editHandler} setEditState={setShowEditModal} />
-                : null
+                showEditModal && <EditModal user={user} edit={editHandler} setEditState={setShowEditModal} />
             }
             <div className="gridModeItem">
                 <div className="gridModeItemText">
@@ -75,3 +74,9 @@ export default function ShowUsersInGridMode({user}) {
         </>
     )
 }
+
+ShowUsersInGridMode.propTypes = {
+    user : PropTypes.object
+}
+
+export default ShowUsersInGridMode;

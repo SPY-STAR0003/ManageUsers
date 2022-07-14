@@ -1,4 +1,6 @@
-export default function SelectInput({ mainLabel , labels , name , changer , width}) {
+import PropTypes from "prop-types";
+
+const SelectInput = ({ mainLabel , labels , name , changer , width}) => {
 
     return (
         <>
@@ -22,3 +24,13 @@ export default function SelectInput({ mainLabel , labels , name , changer , widt
         </>
     )
 }
+
+SelectInput.propTypes = {
+    labels : PropTypes.array,
+    mainLabel : PropTypes.string || PropTypes.number,
+    name : PropTypes.string,
+    changer : PropTypes.func,
+    width : PropTypes.string,
+}
+
+export default SelectInput;

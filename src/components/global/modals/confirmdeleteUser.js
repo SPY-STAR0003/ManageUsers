@@ -8,7 +8,7 @@ import instance from "../../../api";
 export default function ConfirmDeleteUser() {
 
     // Redux Functions
-    let {modalClass , accessToSimpleModal , userCode} = useSelector(state => state.users);
+    let {modalClass , userCode} = useSelector(state => state.users);
     const values = useSelector(state => state.language.values);
     let dispatch = useDispatch();
 
@@ -18,23 +18,16 @@ export default function ConfirmDeleteUser() {
     }
 
     return (
-        <>
-            {
-                accessToSimpleModal
-                    ?           
-                    <div className={`background ${modalClass}`}>
-                        <div className={`confirmModal`}>
-                            <div className={"text"}>
-                                <p>{values.confirmModalParagraph}</p>
-                            </div>
-                            <div className={"buttons"}>
-                                <button className={"dangerBtn"} onClick={() => deleteUserFromApi()} > {values.confirmModalBtn1} </button>
-                                <button className={"successBtn"} onClick={() => dispatch(toggleModal(false))}> {values.confirmModalBtn2}  </button>
-                            </div>
-                        </div>
-                    </div>
-                    : null
-            }
-        </>
+        <div className={`background ${modalClass}`}>
+            <div className={`confirmModal`}>
+                <div className={"text"}>
+                    <p>{values.confirmModalParagraph}</p>
+                </div>
+                <div className={"buttons"}>
+                    <button className={"dangerBtn"} onClick={() => deleteUserFromApi()} > {values.confirmModalBtn1} </button>
+                    <button className={"successBtn"} onClick={() => dispatch(toggleModal(false))}> {values.confirmModalBtn2}  </button>
+                </div>
+            </div>
+        </div>
     )
 }

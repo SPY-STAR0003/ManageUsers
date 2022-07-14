@@ -1,5 +1,6 @@
-// React Hooks
+// React
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 // Redux
 import { useSelector } from "react-redux";
@@ -12,7 +13,7 @@ import SelectInput from "../elements/selectInput";
 // static files
 import picture from "../../../asset/images/blank-profile-picture-973460__480.webp";
 
-export default function EditModal({user , edit , setEditState}) {
+const EditModal = ({user , edit , setEditState}) => {
 
     let {code ,name , IDCode , gender , email , date , accessRate , description , id} = user;
 
@@ -88,3 +89,11 @@ export default function EditModal({user , edit , setEditState}) {
         </div>
     )
 }
+
+EditModal.propTypes = {
+    user : PropTypes.object ,
+    edit : PropTypes.func ,
+    setEditState : PropTypes.func
+}
+
+export default EditModal;

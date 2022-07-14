@@ -26,7 +26,6 @@ export default function AddUserForm() {
 
     // Redux Functions
     const dispatch = useDispatch();
-    const formClass = useSelector(state => state.users.formClass)
     const values = useSelector(state => state.language.values)
 
     // a receiver function that set form values to state
@@ -50,7 +49,7 @@ export default function AddUserForm() {
     }
 
     return (
-        <div className={`addEditModal ${formClass}`}>
+        <div className={`addEditModal d-flex`}>
             <form className="addEditModalForm" ref={formRef}>
                 <div className="imageDiv">
                     <div className="imageDivBox">

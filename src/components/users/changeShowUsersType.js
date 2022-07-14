@@ -10,7 +10,7 @@ import Loading from "../global/loading";
 // components
 import MakeTableRows from "./showTypes/tableMode/makeTableRows";
 import TableHeader from "./showTypes/tableMode/tableHeader";
-import SimpleModal from "../modals/simpleModal";
+import NoUsersModal from "../global/modals/noUsers";
 import ShowUsersInGridMode from "./showTypes/gridMode";
 
 const ChangeShowUsersType = ({gridMode}) => {
@@ -44,7 +44,7 @@ const ChangeShowUsersType = ({gridMode}) => {
                             )
                     // simpleModal is for making UI better !
                     // it say to user that there's no users ! 
-                    : <SimpleModal />
+                    : <NoUsersModal />
             }
         </>
     )

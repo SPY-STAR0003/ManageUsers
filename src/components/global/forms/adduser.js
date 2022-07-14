@@ -1,5 +1,5 @@
 // hooks
-import {useState } from "react";
+import { useState, useRef } from "react";
 
 // components
 import InputForm from "../elements/inputForm";
@@ -18,13 +18,11 @@ export default function AddUserForm() {
 
     // states
     const [userState , setUserState] = useState({
-        name : "",
-        IDCode : "",
-        gender : "",
-        email : "",
-        accessRate : "",
-        description : "",
+        name : "", IDCode : "", gender : "", email : "", accessRate : "", description : ""
     })
+
+    // refs
+    const formRef = useRef(null)
 
     // Redux Functions
     const dispatch = useDispatch();
@@ -34,38 +32,26 @@ export default function AddUserForm() {
     // a receiver function that set form values to state
     const getInputsValue = (key, value) => setUserState({...userState, [key]: value})
 
-    const formHandler = async (e) => {
-        e.preventDefault();
+    const formHandler = async () => {
         let user = {
+            ...userState,
             code : Date.now(),
-            name : userState.name,
-            IDCode : userState.IDCode,
-            gender : userState.gender,
-            email : userState.email,
-            accessRate : userState.accessRate,
-            description : userState.description,
             date : new Date().toLocaleDateString("fa"),
         }
-
-        // eslint-disable-next-line
-        let requestUser = await instance.post("/users" , user)
-        // render project again to add new User !
+        
+        await instance.post("/users" , user)
         dispatch(changeUsersList(user))
+
         setUserState({
-            name : "",
-            IDCode : "",
-            gender : "",
-            email : "",
-            accessRate: "",
-            description : ""
+            name : "", IDCode : "", gender : "", email : "", accessRate : "", description : ""
         })
-        // close addNewUserForm ...!
+        formRef.current.reset();
         dispatch(toggleForm())
     }
 
     return (
         <div className={`addEditModal ${formClass}`}>
-            <div className="addEditModalForm">
+            <form className="addEditModalForm" ref={formRef}>
                 <div className="imageDiv">
                     <div className="imageDivBox">
                         <img src={picture} alt="Profile" />
@@ -80,7 +66,7 @@ export default function AddUserForm() {
                     width={"80%"} 
                     label={values.addNewUserInput1} 
                     type={"text"} 
-                    value={userState.name} 
+                    value={userState?.name} 
                     name={"name"} 
                     changer={(e) => getInputsValue('name', e.target.value)} 
                 />
@@ -88,7 +74,7 @@ export default function AddUserForm() {
                     <InputForm width={"68%"} 
                         label={values.addNewUserInput2} 
                         type={"text"} 
-                        value={userState.IDCode} 
+                        value={userState?.IDCode} 
                         name={"IDCode"} 
                         changer={(e) => getInputsValue('IDCode', e.target.value)}  
                     />
@@ -103,7 +89,7 @@ export default function AddUserForm() {
                     <InputForm width={"68%"} 
                         label={values.addNewUserInput3} 
                         type={"text"} 
-                        value={userState.email} 
+                        value={userState?.email} 
                         name={"email"} 
                         changer={(e) => getInputsValue('email', e.target.value)}  
                     />
@@ -117,13 +103,13 @@ export default function AddUserForm() {
                 <TextareaInput
                     name = {"description"} 
                     label={values.addNewUserTextarea}
-                    value={userState.description}
+                    value={userState?.description}
                     status={values.addNewUserTextareaStatus}
                     changer={getInputsValue}
                 />
                 <i className="bi bi-check-circle-fill" onClick={e => formHandler(e)}></i>
                 <i className="bi bi-x-circle-fill" onClick={() => dispatch(toggleForm())}></i>
-            </div>
+            </form>
         </div>
     )
 }

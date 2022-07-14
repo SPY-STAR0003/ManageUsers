@@ -13,19 +13,15 @@ import SelectInput from "../elements/selectInput";
 import picture from "../../../asset/images/blank-profile-picture-973460__480.webp";
 
 export default function EditModal({user , edit , setEditState}) {
-    // Exctract Props
+
     let {code ,name , IDCode , gender , email , date , accessRate , description , id} = user;
 
-    // States
     const [editedUser , setEditedUser] = useState({
         code ,name , IDCode , gender , email , date , accessRate , description , id
     });
 
-    // This function will change user's information
-    // This function will happen everytime inputs change
     const editHandler = (key , value) => setEditedUser({ ...editedUser , [key] : value});
 
-    // Redux Functions
     const values = useSelector(state => state.language.values)
 
     return (

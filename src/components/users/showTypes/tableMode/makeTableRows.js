@@ -3,7 +3,7 @@ import {useState } from "react";
 
 // Components
 import EditModal from "../../../global/modals/editModal";
-import ShowUserModal from "../../../modals/showUserModal";
+import ShowUserModal from "../../../global/modals/showUserModal";
 
 // Redux
 import { useDispatch } from "react-redux";
@@ -34,15 +34,7 @@ export default function MakeTableRows({user}) {
 
     let editHandler = async (editedUser) => {
         // eslint-disable-next-line
-        let sendEditedUser = await instance.put(`/users/${editedUser.id}` , {
-            name : editedUser.name,
-            IDCode : editedUser.IDCode,
-            gender : editedUser.gender,
-            date : editedUser.date,
-            email : editedUser.email,
-            accessRate : editedUser.accessRate,
-            description : editedUser.description,
-        }) 
+        instance.put(`/users/${editedUser.id}` , editedUser) 
         dispatch(editUser(editedUser))
         setEditState(false);
     }
@@ -50,9 +42,7 @@ export default function MakeTableRows({user}) {
     return (
         <>
             {
-                showUser
-                ?   <ShowUserModal user={user} toggleShowModal={toggleShowUser}/>
-                :   null
+                showUser && <ShowUserModal user={user} toggleShowModal={toggleShowUser}/>
             }
             {
                 // with click on edit btn user can change data (editState change to true !) 

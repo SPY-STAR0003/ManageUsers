@@ -5,7 +5,7 @@ import PN from "persian-number";
 import { useSelector } from "react-redux"; 
 
 // pictures
-import exampleUserPicture from "./../../asset/images/blank-profile-picture-973460__480.webp";
+import exampleUserPicture from "./../../../asset/images/blank-profile-picture-973460__480.webp";
 
 export default function ShowUserModal({user , toggleShowModal}) {
     // Redux Functions

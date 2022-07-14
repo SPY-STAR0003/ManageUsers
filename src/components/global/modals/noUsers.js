@@ -4,7 +4,7 @@ import {useState} from "react";
 // Redux
 import {useSelector} from "react-redux";
 
-export default function SimpleModal() {
+export default function NoUsersModal() {
 
     const [showModal , setShowModal] = useState("d-flex");
 

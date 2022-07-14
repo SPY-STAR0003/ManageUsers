@@ -23,16 +23,7 @@ export default function ShowUsersInGridMode({user}) {
     const values = useSelector(state => state.language.values)
 
     let editHandler = async (editedUser) => {
-        // eslint-disable-next-line
-        let sendEditedUser = await instance.put(`/users/${editedUser.id}` , {
-            name : editedUser.name,
-            IDCode : editedUser.IDCode,
-            gender : editedUser.gender,
-            date : editedUser.date,
-            email : editedUser.email,
-            accessRate : editedUser.accessRate,
-            description : editedUser.description,
-        }) 
+        await instance.put(`/users/${editedUser.id}` , editedUser) 
         dispatch(editUser(editedUser))
         setShowEditModal(false);
     }

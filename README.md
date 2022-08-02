@@ -1,5 +1,26 @@
 ## ManageUsers
 
+### What this app can to do ?
+
+This Project will help to manage your users.\
+This project abilities are :
+
+    - Add User to a Table!
+    - Modify Users you have already before!
+    - Delete Users you have already Before!
+    - save users in localStorage!
+    - Having simple & beautiful UI !
+
+But this Project has some disabilities too, like :
+
+    - There is no validation for inputs!
+    - Only one man can use project!
+
+Help me to make this project better! :)
+And for the last word ...\
+
+#### Thank You Hesam Mousavi!
+
 ### What's new in v4.0 ?
 Version 4.0 is a version with attractive changes, most of which are in the UI and UX.
 
@@ -36,29 +57,7 @@ But this Update is very useful for programmers because :
 
 Now app development is much easier!
 
-### What this app can to do ?
 
-This Project will help to manage your users.\
-This project abilities are :
-
-    - Add User to a Table!
-    - Modify Users you have already before!
-    - Delete Users you have already Before!
-    - save users in localStorage!
-    - Having simple & beautiful UI !
-
-But this Project has some disabilities too, like :
-
-    - There is no validation for inputs!
-    - There is no help in project!
-    - There is no darkmode for project!
-    - There is only one view to see users!
-    - Only one man can use project!
-
-Help me to make this project better! :)
-And for the last word ...\
-
-#### Thank You Hesam Mousavi!
 
 
 ## Available Scripts

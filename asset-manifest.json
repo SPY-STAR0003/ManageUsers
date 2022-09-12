@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ManageUsers/static/css/main.df1fdae7.css",
-    "main.js": "/ManageUsers/static/js/main.60ac3502.js",
+    "main.js": "/ManageUsers/static/js/main.b40c7b46.js",
     "Home-Route.js": "/ManageUsers/static/js/Home-Route.99537966.chunk.js",
     "Help-Route.js": "/ManageUsers/static/js/Help-Route.f04f5492.chunk.js",
     "About-Route.js": "/ManageUsers/static/js/About-Route.3f88936d.chunk.js",
@@ -20,7 +20,7 @@
     "static/media/blank-profile-picture-973460__480.webp": "/ManageUsers/static/media/blank-profile-picture-973460__480.4a33880eba1cfcca5feb.webp",
     "index.html": "/ManageUsers/index.html",
     "main.df1fdae7.css.map": "/ManageUsers/static/css/main.df1fdae7.css.map",
-    "main.60ac3502.js.map": "/ManageUsers/static/js/main.60ac3502.js.map",
+    "main.b40c7b46.js.map": "/ManageUsers/static/js/main.b40c7b46.js.map",
     "Home-Route.99537966.chunk.js.map": "/ManageUsers/static/js/Home-Route.99537966.chunk.js.map",
     "Help-Route.f04f5492.chunk.js.map": "/ManageUsers/static/js/Help-Route.f04f5492.chunk.js.map",
     "About-Route.3f88936d.chunk.js.map": "/ManageUsers/static/js/About-Route.3f88936d.chunk.js.map",
@@ -29,6 +29,6 @@
   },
   "entrypoints": [
     "static/css/main.df1fdae7.css",
-    "static/js/main.60ac3502.js"
+    "static/js/main.b40c7b46.js"
   ]
 }

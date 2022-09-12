@@ -45,9 +45,9 @@ export default function App() {
             <HeaderProject />
                 <Suspense>
                     <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/help" element={<Help />}/>
-                        <Route path="/aboutProject" element={<AboutProject />}/>
+                        <Route path="./ManageUsers/" element={<Home />} />
+                        <Route path="./ManageUsers/help" element={<Help />}/>
+                        <Route path="./ManageUsers/aboutProject" element={<AboutProject />}/>
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Suspense>
